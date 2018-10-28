@@ -16,10 +16,16 @@ namespace Panja_Project
 {
     public partial class Local_Explorer : Form
     {
+        string getURI = "C:\\Temp"; //전달받은 폴더경로 지금은 하드코딩해둠
+
         public Local_Explorer()
         {
             InitializeComponent();
             listView1.View = View.LargeIcon;
+
+            if(getURI != null) //전달받은 경로가 있으면 그쪽으로 탐색기 실행
+                SettingListVeiw(getURI);
+
         }
 
         private void Local_Explorer_Load(object sender, EventArgs e)
@@ -119,14 +125,16 @@ namespace Panja_Project
         /// <param name="sFullPath"></param>
         private void SettingListVeiw(string sFullPath)
         {
+            
             try
             {
                 //기존의 파일 목록 제거
                 listView1.Items.Clear();
                 //현재 경로를 표시
-                textBox1.Text = sFullPath;
+                textBox1.Text = "C:\\" + sFullPath.Substring(4);
 
                 DirectoryInfo dir = new DirectoryInfo(sFullPath);
+                
 
                 int DirectCount = 0;
                 //하부 데렉토르 보여주기
@@ -185,14 +193,13 @@ namespace Panja_Project
             {
                 string processPath;
                 string pathnow = textBox1.Text;
-                string pathsub;
-                pathsub = pathnow.Substring(4);
+               
                 
 
                 if (listView1.SelectedItems[0].Text.IndexOf("\\") > 0)
                     processPath = listView1.SelectedItems[0].Text;
                 else
-                    processPath = "C:\\" + pathsub + "\\" + listView1.SelectedItems[0].Text;
+                    processPath = pathnow + "\\" + listView1.SelectedItems[0].Text;
 
                 Process.Start("explorer.exe", processPath);
             }
