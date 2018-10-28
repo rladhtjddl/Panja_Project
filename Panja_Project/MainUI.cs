@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Panja_Project
 {
-    public partial class Form1 : Form
+    public partial class MainUI : Form
     {
-        public Form1()
+        public MainUI()
         {
             InitializeComponent();
         }

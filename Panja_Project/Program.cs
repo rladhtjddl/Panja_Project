@@ -16,7 +16,7 @@ namespace Panja_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Local_Explorer());
             //주소관리똑바로하자
         }
     }
