@@ -184,10 +184,15 @@ namespace Panja_Project
             if (listView1.SelectedItems.Count == 1)
             {
                 string processPath;
+                string pathnow = textBox1.Text;
+                string pathsub;
+                pathsub = pathnow.Substring(4);
+                
+
                 if (listView1.SelectedItems[0].Text.IndexOf("\\") > 0)
                     processPath = listView1.SelectedItems[0].Text;
                 else
-                    processPath = textBox1.Text + "\\" + listView1.SelectedItems[0].Text;
+                    processPath = "C:\\" + pathsub + "\\" + listView1.SelectedItems[0].Text;
 
                 Process.Start("explorer.exe", processPath);
             }
