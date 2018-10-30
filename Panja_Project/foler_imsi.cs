@@ -17,6 +17,8 @@ namespace Panja_Project
         {
             InitializeComponent();
         }
+        
+      
 
         private void foler_imsi_Load(object sender, EventArgs e)
         {
@@ -68,9 +70,41 @@ namespace Panja_Project
 
 
 
-            string path = "C:\\Temp\\example\\dir\\panja.txt";
+            string path = "C:\\Temp\\example\\dir\\panja.pj";
             string textValue = Console.ReadLine();
             System.IO.File.WriteAllText(path, textValue, Encoding.Default);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            //cmd창
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = false; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
+            pro.StandardInput.Write("cd " + '\u0022' + "C:\\Temp\\example\\dir\\panja" + '\u0022' + Environment.NewLine);
+            pro.StandardInput.Write("chdir" + Environment.NewLine);
+            pro.StandardInput.Close();
+
+            string resultValue = pro.StandardOutput.ReadToEnd();
+            pro.WaitForExit();
+            pro.Close();
+
+            Console.WriteLine(resultValue);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
