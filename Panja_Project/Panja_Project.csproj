@@ -45,6 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="foler_imsi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="foler_imsi.Designer.cs">
+      <DependentUpon>foler_imsi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Local_Plus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Local_Plus.Designer.cs">
+      <DependentUpon>Local_Plus.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +71,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="foler_imsi.resx">
+      <DependentUpon>foler_imsi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Local_Plus.resx">
+      <DependentUpon>Local_Plus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainUI.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -73,6 +91,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,6 +105,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\arrow right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\arrow left.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

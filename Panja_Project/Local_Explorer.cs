@@ -205,5 +205,17 @@ namespace Panja_Project
             }
         }
 
+      
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Local_Plus plus = new Local_Plus();
+            plus.ShowDialog();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
