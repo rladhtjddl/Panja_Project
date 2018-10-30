@@ -23,8 +23,11 @@ namespace Panja_Project
             InitializeComponent();
             listView1.View = View.LargeIcon;
 
-            if(getURI != null) //전달받은 경로가 있으면 그쪽으로 탐색기 실행
+            if (getURI != null)
+            { //전달받은 경로가 있으면 그쪽으로 탐색기 실행
                 SettingListVeiw(getURI);
+                textBox1.Text = getURI;
+            }
 
         }
 
@@ -131,7 +134,8 @@ namespace Panja_Project
                 //기존의 파일 목록 제거
                 listView1.Items.Clear();
                 //현재 경로를 표시
-                textBox1.Text = "C:\\" + sFullPath.Substring(4);
+                    textBox1.Text = "C:\\" + sFullPath.Substring(4);
+
 
                 DirectoryInfo dir = new DirectoryInfo(sFullPath);
                 
