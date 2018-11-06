@@ -29,16 +29,16 @@ namespace Panja_Project
             RegistryKey reg2 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\Protect As Panja_S").CreateSubKey("command");
 
 
-            //현재 실행 경로 로딩
-            String currentPath = Environment.CurrentDirectory;
-
-            currentPath += "\\Panja_Project.exe";
             
+            //해당 프로젝트 실행 절대 경로 삽입
 
             //레지스트리 경로 커넥팅
-            reg2.SetValue("", currentPath + " 1% protect");
+            reg2.SetValue(""," 1% protect");
 
             
         }
+
+
+        
     }
 }

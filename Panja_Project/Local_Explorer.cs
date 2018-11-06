@@ -16,19 +16,26 @@ namespace Panja_Project
 {
     public partial class Local_Explorer : Form
     {
-        string getURI = "C:\\Temp\\project\\sample"; //전달받은 폴더경로 지금은 하드코딩해둠
+        
 
         public Local_Explorer()
         {
             InitializeComponent();
             listView1.View = View.LargeIcon;
 
+         
+
+        } 
+        
+        public Local_Explorer(string command , string targetAddress)
+        {
+            string getURI = targetAddress; //전달받은 폴더경로 지금은 하드코딩해둠
+
             if (getURI != null)
             { //전달받은 경로가 있으면 그쪽으로 탐색기 실행
                 SettingListVeiw(getURI);
                 textBox1.Text = getURI;
             }
-
         }
 
         private void Local_Explorer_Load(object sender, EventArgs e)
@@ -62,8 +69,8 @@ namespace Panja_Project
             //첫번째 노드 확장
             treeView1.Nodes[0].Expand();
             listView1.FullRowSelect = true;
-
         }
+
         private void Fill(TreeNode dirNode)
         {
             try

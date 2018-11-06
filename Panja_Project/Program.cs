@@ -16,7 +16,7 @@ namespace Panja_Project
         {
             Regedit rdg = new Regedit();
 
-            rdg.WriteRegistry();
+            rdg.RegistryChecker();
             int argsCount = args.Length;
 
             if (argsCount == 2)
@@ -32,7 +32,7 @@ namespace Panja_Project
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new foler_imsi(command,targetAddress));
-                
+                Application.Run(new Local_Explorer(command, targetAddress));
             }
 
             Application.EnableVisualStyles();

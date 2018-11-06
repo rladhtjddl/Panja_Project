@@ -25,7 +25,7 @@ namespace Panja_Project
             System.Diagnostics.Process pro = new System.Diagnostics.Process();
 
             proinfo.FileName = @"cmd";
-            proinfo.CreateNoWindow = true; //띄우기 안띄우기
+            proinfo.CreateNoWindow = false; //띄우기 안띄우기
             proinfo.UseShellExecute = false;
             proinfo.RedirectStandardOutput = true;
             proinfo.RedirectStandardInput = true;
@@ -35,7 +35,11 @@ namespace Panja_Project
             pro.Start();
 
             pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s +h" + Environment.NewLine);
-            pro.StandardInput.Write("copy C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\sample.lnk C:\\Temp\\project" + Environment.NewLine);
+            String dir = Environment.CurrentDirectory;
+
+            //문제 발생지역  address 추적해볼필요가있음 문제 발생 ==> dir 현재 디렉토리로 변경 (문제 :  lnk 이름을 따라가므로 링크 변경이 필요)
+            // copy lnk 위치 , 현재 dir 
+            pro.StandardInput.Write("copy C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\sample.lnk "+ dir + Environment.NewLine);
 
 
             pro.StandardInput.Close();
@@ -43,13 +47,7 @@ namespace Panja_Project
             string resultValue = pro.StandardOutput.ReadToEnd();
             pro.WaitForExit();
             pro.Close();
-
             this.Close();
-
-            
-
-
-
 
         }
         
@@ -143,9 +141,5 @@ namespace Panja_Project
 
         }
 
-        private void foler_imsi_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
