@@ -17,13 +17,45 @@ namespace Panja_Project
         {
             InitializeComponent();
         }
+
+        public foler_imsi(string command, string address)
+        {
+
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = true; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
+            pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s +h" + Environment.NewLine);
+            pro.StandardInput.Write("copy C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\sample.lnk C:\\Temp\\project" + Environment.NewLine);
+
+
+            pro.StandardInput.Close();
+
+            string resultValue = pro.StandardOutput.ReadToEnd();
+            pro.WaitForExit();
+            pro.Close();
+
+            this.Close();
+
+            
+
+
+
+
+        }
         
       
 
-        private void foler_imsi_Load(object sender, EventArgs e)
-        {
-           
-        }
+       
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -73,6 +105,10 @@ namespace Panja_Project
             string path = "C:\\Temp\\example\\dir\\panja.pj";
             string textValue = Console.ReadLine();
             System.IO.File.WriteAllText(path, textValue, Encoding.Default);
+
+
+         
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -103,6 +139,11 @@ namespace Panja_Project
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void foler_imsi_Load(object sender, EventArgs e)
         {
 
         }

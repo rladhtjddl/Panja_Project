@@ -16,7 +16,7 @@ namespace Panja_Project
 {
     public partial class Local_Explorer : Form
     {
-        string getURI = "C:\\Temp"; //전달받은 폴더경로 지금은 하드코딩해둠
+        string getURI = "C:\\Temp\\project\\sample"; //전달받은 폴더경로 지금은 하드코딩해둠
 
         public Local_Explorer()
         {
