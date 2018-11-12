@@ -212,7 +212,8 @@ namespace Panja_Project
                 else
                     processPath = pathnow + "\\" + listView1.SelectedItems[0].Text;
 
-                Process.Start("explorer.exe", processPath);
+                //Process.Start("explorer.exe", processPath);
+                Process.Start("C:\\Users\\J3N_JAN6\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\detect_ransom.exe", "\""+processPath+"\"");
             }
         }
 
@@ -223,9 +224,7 @@ namespace Panja_Project
 
             Local_Plus plus = new Local_Plus();
             plus.ShowDialog();
-
-
-
+            
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -237,6 +236,11 @@ namespace Panja_Project
         {
             foler_imsi ii = new foler_imsi();
             ii.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

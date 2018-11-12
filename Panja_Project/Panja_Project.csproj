@@ -51,6 +51,12 @@
     <Compile Include="foler_imsi.Designer.cs">
       <DependentUpon>foler_imsi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Local_Minus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Local_Minus.Designer.cs">
+      <DependentUpon>Local_Minus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Local_Plus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Regedit.cs" />
     <EmbeddedResource Include="foler_imsi.resx">
       <DependentUpon>foler_imsi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Local_minus.resx">
+      <DependentUpon>Local_Minus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Local_Plus.resx">
       <DependentUpon>Local_Plus.cs</DependentUpon>
