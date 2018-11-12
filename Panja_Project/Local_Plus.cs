@@ -34,7 +34,7 @@ namespace Panja_Project
 
 
             // 파일리스트 저장 
-            string[] files = Directory.GetFiles("C:\\Temp", "*");
+            string[] files = Directory.GetFiles("C:\\Users\\J3N_JAN6\\Downloads", "*");
 
            
             List_own.Columns.Add("a", 50);

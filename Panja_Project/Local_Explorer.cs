@@ -23,11 +23,10 @@ namespace Panja_Project
             InitializeComponent();
             listView1.View = View.LargeIcon;
 
-            if (getURI != null)
-            { //전달받은 경로가 있으면 그쪽으로 탐색기 실행
+            if(getURI != null){ //전달받은 경로가 있으면 그쪽으로 탐색기 실행
                 SettingListVeiw(getURI);
                 textBox1.Text = getURI;
-            }
+                }
 
         }
 
