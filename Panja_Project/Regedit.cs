@@ -13,7 +13,7 @@ namespace Panja_Project
       
         public void RegistryChecker()
         {
-             if(!Registry.LocalMachine.Equals("SOFTWARE\\Classes\\Folder\\shell\\Protect As Panja_S"))
+             if(!Registry.LocalMachine.Equals("SOFTWARE\\Classes\\Folder\\shell\\PANJA로 폴더 보호"))
             {
                 WriteRegistry();
             }
@@ -24,17 +24,18 @@ namespace Panja_Project
         public void WriteRegistry()
         {
             //일반 바탕화면추가
-            RegistryKey reg1 = Registry.ClassesRoot.CreateSubKey("Folder\\shell\\Protect As Panja\\command").CreateSubKey("command");
+            //RegistryKey reg1 = Registry.ClassesRoot.CreateSubKey("Folder\\shell\\Protect As Panja\\command").CreateSubKey("command");
             // 폴더 추가 
-            RegistryKey reg2 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\Protect As Panja_S").CreateSubKey("command");
+            RegistryKey protect_reg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA로 폴더 보호").CreateSubKey("command");
+            // 파일 스캔
+            RegistryKey scan_reg = Registry.ClassesRoot.CreateSubKey("*\\shell\\PANJA로 안전하게 실행\\command").CreateSubKey("command");
 
 
-            
             //해당 프로젝트 실행 절대 경로 삽입
 
             //레지스트리 경로 커넥팅
-            reg2.SetValue(""," 1% protect");
-
+            protect_reg.SetValue(""," 1% protect");
+            scan_reg.SetValue("", " %1");
             
         }
 
