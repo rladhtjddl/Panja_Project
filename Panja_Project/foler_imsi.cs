@@ -18,10 +18,42 @@ namespace Panja_Project
             InitializeComponent();
         }
 
-        private void foler_imsi_Load(object sender, EventArgs e)
+        public foler_imsi(string command, string address)
         {
-           
+
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = false; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
+            pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s +h" + Environment.NewLine);
+            String dir = Environment.CurrentDirectory;
+
+            //문제 발생지역  address 추적해볼필요가있음 문제 발생 ==> dir 현재 디렉토리로 변경 (문제 :  lnk 이름을 따라가므로 링크 변경이 필요)
+            // copy lnk 위치 , 현재 dir 
+            pro.StandardInput.Write("copy C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\sample.lnk "+ dir + Environment.NewLine);
+
+
+            pro.StandardInput.Close();
+
+            string resultValue = pro.StandardOutput.ReadToEnd();
+            pro.WaitForExit();
+            pro.Close();
+            this.Close();
+
         }
+        
+      
+
+       
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -68,9 +100,46 @@ namespace Panja_Project
 
 
 
-            string path = "C:\\Temp\\example\\dir\\panja.txt";
+            string path = "C:\\Temp\\example\\dir\\panja.pj";
             string textValue = Console.ReadLine();
             System.IO.File.WriteAllText(path, textValue, Encoding.Default);
+
+
+         
+
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            //cmd창
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = false; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
+            pro.StandardInput.Write("cd " + '\u0022' + "C:\\Temp\\example\\dir\\panja" + '\u0022' + Environment.NewLine);
+            pro.StandardInput.Write("chdir" + Environment.NewLine);
+            pro.StandardInput.Close();
+
+            string resultValue = pro.StandardOutput.ReadToEnd();
+            pro.WaitForExit();
+            pro.Close();
+
+            Console.WriteLine(resultValue);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

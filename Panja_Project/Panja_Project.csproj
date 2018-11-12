@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regedit.cs" />
     <EmbeddedResource Include="foler_imsi.resx">
       <DependentUpon>foler_imsi.cs</DependentUpon>
     </EmbeddedResource>
