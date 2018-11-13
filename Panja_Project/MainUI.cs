@@ -21,5 +21,22 @@ namespace Panja_Project
         {
 
         }
+
+        private void local_btn_Click(object sender, EventArgs e)
+        {
+            Local_Explorer exp = new Local_Explorer();
+            exp.ShowDialog();
+        }
+
+        private void Cloud_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void settings_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }
