@@ -51,6 +51,12 @@
     <Compile Include="foler_imsi.Designer.cs">
       <DependentUpon>foler_imsi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Access_Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Access_Account.Designer.cs">
+      <DependentUpon>Access_Account.cs</DependentUpon>
+    </Compile>
     <Compile Include="Local_Minus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regedit.cs" />
+    <EmbeddedResource Include="Access_Account.resx">
+      <DependentUpon>Access_Account.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="foler_imsi.resx">
       <DependentUpon>foler_imsi.cs</DependentUpon>
     </EmbeddedResource>

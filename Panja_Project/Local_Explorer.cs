@@ -227,11 +227,6 @@ namespace Panja_Project
             
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             foler_imsi ii = new foler_imsi();
