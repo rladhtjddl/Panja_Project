@@ -13,7 +13,7 @@ namespace Panja_Project
 {
     public partial class Local_Plus : Form
     {
-        public string[] link_arr = new string[100];
+        public String[] added_Folder = new string[100];
 
         public Local_Plus()
         {
@@ -130,8 +130,7 @@ namespace Panja_Project
 
         private void btn_plus_Click(object sender, EventArgs e)
         {
-            selectlist.Items.Add(addlist.SelectedNode.Text);
-            String selectedpath = addlist.SelectedNode.FullPath;
+            selectlist.Items.Add(addlist.SelectedNode.FullPath);
         }
 
         private void btn_minus_Click(object sender, EventArgs e)
@@ -141,6 +140,11 @@ namespace Panja_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
+            int i;
+            for (i = 0; i < selectlist.Items.Count; i++) {
+                    added_Folder[i] = selectlist.Items[i].Text;
+                    Console.WriteLine(added_Folder[i]);
+            }
 
         }
 
