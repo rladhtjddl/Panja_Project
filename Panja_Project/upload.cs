@@ -129,12 +129,9 @@ namespace Panja_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string a;
-            DirectoryInfo dir = new DirectoryInfo("C:\\Temp");
-            Console.WriteLine(dir.Name);
-            Console.WriteLine(dir.FullName);
-            Console.WriteLine(dir.GetFiles().Length);
-
+            folder_back a = new folder_back("C:\\Temp");
+            Console.WriteLine(a.fname);
+            Console.WriteLine(a.full_link);
         }
     }
 }
