@@ -42,10 +42,18 @@ namespace Panja_Project
     {
         public string fname;
         public string full_link;
+        //public string lastchange;
         public folder_back(string flink)
         {
-            fname = "dd";
-            full_link = "aa";
+            
+            DirectoryInfo dir = new DirectoryInfo(flink);
+            
+
+            fname = dir.Name;
+            full_link = dir.FullName;
+            
+
+
         }
     }
 
