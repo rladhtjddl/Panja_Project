@@ -37,8 +37,8 @@ namespace Panja_Project
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new upload());
-            //Application.Run(new Local_Explorer());
+            //Application.Run(new upload());
+            Application.Run(new Local_Explorer());
             
 
         }
