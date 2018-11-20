@@ -131,6 +131,7 @@ namespace Panja_Project
         private void btn_plus_Click(object sender, EventArgs e)
         {
             selectlist.Items.Add(addlist.SelectedNode.Text);
+            String selectedpath = addlist.SelectedNode.FullPath;
         }
 
         private void btn_minus_Click(object sender, EventArgs e)
