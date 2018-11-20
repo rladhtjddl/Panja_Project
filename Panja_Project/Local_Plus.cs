@@ -13,7 +13,7 @@ namespace Panja_Project
 {
     public partial class Local_Plus : Form
     {
-        
+        public string[] link_arr = new string[100];
 
         public Local_Plus()
         {
@@ -137,6 +137,11 @@ namespace Panja_Project
         private void btn_minus_Click(object sender, EventArgs e)
         {
             selectlist.Items.Remove(selectlist.SelectedItems[0]);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
 
         /// <summary>
