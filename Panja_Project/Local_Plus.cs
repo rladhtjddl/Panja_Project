@@ -78,5 +78,10 @@ namespace Panja_Project
 
 
         }
+
+        private void List_own_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
