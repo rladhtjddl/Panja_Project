@@ -16,7 +16,6 @@ namespace Panja_Project
 {
     public partial class Local_Explorer : Form
     {
-        public string freepath;
 
 
         public Local_Explorer()
@@ -143,8 +142,7 @@ namespace Panja_Project
                 listView1.Items.Clear();
                 //현재 경로를 표시
                 textBox1.Text = "C:\\" + sFullPath.Substring(4);
-                freepath = "C:\\" + sFullPath.Substring(4);
-                
+
 
                 DirectoryInfo dir = new DirectoryInfo(sFullPath);
 
@@ -199,71 +197,6 @@ namespace Panja_Project
             }
             //treeView1.Nodes[0].Expand();
         }
-
-        private void listView1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void listv1_Click(object sender, MouseEventArgs e)
-        {
-            if(e.Button.Equals(MouseButtons.Right))
-            {
-                
-                //오른쪽 메뉴를 만듭니다 
-                ContextMenu m = new ContextMenu();
-                //메뉴에 들어갈 아이템을 만듭니다
-                MenuItem m1 = new MenuItem();
-                MenuItem m2 = new MenuItem();
-
-                m1.Text = "업로드하기";
-                m2.Text = "다운로드하기";
-
-
-                //업로드하기 클릭시 이벤트
-                m1.Click += (senders, es) => {
-                    Console.WriteLine("업로드클릭");
-
-
-                    //cmd창
-                    System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
-                    System.Diagnostics.Process pro = new System.Diagnostics.Process();
-
-                    proinfo.FileName = @"cmd";
-                    proinfo.CreateNoWindow = false; //띄우기 안띄우기
-                    proinfo.UseShellExecute = false;
-                    proinfo.RedirectStandardOutput = true;
-                    proinfo.RedirectStandardInput = true;
-                    proinfo.RedirectStandardError = true;
-
-                    pro.StartInfo = proinfo;
-                    pro.Start();
-
-                    pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
-                    pro.StandardInput.Write("psftp ubuntu@34.216.228.162 -pw ubuntu" + Environment.NewLine); //우분투 접속
-                    pro.StandardInput.Write("cd panja/imsi" + Environment.NewLine);
-                    pro.StandardInput.Write("put -r "+ freepath + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
-                    pro.StandardInput.Close();
-
-                    string resultValue = pro.StandardOutput.ReadToEnd();
-                    pro.WaitForExit();
-                    pro.Close();
-
-                    Console.WriteLine(resultValue);
-
-                };
-
-                
-
-
-                    m.MenuItems.Add(m1);
-                m.MenuItems.Add(m2);
-
-                m.Show(listView1, new Point(e.X, e.Y));
-
-            }
-        }
-
         private void listView1_DoubleClick(object sender, EventArgs e)  //해당 아이템 더블클릭하면 실행함
         {
 
@@ -280,9 +213,7 @@ namespace Panja_Project
                     processPath = pathnow + "\\" + listView1.SelectedItems[0].Text;
 
                 //Process.Start("explorer.exe", processPath);
-                Process.Start("C:\\Users\\J3N_JAN6\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\detect_ransom.exe", "\""+processPath+"\"");
-
-                
+                Process.Start("C:\\Users\\J3N_JAN6\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\Properties\\detect_ransom.exe", "\""+processPath+"\"");
             }
         }
 
@@ -298,7 +229,7 @@ namespace Panja_Project
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -312,12 +243,5 @@ namespace Panja_Project
             Local_Minus minus = new Local_Minus();
             minus.ShowDialog();
         }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
-       
     }
 }

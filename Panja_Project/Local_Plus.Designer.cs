@@ -173,17 +173,19 @@
             this.button4 = new System.Windows.Forms.Button();
             this.btn_minus = new System.Windows.Forms.Button();
             this.btn_plus = new System.Windows.Forms.Button();
-            this.List_own = new System.Windows.Forms.ListView();
-            this.List_go = new System.Windows.Forms.ListView();
+            this.selectlist = new System.Windows.Forms.ListView();
+            this.addlist = new System.Windows.Forms.TreeView();
+            this.폴더명 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("궁서", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(66, 21);
+            this.label1.Location = new System.Drawing.Point(94, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 24);
+            this.label1.Size = new System.Drawing.Size(147, 36);
             this.label1.TabIndex = 4;
             this.label1.Text = "Select";
             // 
@@ -191,26 +193,29 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("궁서", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(318, 21);
+            this.label2.Location = new System.Drawing.Point(491, 31);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 24);
+            this.label2.Size = new System.Drawing.Size(194, 36);
             this.label2.TabIndex = 5;
             this.label2.Text = "Selected";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(516, 59);
+            this.button3.Location = new System.Drawing.Point(761, 88);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 32);
+            this.button3.Size = new System.Drawing.Size(103, 48);
             this.button3.TabIndex = 6;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(516, 97);
+            this.button4.Location = new System.Drawing.Point(761, 144);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(86, 32);
+            this.button4.Size = new System.Drawing.Size(103, 48);
             this.button4.TabIndex = 7;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
@@ -218,47 +223,59 @@
             // btn_minus
             // 
             this.btn_minus.Image = global::Panja_Project.Properties.Resources.arrow_left;
-            this.btn_minus.Location = new System.Drawing.Point(219, 203);
+            this.btn_minus.Location = new System.Drawing.Point(342, 304);
+            this.btn_minus.Margin = new System.Windows.Forms.Padding(4);
             this.btn_minus.Name = "btn_minus";
-            this.btn_minus.Size = new System.Drawing.Size(59, 55);
+            this.btn_minus.Size = new System.Drawing.Size(84, 82);
             this.btn_minus.TabIndex = 2;
             this.btn_minus.UseVisualStyleBackColor = true;
+            this.btn_minus.Click += new System.EventHandler(this.btn_minus_Click);
             // 
             // btn_plus
             // 
             this.btn_plus.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_plus.Image = global::Panja_Project.Properties.Resources.arrow_right;
-            this.btn_plus.Location = new System.Drawing.Point(219, 126);
+            this.btn_plus.Location = new System.Drawing.Point(342, 189);
+            this.btn_plus.Margin = new System.Windows.Forms.Padding(4);
             this.btn_plus.Name = "btn_plus";
-            this.btn_plus.Size = new System.Drawing.Size(59, 59);
+            this.btn_plus.Size = new System.Drawing.Size(84, 88);
             this.btn_plus.TabIndex = 1;
             this.btn_plus.UseVisualStyleBackColor = false;
+            this.btn_plus.Click += new System.EventHandler(this.btn_plus_Click);
             // 
-            // List_own
+            // selectlist
             // 
-            this.List_own.Location = new System.Drawing.Point(12, 48);
-            this.List_own.Name = "List_own";
-            this.List_own.Size = new System.Drawing.Size(201, 304);
-            this.List_own.TabIndex = 8;
-            this.List_own.UseCompatibleStateImageBehavior = false;
-            this.List_own.View = System.Windows.Forms.View.Details;
-            this.List_own.SelectedIndexChanged += new System.EventHandler(this.List_own_SelectedIndexChanged);
+            this.selectlist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.폴더명});
+            this.selectlist.Location = new System.Drawing.Point(434, 71);
+            this.selectlist.Margin = new System.Windows.Forms.Padding(4);
+            this.selectlist.Name = "selectlist";
+            this.selectlist.Size = new System.Drawing.Size(295, 454);
+            this.selectlist.TabIndex = 9;
+            this.selectlist.UseCompatibleStateImageBehavior = false;
+            this.selectlist.View = System.Windows.Forms.View.List;
             // 
-            // List_go
+            // addlist
             // 
-            this.List_go.Location = new System.Drawing.Point(284, 48);
-            this.List_go.Name = "List_go";
-            this.List_go.Size = new System.Drawing.Size(201, 304);
-            this.List_go.TabIndex = 9;
-            this.List_go.UseCompatibleStateImageBehavior = false;
+            this.addlist.Location = new System.Drawing.Point(25, 71);
+            this.addlist.Name = "addlist";
+            this.addlist.Size = new System.Drawing.Size(310, 454);
+            this.addlist.TabIndex = 10;
+            this.addlist.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.addlist_BeforeCollapse);
+            this.addlist.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.addlist_BeforeExpand);
+            // 
+            // 폴더명
+            // 
+            this.폴더명.Text = "header1";
+            this.폴더명.Width = 200;
             // 
             // Local_Plus
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 364);
-            this.Controls.Add(this.List_go);
-            this.Controls.Add(this.List_own);
+            this.ClientSize = new System.Drawing.Size(877, 546);
+            this.Controls.Add(this.addlist);
+            this.Controls.Add(this.selectlist);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
@@ -266,6 +283,7 @@
             this.Controls.Add(this.btn_minus);
             this.Controls.Add(this.btn_plus);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Local_Plus";
             this.Text = "폴더 보호 추가";
             this.Load += new System.EventHandler(this.Local_Plus_Load);
@@ -281,7 +299,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListView List_own;
-        private System.Windows.Forms.ListView List_go;
+        private System.Windows.Forms.ListView selectlist;
+        private System.Windows.Forms.TreeView addlist;
+        private System.Windows.Forms.ColumnHeader 폴더명;
     }
 }
