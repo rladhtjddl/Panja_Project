@@ -80,7 +80,7 @@ namespace Panja_Project
             jjson.Add(json);
 
            
-            //-----------------------------------------------------------------------------
+            
 
             //리스트로 저장
             IList<file_list> person = jjson.ToObject<IList<file_list>>();
@@ -89,6 +89,7 @@ namespace Panja_Project
             Console.WriteLine(person[0].Id);
             Console.WriteLine(person[1].Name);
 
+            //-----------------------------------------------------------------------------
 
             // write JSON directly to a file
             using (StreamWriter file = File.CreateText(@"c:\Temp\file_list.json"))
@@ -136,6 +137,29 @@ namespace Panja_Project
             Console.WriteLine(dir.GetFiles().Length);
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //스트링
+            string dirPath = @"C:\Temp";
+       
+
+            string[] files = Directory.GetFiles(dirPath ,"*.*",SearchOption.AllDirectories);
+            foreach(string s in files)
+            {
+                Console.WriteLine(s);
+            }
+
+
+
+        }
+
+       
+
+
+
+
+
     }
 }
 

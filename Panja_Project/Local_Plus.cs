@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -140,11 +142,53 @@ namespace Panja_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
+            JObject json = new JObject();
+            JArray jjson = new JArray();
+
+            string file_name, file_byte, file_link;
+            string[] file_save = new string[100];
+            int count = 0; 
+
+
             int i;
-            for (i = 0; i < selectlist.Items.Count; i++) {
+            int lastnum = selectlist.Items.Count;
+            for (i = 0; i < lastnum; i++) {
                     added_Folder[i] = selectlist.Items[i].Text;
-                    Console.WriteLine(added_Folder[i]);
+                    //Console.WriteLine(added_Folder[i]);
+                string dirPath = added_Folder[i];
+
+
+                string[]  files = Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories);
+                foreach (string s in files)
+                {
+                    //Console.WriteLine(s);
+                    file_save[count++] = s;
+                }
             }
+
+
+            for (i = 0; i < count - 1; i++)
+            {
+                file_info file_Inf = new file_info(file_save[i]);
+                Console.WriteLine(file_Inf.fname);
+                Console.WriteLine(file_Inf.flink);
+                json = JObject.FromObject(file_Inf);
+                jjson.Add(json);
+            }
+            //리스트로 저장
+            IList<file_list> save_json = jjson.ToObject<IList<file_list>>();
+
+            // write JSON directly to a file
+            using (StreamWriter file = File.CreateText(@"c:\Temp\file_list.json"))
+            using (JsonTextWriter writer = new JsonTextWriter(file))
+            {
+                jjson.WriteTo(writer);
+            }
+
+
+
+
+
 
         }
 
