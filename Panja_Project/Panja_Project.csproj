@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessAuthority.cs" />
     <Compile Include="foler_imsi.cs">
       <SubType>Form</SubType>
     </Compile>

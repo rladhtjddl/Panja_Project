@@ -24,10 +24,7 @@ namespace Panja_Project
                 string command = args[1];
                 string targetAddress = args[0];
 
-                if (command.Equals("protect"))
-                {
-
-                }
+           
                 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
