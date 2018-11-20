@@ -16,14 +16,14 @@ namespace Panja_Project
         {
             Regedit rdg = new Regedit();
 
-            rdg.RegistryChecker();
+           
             int argsCount = args.Length;
 
             if (argsCount == 2)
             {
                 string command = args[1];
                 string targetAddress = args[0];
-
+                rdg.RegistryChecker(targetAddress);
                 if (command.Equals("protect"))
                 {
 

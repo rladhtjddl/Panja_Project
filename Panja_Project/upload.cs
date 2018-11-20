@@ -38,6 +38,7 @@ namespace Panja_Project
             proinfo.RedirectStandardOutput = true;
             proinfo.RedirectStandardInput = true;
             proinfo.RedirectStandardError = true;
+            
 
             pro.StartInfo = proinfo;
             pro.Start();
