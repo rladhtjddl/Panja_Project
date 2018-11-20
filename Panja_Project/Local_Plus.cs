@@ -21,39 +21,39 @@ namespace Panja_Project
         }
 
         private void Local_Plus_Load(object sender, EventArgs e)
-        {
-            /// <summary>
-            /// 디렉토리 선택
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
+        {  //현재 로컬 컴퓨터에 존재하는 드라이브 정보 검색하여 트리노드에 추가
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
 
-            // 폴더브라우저 객체 생성
+            foreach (DriveInfo dname in allDrives)
+            {
+                if (dname.DriveType == DriveType.Fixed)
+                {
+                    if (dname.Name == @"C:\")
+                    {
+                        TreeNode rootNode = new TreeNode(dname.Name);
+                        rootNode.ImageIndex = 0;
+                        rootNode.SelectedImageIndex = 0;
+                        addlist.Nodes.Add(rootNode);
+                        Fill(rootNode);
+                    }
+                    else
+                    {
+                        TreeNode rootNode = new TreeNode(dname.Name);
+                        rootNode.ImageIndex = 1;
+                        rootNode.SelectedImageIndex = 1;
+                        addlist.Nodes.Add(rootNode);
+                        Fill(rootNode);
+                    }
+                }
+            }
 
-            //string[] files = Directory.GetFiles(dir, "*");
+            //첫번째 노드 확장
+            addlist.Nodes[0].Expand();
+            //listView1.FullRowSelect = true;
 
 
-            // 파일리스트 저장 
-            string[] files = Directory.GetFiles("C:\\Users\\J3N_JAN6\\Downloads", "*");
-
-           
-            List_own.Columns.Add("a", 50);
-            List_own.Columns.Add("b", 50);
-            List_own.Columns.Add("c", 50);
-            List_own.Columns.Add("d", 50);
 
             /*
-            string[] aa = { "aa1", "aa2", "a3", "a4 "};
-            ListViewItem newitem = new ListViewItem(aa);
-            List_own.Items.Add(newitem);
-
-            newitem = new ListViewItem(new string[] { "bb1", "bb2", "bb3", "b4" });
-            List_own.Items.Add(newitem);
-            */
-
-
-
-
             // 파일 개수만큼 리스트에 추가
 
             for (int i = 0; i < files.Length; i++)
@@ -73,10 +73,75 @@ namespace Panja_Project
 
             }
 
-
-
-
-
+            */
         }
+
+
+
+        private void Fill(TreeNode dirNode)
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(dirNode.FullPath);
+                //드라이브의 하위 폴더 추가
+                foreach (DirectoryInfo dirItem in dir.GetDirectories())
+                {
+                    TreeNode newNode = new TreeNode(dirItem.Name);
+                    newNode.ImageIndex = 2;
+                    newNode.SelectedImageIndex = 2;
+                    dirNode.Nodes.Add(newNode);
+                    newNode.Nodes.Add("*");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR : " + ex.Message);
+            }
+        }
+        /// <summary>
+        /// 트리가 확장되기 전에 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addlist_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            if (e.Node.Nodes[0].Text == "*")
+            {
+                e.Node.Nodes.Clear();
+                e.Node.ImageIndex = 3;
+                e.Node.SelectedImageIndex = 3;
+                Fill(e.Node);
+            }
+        }
+        /// <summary>
+        /// 트리가 닫히기 전에 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addlist_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
+        {
+            if (e.Node.Nodes[0].Text == "*")
+            {
+                e.Node.ImageIndex = 2;
+                e.Node.SelectedImageIndex = 2;
+            }
+        }
+
+        private void btn_plus_Click(object sender, EventArgs e)
+        {
+            selectlist.Items.Add(addlist.SelectedNode.Text);
+        }
+
+        private void btn_minus_Click(object sender, EventArgs e)
+        {
+            selectlist.Items.Remove(selectlist.SelectedItems[0]);
+        }
+
+        /// <summary>
+        /// 트리를 마우스로 클릭할 때 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
     }
 }
