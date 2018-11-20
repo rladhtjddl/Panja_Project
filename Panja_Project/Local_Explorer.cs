@@ -280,7 +280,7 @@ namespace Panja_Project
                     processPath = pathnow + "\\" + listView1.SelectedItems[0].Text;
 
                 //Process.Start("explorer.exe", processPath);
-                Process.Start("C:\\Users\\J3N_JAN6\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\detect_ransom.exe", "\""+processPath+"\"");
+                Process.Start("../../Properties\\detect_ransom.exe", "\""+processPath+"\"");
 
                 
             }

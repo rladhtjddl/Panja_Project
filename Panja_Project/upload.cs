@@ -127,9 +127,15 @@ namespace Panja_Project
             reff[0] = reff[0] + " bbb";
         }
 
-       
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string a;
+            DirectoryInfo dir = new DirectoryInfo("C:\\Temp");
+            Console.WriteLine(dir.Name);
+            Console.WriteLine(dir.FullName);
+            Console.WriteLine(dir.GetFiles().Length);
 
-
+        }
     }
 }
 

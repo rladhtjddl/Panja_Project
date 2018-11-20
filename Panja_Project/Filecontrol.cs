@@ -37,6 +37,18 @@ namespace Panja_Project
         }
     }
 
+
+    public struct folder_back
+    {
+        public string fname;
+        public string full_link;
+        public folder_back(string flink)
+        {
+            fname = "dd";
+            full_link = "aa";
+        }
+    }
+
     class Filecontrol
     {
        
