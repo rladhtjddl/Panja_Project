@@ -28,17 +28,17 @@ namespace Panja_Project
                 {
 
                 }
-                
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new foler_imsi(command,targetAddress));
+                Application.Run(new foler_imsi(command, targetAddress));
                 Application.Run(new Local_Explorer(command, targetAddress));
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new upload());
-            
+
 
         }
     }
