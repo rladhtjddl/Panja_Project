@@ -59,8 +59,12 @@ namespace Panja_Project
             DirectorySecurity dSecurity = Directory.GetAccessControl(dir);
             dSecurity.AddAccessRule(new FileSystemAccessRule(
                 USER,
-                FileSystemRights.Modify,
+                FileSystemRights.Write| FileSystemRights.AppendData ,
                 AccessControlType.Deny));
+            dSecurity.AddAccessRule(new FileSystemAccessRule(
+                USER,
+                FileSystemRights.Read | FileSystemRights.ReadAndExecute,
+                AccessControlType.Allow));
             Directory.SetAccessControl(dir, dSecurity);
 
         }

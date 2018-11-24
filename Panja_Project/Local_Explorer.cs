@@ -23,8 +23,8 @@ namespace Panja_Project
         {
             InitializeComponent();
             listView1.View = View.LargeIcon;
-
-
+            SettingListVeiw(Environment.CurrentDirectory);
+            
 
         }
 

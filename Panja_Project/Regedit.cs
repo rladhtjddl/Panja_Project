@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+﻿ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +31,7 @@ namespace Panja_Project
             //일반 바탕화면추가
             //RegistryKey reg1 = Registry.ClassesRoot.CreateSubKey("Folder\\shell\\Protect As Panja\\command").CreateSubKey("command");
             // 폴더 추가 
-            RegistryKey protect_reg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA로 폴더 보호").CreateSubKey("command");
+            //RegistryKey protect_reg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA로 폴더 보호").CreateSubKey("command");
             // 파일 스캔r
             RegistryKey scan_reg = Registry.ClassesRoot.CreateSubKey("*\\shell\\PANJA로 안전하게 실행").CreateSubKey("command");
             //폴더관련 
@@ -41,7 +41,7 @@ namespace Panja_Project
             RegistryKey sample4 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 회복 smaple2 ").CreateSubKey("command");
 
 
-            String setValue = "C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\Panja_Project.exe %1 protect";
+            String setValue;// = "C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\Panja_Project.exe %1 protect";
 
             //sampel1
             setValue = dir + " %1 protect_normal";
@@ -82,6 +82,17 @@ namespace Panja_Project
                 return str[1];
             }
 
+        }
+
+        public string getAbsDir()
+        {
+            RegistryKey reg_Key = Registry.LocalMachine;
+            reg_Key = reg_Key.OpenSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample1\\command", true);
+
+            string val = (string)reg_Key.GetValue("");
+            string[] split = val.Split(' ');
+          
+            return split[0];
         }
 
     }

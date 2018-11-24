@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,10 +16,11 @@ namespace Panja_Project
         static void Main(string[] args)
         {
             Regedit rdg = new Regedit();
+            string dir = Environment.CurrentDirectory + "\\Panja_Project.exe";
 
-           
             int argsCount = args.Length;
 
+           
             if (argsCount == 2)
             {
                 string command = args[1];
@@ -37,8 +39,8 @@ namespace Panja_Project
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new upload());
-            //Application.Run(new Local_Explorer());
+            //Application.Run(new upload());
+            Application.Run(new Local_Explorer());
             
 
         }
