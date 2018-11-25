@@ -186,16 +186,17 @@ namespace Panja_Project
                 Console.WriteLine(file_Inf.fname);
                 Console.WriteLine(file_Inf.flink);
                 json = JObject.FromObject(file_Inf);
-                jjson.Add(json);
+                json.Add(file_Inf.flink, JObject.FromObject(file_Inf));
+                
             }
             //리스트로 저장
-            IList<file_list> save_json = jjson.ToObject<IList<file_list>>();
+            IList<file_list> save_json = json.ToObject<IList<file_list>>();
 
             // write JSON directly to a file
             using (StreamWriter file = File.CreateText(@"C:\Temp\file_list.json"))
             using (JsonTextWriter writer = new JsonTextWriter(file))
             {
-                jjson.WriteTo(writer);
+                json.WriteTo(writer);
             }
 
 

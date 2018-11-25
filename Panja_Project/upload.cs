@@ -76,36 +76,37 @@ namespace Panja_Project
             string[] file_list = new string[4];  //0 : name , 1 : byte, 2 : format
 
             //파일정보 가져오기
+
             file_list a = new file_list { Id = "Locu", Name = "dlfma", By = "32048" };
-            json = JObject.FromObject(a);
+            json.Add("key1", JObject.FromObject(a));
             jjson.Add(json);
             file_list b = new file_list { Id = "Tim", Name = "one", By = "20448" };
-            json = JObject.FromObject(b);
+            json.Add("key2", JObject.FromObject(b));
             jjson.Add(json);
             file_list c = new file_list { Id = "Kim", Name = "three", By = "20648" };
-            json = JObject.FromObject(c);
+            json.Add("key3", JObject.FromObject(c));
             jjson.Add(json);
 
            
-            
+          
 
             //리스트로 저장
             IList<file_list> person = jjson.ToObject<IList<file_list>>();
             
             //출력
-            Console.WriteLine(person[0].Id);
-            Console.WriteLine(person[1].Name);
-            Console.WriteLine(jjson.ToString());
+            //Console.WriteLine(person[0].Id);
+            //Console.WriteLine(person[1].Name);
+            Console.WriteLine(json.ToString());
 
             //-----------------------------------------------------------------------------
-            /*
+            
             // write JSON directly to a file
             using (StreamWriter file = File.CreateText(@"c:\Temp\file_list.json"))
             using (JsonTextWriter writer = new JsonTextWriter(file))
             {
-                jjson.WriteTo(writer);
+                json.WriteTo(writer);
             }
-            */
+            
 
             //-----------------------------------------------------------------------------
 
