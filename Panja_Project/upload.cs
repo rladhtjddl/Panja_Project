@@ -95,26 +95,28 @@ namespace Panja_Project
             //출력
             Console.WriteLine(person[0].Id);
             Console.WriteLine(person[1].Name);
+            Console.WriteLine(jjson.ToString());
 
             //-----------------------------------------------------------------------------
-
+            /*
             // write JSON directly to a file
             using (StreamWriter file = File.CreateText(@"c:\Temp\file_list.json"))
             using (JsonTextWriter writer = new JsonTextWriter(file))
             {
                 jjson.WriteTo(writer);
             }
-
+            */
 
             //-----------------------------------------------------------------------------
 
+            /*
             file_info temp = new file_info("dd");
 
             Console.WriteLine(temp.fname);
             Console.WriteLine(temp.fbyte);
             Console.WriteLine(temp.ftime);
             Console.WriteLine(temp.ftype);
-
+            */
 
 
 
@@ -147,6 +149,7 @@ namespace Panja_Project
 
         private void button4_Click(object sender, EventArgs e)
         {
+            /*
             //스트링
             string dirPath = @"C:\Temp";
        
@@ -156,6 +159,10 @@ namespace Panja_Project
             {
                 Console.WriteLine(s);
             }
+            */
+
+
+
 
 
 
@@ -221,9 +228,11 @@ namespace Panja_Project
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("ㅇㅇ");
+            
+
             try
             {
+                Console.WriteLine("ㅇㅇ");
                 string Name = string.Empty;
                 string Subject = string.Empty;
                 Int32 Grade = 0;
@@ -268,7 +277,7 @@ namespace Panja_Project
 
                     // 3. 서버에 접속
                     TcpClient client = new TcpClient();
-                    client.Connect("1.237.42.146", 13000);
+                    client.Connect("34.222.55.126", 10050);
                     Console.WriteLine("Connected...");
 
                     NetworkStream stream = client.GetStream();
@@ -282,7 +291,7 @@ namespace Panja_Project
                     stream.Close();
                     client.Close();
 
-                } while (Name != "" && Subject != "");
+                } while (Name != "ousung" && Subject != "math");
             }
             catch (SocketException se)
             {
@@ -295,6 +304,11 @@ namespace Panja_Project
             Console.ReadLine();
 
             
+        }
+
+        private void upload_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

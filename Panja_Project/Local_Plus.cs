@@ -30,7 +30,7 @@ namespace Panja_Project
             {
                 if (dname.DriveType == DriveType.Fixed)
                 {
-                    if (dname.Name == @"C:\")
+                    if (dname.Name == @"C:")
                     {
                         TreeNode rootNode = new TreeNode(dname.Name);
                         rootNode.ImageIndex = 0;
