@@ -48,7 +48,7 @@ namespace Panja_Project
             else if (command.Equals("protect_test01"))
             {
                 Regedit rgd = new Regedit();
-                Shortcut shortcut = new Shortcut(rgd.getAbsDir());
+                Shortcut shortcut = Shortcut.getInstance(rgd.getAbsDir());
                 shortcut.createShortcut(Environment.CurrentDirectory,Path.GetFileName(address));
                 
                 pro.StandardInput.Write("-- Test 01 -- " + Environment.NewLine);

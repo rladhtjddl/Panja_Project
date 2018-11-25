@@ -101,6 +101,7 @@ namespace Panja_Project
                 MessageBox.Show("ERROR : " + ex.Message);
             }
         }
+
         /// <summary>
         /// 트리가 확장되기 전에 발생하는 이벤트
         /// </summary>
@@ -138,6 +139,7 @@ namespace Panja_Project
         private void btn_minus_Click(object sender, EventArgs e)
         {
             selectlist.Items.Remove(selectlist.SelectedItems[0]);
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -151,9 +153,19 @@ namespace Panja_Project
 
 
             int i;
+            //added 폴더 
             int lastnum = selectlist.Items.Count;
             for (i = 0; i < lastnum; i++) {
+                //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
                     added_Folder[i] = selectlist.Items[i].Text;
+                
+                //윤식 : 이부분 input ACL 
+
+                Regedit rgd = new Regedit();
+                AccessAuthority aauth = new AccessAuthority(added_Folder[i]);
+                aauth.folderSecu_Test3();
+                Shortcut shortcut = Shortcut.getInstance();
+                shortcut.createShortcut(added_Folder[i],  Path.GetFileName(added_Folder[i]));
                     //Console.WriteLine(added_Folder[i]);
                 string dirPath = added_Folder[i];
 
@@ -179,7 +191,7 @@ namespace Panja_Project
             IList<file_list> save_json = jjson.ToObject<IList<file_list>>();
 
             // write JSON directly to a file
-            using (StreamWriter file = File.CreateText(@"c:\Temp\file_list.json"))
+            using (StreamWriter file = File.CreateText(@"C:\Temp\file_list.json"))
             using (JsonTextWriter writer = new JsonTextWriter(file))
             {
                 jjson.WriteTo(writer);

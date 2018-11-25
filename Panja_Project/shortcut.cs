@@ -13,7 +13,9 @@ namespace Panja_Project
     {
 
         private string dir_origin; 
-        public Shortcut(String dir_origin)
+
+
+        private Shortcut(String dir_origin)
         {
 
             this.dir_origin = dir_origin;
@@ -22,6 +24,7 @@ namespace Panja_Project
 
         }
 
+        //Create shortcut  dir : create shortcut in dir  name : shortcut name
         public void createShortcut(string dir,string name)
         {
             //저장할 경로 
@@ -44,7 +47,25 @@ namespace Panja_Project
 
             // 바로가기를 저장한다.
             Myshortcut.Save();
-        }            
+        }
+
+
+        private static class LazyHolder
+        {
+            public static String dir;
+            public static Shortcut INSTANCE = new Shortcut(dir);
+        }
+
+        public static Shortcut getInstance(String dir)
+        {
+            LazyHolder.dir = dir;
+            return LazyHolder.INSTANCE;
+        }
+
+        public static Shortcut getInstance()
+        {
+            return LazyHolder.INSTANCE;
+        }
 
     }
 }
