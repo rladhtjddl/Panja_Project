@@ -76,45 +76,51 @@ namespace Panja_Project
             string[] file_list = new string[4];  //0 : name , 1 : byte, 2 : format
 
             //파일정보 가져오기
+
             file_list a = new file_list { Id = "Locu", Name = "dlfma", By = "32048" };
             json = JObject.FromObject(a);
             jjson.Add(json);
             file_list b = new file_list { Id = "Tim", Name = "one", By = "20448" };
+            //json.Add(JObject.FromObject(b));
             json = JObject.FromObject(b);
             jjson.Add(json);
             file_list c = new file_list { Id = "Kim", Name = "three", By = "20648" };
+            //json.Add(JObject.FromObject(c));
             json = JObject.FromObject(c);
             jjson.Add(json);
-
-           
             
+            json.Add("link", jjson);
+
+
 
             //리스트로 저장
             IList<file_list> person = jjson.ToObject<IList<file_list>>();
             
             //출력
-            Console.WriteLine(person[0].Id);
-            Console.WriteLine(person[1].Name);
+            //Console.WriteLine(person[0].Id);
+            //Console.WriteLine(person[1].Name);
+            Console.WriteLine(json.ToString());
 
             //-----------------------------------------------------------------------------
-
+            
             // write JSON directly to a file
             using (StreamWriter file = File.CreateText(@"c:\Temp\file_list.json"))
             using (JsonTextWriter writer = new JsonTextWriter(file))
             {
-                jjson.WriteTo(writer);
+                json.WriteTo(writer);
             }
-
+            
 
             //-----------------------------------------------------------------------------
 
+            /*
             file_info temp = new file_info("dd");
 
             Console.WriteLine(temp.fname);
             Console.WriteLine(temp.fbyte);
             Console.WriteLine(temp.ftime);
             Console.WriteLine(temp.ftype);
-
+            */
 
 
 
@@ -147,6 +153,7 @@ namespace Panja_Project
 
         private void button4_Click(object sender, EventArgs e)
         {
+            /*
             //스트링
             string dirPath = @"C:\Temp";
        
@@ -156,6 +163,10 @@ namespace Panja_Project
             {
                 Console.WriteLine(s);
             }
+            */
+
+
+
 
 
 
@@ -221,9 +232,11 @@ namespace Panja_Project
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("ㅇㅇ");
+            
+
             try
             {
+                Console.WriteLine("ㅇㅇ");
                 string Name = string.Empty;
                 string Subject = string.Empty;
                 Int32 Grade = 0;
@@ -268,7 +281,7 @@ namespace Panja_Project
 
                     // 3. 서버에 접속
                     TcpClient client = new TcpClient();
-                    client.Connect("1.237.42.146", 13000);
+                    client.Connect("34.222.55.126", 10050);
                     Console.WriteLine("Connected...");
 
                     NetworkStream stream = client.GetStream();
@@ -282,7 +295,7 @@ namespace Panja_Project
                     stream.Close();
                     client.Close();
 
-                } while (Name != "" && Subject != "");
+                } while (Name != "ousung" && Subject != "math");
             }
             catch (SocketException se)
             {
@@ -295,6 +308,11 @@ namespace Panja_Project
             Console.ReadLine();
 
             
+        }
+
+        private void upload_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

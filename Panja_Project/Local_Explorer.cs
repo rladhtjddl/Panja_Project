@@ -24,7 +24,7 @@ namespace Panja_Project
             InitializeComponent();
             listView1.View = View.LargeIcon;
             SettingListVeiw(Environment.CurrentDirectory);
-            
+
 
         }
 
@@ -41,6 +41,7 @@ namespace Panja_Project
 
         private void Local_Explorer_Load(object sender, EventArgs e)
         {
+            /*
             //현재 로컬 컴퓨터에 존재하는 드라이브 정보 검색하여 트리노드에 추가
             DriveInfo[] allDrives = DriveInfo.GetDrives();
 
@@ -66,10 +67,46 @@ namespace Panja_Project
                     }
                 }
             }
-
+            
             //첫번째 노드 확장
             treeView1.Nodes[0].Expand();
+            */
+            string[] allLines = File.ReadAllLines(@"../../Properties\test.txt", Encoding.Default);
+
+            int i;
+            for (i = 0; i < allLines.Length; i++)
+            {
+                TreeNode rootNode = new TreeNode(allLines[i]);
+                //rootNode.Text = allLines[i];
+                rootNode.ImageIndex = 2;
+                rootNode.SelectedImageIndex = 2;
+                treeView1.Nodes.Add(rootNode);
+                Fill(rootNode, allLines[i]);
+            }
+
+
             listView1.FullRowSelect = true;
+        }
+
+        private void Fill(TreeNode dirNode, String url)
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(url);
+                //드라이브의 하위 폴더 추가
+                foreach (DirectoryInfo dirItem in dir.GetDirectories())
+                {
+                    TreeNode newNode = new TreeNode(dirItem.Name);
+                    newNode.ImageIndex = 2;
+                    newNode.SelectedImageIndex = 2;
+                    dirNode.Nodes.Add(newNode);
+                    newNode.Nodes.Add("*");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR : " + ex.Message);
+            }
         }
 
         private void Fill(TreeNode dirNode)
@@ -142,9 +179,9 @@ namespace Panja_Project
                 //기존의 파일 목록 제거
                 listView1.Items.Clear();
                 //현재 경로를 표시
-                textBox1.Text = "C:\\" + sFullPath.Substring(4);
+                textBox1.Text = sFullPath;
                 freepath = "C:\\" + sFullPath.Substring(4);
-                
+
 
                 DirectoryInfo dir = new DirectoryInfo(sFullPath);
 
@@ -202,14 +239,14 @@ namespace Panja_Project
 
         private void listView1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void listv1_Click(object sender, MouseEventArgs e)
         {
-            if(e.Button.Equals(MouseButtons.Right))
+            if (e.Button.Equals(MouseButtons.Right))
             {
-                
+
                 //오른쪽 메뉴를 만듭니다 
                 ContextMenu m = new ContextMenu();
                 //메뉴에 들어갈 아이템을 만듭니다
@@ -243,7 +280,7 @@ namespace Panja_Project
                     pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
                     pro.StandardInput.Write("psftp ubuntu@34.216.228.162 -pw ubuntu" + Environment.NewLine); //우분투 접속
                     pro.StandardInput.Write("cd panja/imsi" + Environment.NewLine);
-                    pro.StandardInput.Write("put -r "+ freepath + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
+                    pro.StandardInput.Write("put -r " + freepath + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
                     pro.StandardInput.Close();
 
                     string resultValue = pro.StandardOutput.ReadToEnd();
@@ -254,10 +291,10 @@ namespace Panja_Project
 
                 };
 
-                
 
 
-                    m.MenuItems.Add(m1);
+
+                m.MenuItems.Add(m1);
                 m.MenuItems.Add(m2);
 
                 m.Show(listView1, new Point(e.X, e.Y));
@@ -281,9 +318,9 @@ namespace Panja_Project
                     processPath = pathnow + "\\" + listView1.SelectedItems[0].Text;
 
                 //Process.Start("explorer.exe", processPath);
-                Process.Start("../../Properties\\detect_ransom.exe", "\""+processPath+"\"");
+                Process.Start("../../Properties\\detect_ransom.exe", "\"" + processPath + "\"");
 
-                
+
             }
         }
 
@@ -294,12 +331,12 @@ namespace Panja_Project
 
             Local_Plus plus = new Local_Plus();
             plus.ShowDialog();
-            
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -319,6 +356,6 @@ namespace Panja_Project
 
         }
 
-       
+
     }
 }

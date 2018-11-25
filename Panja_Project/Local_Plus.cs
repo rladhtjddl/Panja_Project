@@ -15,7 +15,7 @@ namespace Panja_Project
 {
     public partial class Local_Plus : Form
     {
-        public String[] added_Folder = new string[100];
+        public String[] added_Folder = new string[10000];
 
         public Local_Plus()
         {
@@ -30,7 +30,7 @@ namespace Panja_Project
             {
                 if (dname.DriveType == DriveType.Fixed)
                 {
-                    if (dname.Name == @"C:\")
+                    if (dname.Name == @"C:")
                     {
                         TreeNode rootNode = new TreeNode(dname.Name);
                         rootNode.ImageIndex = 0;
@@ -133,14 +133,17 @@ namespace Panja_Project
 
         private void btn_plus_Click(object sender, EventArgs e)
         {
+            if(addlist.SelectedNode.FullPath != null) { 
             String path = "C:\\" + addlist.SelectedNode.FullPath.Substring(4);
             selectlist.Items.Add(path);
+            }
         }
 
         private void btn_minus_Click(object sender, EventArgs e)
         {
+            if(selectlist.SelectedItems[0] != null) { 
             selectlist.Items.Remove(selectlist.SelectedItems[0]);
-            
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -199,8 +202,9 @@ namespace Panja_Project
                 string[]  files = Directory.GetFiles(added_Folder[i], "*.*", SearchOption.AllDirectories);
                 foreach (string s in files)
                 {
-                    //Console.WriteLine(s);
+                    Console.WriteLine(s);
                     file_save[count++] = s;
+                    
                 }
             }
 
@@ -212,18 +216,27 @@ namespace Panja_Project
                 Console.WriteLine(file_Inf.flink);
                 json = JObject.FromObject(file_Inf);
                 jjson.Add(json);
+                
             }
+
+            json.Add("link", jjson);
             //리스트로 저장
-            IList<file_list> save_json = jjson.ToObject<IList<file_list>>();
+            //IList<file_list> save_json = json.ToObject<IList<file_list>>();
 
             // write JSON directly to a file
             using (StreamWriter file = File.CreateText(@"C:\Temp\file_list.json"))
             using (JsonTextWriter writer = new JsonTextWriter(file))
             {
-                jjson.WriteTo(writer);
+                json.WriteTo(writer);
             }
 
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Local_Plus plus = new Local_Plus();
+            plus.Close();
         }
 
         /// <summary>

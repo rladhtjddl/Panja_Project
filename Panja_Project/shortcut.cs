@@ -46,7 +46,7 @@ namespace Panja_Project
             Myshortcut.IconLocation = Application.StartupPath + @"\app.ico";
 
             // 바로가기를 저장한다.
-            Myshortcut.Save();
+           // Myshortcut.Save();
         }
 
 

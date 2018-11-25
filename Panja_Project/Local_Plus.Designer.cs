@@ -218,8 +218,9 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(103, 48);
             this.button4.TabIndex = 7;
-            this.button4.Text = "취소";
+            this.button4.Text = "닫기";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btn_minus
             // 
