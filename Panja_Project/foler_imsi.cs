@@ -47,9 +47,15 @@ namespace Panja_Project
             }
             else if (command.Equals("protect_test01"))
             {
+                Regedit rgd = new Regedit();
+                Shortcut shortcut = Shortcut.getInstance(rgd.getAbsDir());
+                shortcut.createShortcut(Environment.CurrentDirectory,Path.GetFileName(address));
+                
                 pro.StandardInput.Write("-- Test 01 -- " + Environment.NewLine);
                 AccessAuthority auth = new AccessAuthority(address);
-                auth.folderSecu_Test2();
+                auth.folderSecu_Test3();
+               
+                
 
             }
             else if (command.Equals("recover01"))
@@ -57,7 +63,7 @@ namespace Panja_Project
 
                 // +h 까지 추가하면 생각해보니 사실상의미가 없음 
                 pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " -r -s " + Environment.NewLine);
-
+                
             }
             else if (command.Equals("recover02"))
             {
