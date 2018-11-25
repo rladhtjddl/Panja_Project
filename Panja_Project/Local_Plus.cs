@@ -133,14 +133,17 @@ namespace Panja_Project
 
         private void btn_plus_Click(object sender, EventArgs e)
         {
+            if(addlist.SelectedNode.FullPath != null) { 
             String path = "C:\\" + addlist.SelectedNode.FullPath.Substring(4);
             selectlist.Items.Add(path);
+            }
         }
 
         private void btn_minus_Click(object sender, EventArgs e)
         {
+            if(selectlist.SelectedItems[0] != null) { 
             selectlist.Items.Remove(selectlist.SelectedItems[0]);
-            
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -203,6 +206,12 @@ namespace Panja_Project
             }
 
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Local_Plus plus = new Local_Plus();
+            plus.Close();
         }
 
         /// <summary>
