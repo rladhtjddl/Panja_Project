@@ -1,26 +1,28 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Panja_Project
 {
-    public partial class foler_imsi : Form
+    class SecurityController
     {
-        public foler_imsi()
+       
+            
+        private Regedit rgd;
+        private AccessAuthority aauth;
+        private string parentPath;
+        private Shortcut shortcut;
+
+        public SecurityController()
         {
-            InitializeComponent();
+
         }
 
-        public foler_imsi(string command, string address)
+        public void rightClickSecurity(string command, string address)
         {
-            
             System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
             System.Diagnostics.Process pro = new System.Diagnostics.Process();
 
@@ -49,12 +51,11 @@ namespace Panja_Project
             {
                 Regedit rgd = new Regedit();
                 Shortcut shortcut = Shortcut.getInstance(rgd.getAbsDir());
-                shortcut.createShortcut(Environment.CurrentDirectory,Path.GetFileName(address));
-                
+                shortcut.createShortcut(Environment.CurrentDirectory, Path.GetFileName(address));
+
                 pro.StandardInput.Write("-- Test 01 -- " + Environment.NewLine);
                 AccessAuthority auth = new AccessAuthority(address);
                 auth.folderSecu_Test3();
-                pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s  +h" + Environment.NewLine);
 
 
 
@@ -64,7 +65,7 @@ namespace Panja_Project
 
                 // +h 까지 추가하면 생각해보니 사실상의미가 없음 
                 pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " -r -s " + Environment.NewLine);
-                
+
             }
             else if (command.Equals("recover02"))
             {
@@ -83,71 +84,14 @@ namespace Panja_Project
             string resultValue = pro.StandardOutput.ReadToEnd();
             pro.WaitForExit();
             pro.Close();
-            this.Close();
-
-        }
-        
-      
-
-       
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            string sDirPath;
-            string panjap = "panja";
-            string username = "rladh";
-            sDirPath = "C:\\Temp\\example\\dir\\" + panjap;
-            DirectoryInfo di = new DirectoryInfo(sDirPath);
-            if (di.Exists == false)
-            {
-                di.Create();
-            }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-            //cmd창
-            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
-            System.Diagnostics.Process pro = new System.Diagnostics.Process();
-
-            proinfo.FileName = @"cmd";
-            proinfo.CreateNoWindow = true; //띄우기 안띄우기
-            proinfo.UseShellExecute = false;
-            proinfo.RedirectStandardOutput = true;
-            proinfo.RedirectStandardInput = true;
-            proinfo.RedirectStandardError = true;
-
-            pro.StartInfo = proinfo;
-            pro.Start();
-
-            pro.StandardInput.Write("attrib " + '\u0022' + "C:\\Temp\\example\\dir\\panja" + '\u0022' + " +r +s +h" + Environment.NewLine);
-            pro.StandardInput.Close();
-
-            string resultValue = pro.StandardOutput.ReadToEnd();
-            pro.WaitForExit();
-            pro.Close();
-
-            Console.WriteLine(resultValue);
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            //panja 폴더 생성 (여기선 txt)
 
 
-
-            string path = "C:\\Temp\\example\\dir\\panja.pj";
-            string textValue = Console.ReadLine();
-            System.IO.File.WriteAllText(path, textValue, Encoding.Default);
-
-
-         
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        //In program, do panja process , object_dir is Directory that we 'll make replica
+        public void programSecurity(string object_dir )
         {
-            //cmd창
             System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
             System.Diagnostics.Process pro = new System.Diagnostics.Process();
 
@@ -161,21 +105,16 @@ namespace Panja_Project
             pro.StartInfo = proinfo;
             pro.Start();
 
-            pro.StandardInput.Write("cd " + '\u0022' + "C:\\Temp\\example\\dir\\panja" + '\u0022' + Environment.NewLine);
-            pro.StandardInput.Write("chdir" + Environment.NewLine);
+            Regedit rgd = new Regedit();
+            AccessAuthority aauth = new AccessAuthority(object_dir);
+            string parentPath = Path.GetDirectoryName(object_dir);
+            Shortcut shortcut = Shortcut.getInstance();
+            shortcut.createShortcut(parentPath, Path.GetFileName(object_dir));
+            aauth.folderSecu_Test2();
+            pro.StandardInput.Write("attrib " + '\u0022' + object_dir + '\u0022' + " +r +s +h" + Environment.NewLine);
             pro.StandardInput.Close();
 
-            string resultValue = pro.StandardOutput.ReadToEnd();
-            pro.WaitForExit();
             pro.Close();
-
-            Console.WriteLine(resultValue);
         }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

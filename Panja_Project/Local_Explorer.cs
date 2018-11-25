@@ -216,6 +216,7 @@ namespace Panja_Project
                 MenuItem m1 = new MenuItem();
                 MenuItem m2 = new MenuItem();
 
+
                 m1.Text = "업로드하기";
                 m2.Text = "다운로드하기";
 
