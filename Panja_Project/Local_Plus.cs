@@ -15,7 +15,7 @@ namespace Panja_Project
 {
     public partial class Local_Plus : Form
     {
-        public String[] added_Folder = new string[100];
+        public String[] added_Folder = new string[10000];
 
         public Local_Plus()
         {
@@ -174,8 +174,9 @@ namespace Panja_Project
                 string[]  files = Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories);
                 foreach (string s in files)
                 {
-                    //Console.WriteLine(s);
+                    Console.WriteLine(s);
                     file_save[count++] = s;
+                    
                 }
             }
 
@@ -186,11 +187,13 @@ namespace Panja_Project
                 Console.WriteLine(file_Inf.fname);
                 Console.WriteLine(file_Inf.flink);
                 json = JObject.FromObject(file_Inf);
-                json.Add(file_Inf.flink, JObject.FromObject(file_Inf));
+                jjson.Add(json);
                 
             }
+
+            json.Add("link", jjson);
             //리스트로 저장
-            IList<file_list> save_json = json.ToObject<IList<file_list>>();
+            //IList<file_list> save_json = json.ToObject<IList<file_list>>();
 
             // write JSON directly to a file
             using (StreamWriter file = File.CreateText(@"C:\Temp\file_list.json"))

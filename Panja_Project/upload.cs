@@ -78,17 +78,20 @@ namespace Panja_Project
             //파일정보 가져오기
 
             file_list a = new file_list { Id = "Locu", Name = "dlfma", By = "32048" };
-            json.Add("key1", JObject.FromObject(a));
+            json = JObject.FromObject(a);
             jjson.Add(json);
             file_list b = new file_list { Id = "Tim", Name = "one", By = "20448" };
-            json.Add("key2", JObject.FromObject(b));
+            //json.Add(JObject.FromObject(b));
+            json = JObject.FromObject(b);
             jjson.Add(json);
             file_list c = new file_list { Id = "Kim", Name = "three", By = "20648" };
-            json.Add("key3", JObject.FromObject(c));
+            //json.Add(JObject.FromObject(c));
+            json = JObject.FromObject(c);
             jjson.Add(json);
+            
+            json.Add("link", jjson);
 
-           
-          
+
 
             //리스트로 저장
             IList<file_list> person = jjson.ToObject<IList<file_list>>();
