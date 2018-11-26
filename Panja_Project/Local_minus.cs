@@ -16,6 +16,8 @@ namespace Panja_Project
 {
     public partial class Local_Minus : Form
     {
+        public String[] subed_Folder = new string[10000];
+
         public Local_Minus()
         {
             InitializeComponent();
@@ -128,6 +130,17 @@ namespace Panja_Project
         {
             Local_Minus minus = new Local_Minus();
             minus.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int i;
+            for (i = 0; i < List_go.Items.Count; i++) {
+                subed_Folder[i] = List_go.Items[i].Text;
+                AccessAuthority minus = new AccessAuthority(subed_Folder[i]);
+                minus.folderSecu_Recover();
+            }
+
         }
     }
 }
