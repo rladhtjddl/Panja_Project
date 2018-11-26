@@ -106,9 +106,9 @@ namespace Panja_Project
                 user.birth = birth;
                 user.sex = sex;
 
-                
-                json.Add("user", jjson);
+                json.Add("user",JObject.FromObject(user));
                 json.Add("command", "user_plus");
+
                 Console.WriteLine(json.ToString());
 
 
