@@ -30,7 +30,7 @@ namespace Panja_Project
             proinfo.RedirectStandardOutput = true;
             proinfo.RedirectStandardInput = true;
             proinfo.RedirectStandardError = true;
-
+         
             pro.StartInfo = proinfo;
             pro.Start();
 
@@ -42,20 +42,24 @@ namespace Panja_Project
             {
 
                 pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s " + Environment.NewLine);
+                pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s " + Environment.NewLine);
 
 
             }
             else if (command.Equals("protect_test01"))
             {
+                
+
                 Regedit rgd = new Regedit();
                 Shortcut shortcut = Shortcut.getInstance(rgd.getAbsDir());
                 shortcut.createShortcut(Environment.CurrentDirectory,Path.GetFileName(address));
-                
-                pro.StandardInput.Write("-- Test 01 -- " + Environment.NewLine);
+                //Warning
+                // pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s +h" + Environment.NewLine);
+               
                 AccessAuthority auth = new AccessAuthority(address);
                 auth.folderSecu_Test3();
-               
-                
+
+                MessageBox.Show("Target : " + address + "\n" + "shortcut a : "+ Environment.CurrentDirectory + "\n shortcut b :" + Path.GetFileName(address));
 
             }
             else if (command.Equals("recover01"))
@@ -76,12 +80,14 @@ namespace Panja_Project
             // copy lnk 위치 , 현재 dir 
             //pro.StandardInput.Write("copy C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\sample.lnk "+ dir + Environment.NewLine);
 
+            pro.StandardInput.Write("pause");
 
             pro.StandardInput.Close();
 
             string resultValue = pro.StandardOutput.ReadToEnd();
             pro.WaitForExit();
             pro.Close();
+           
             this.Close();
 
         }

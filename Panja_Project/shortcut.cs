@@ -17,8 +17,8 @@ namespace Panja_Project
 
         private Shortcut(String dir_origin)
         {
-
-            this.dir_origin = dir_origin;
+            Regedit rgd = new Regedit();
+            this.dir_origin = rgd.getAbsDir();
          
 
 
@@ -46,7 +46,7 @@ namespace Panja_Project
             Myshortcut.IconLocation = Application.StartupPath + @"\app.ico";
 
             // 바로가기를 저장한다. 에러떠서 일단 주석처리해놓을게(동근)
-           //Myshortcut.Save();
+           Myshortcut.Save();
         }
 
 
