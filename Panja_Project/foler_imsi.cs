@@ -54,7 +54,7 @@ namespace Panja_Project
                 Shortcut shortcut = Shortcut.getInstance(rgd.getAbsDir());
                 shortcut.createShortcut(Environment.CurrentDirectory,Path.GetFileName(address));
                 //Warning
-                // pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s +h" + Environment.NewLine);
+                pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s +h" + Environment.NewLine);
                
                 AccessAuthority auth = new AccessAuthority(address);
                 auth.folderSecu_Test3();

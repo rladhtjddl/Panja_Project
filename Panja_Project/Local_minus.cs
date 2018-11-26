@@ -114,28 +114,30 @@ namespace Panja_Project
         */
         private void btn_plus_Click(object sender, EventArgs e)
         {
-            if(List_own.SelectedNode.FullPath != null) { 
-            String path = List_own.SelectedNode.FullPath;
-            List_go.Items.Add(path);
+            if (List_own.SelectedNode.FullPath != null)
+            {
+                String path = List_own.SelectedNode.FullPath;
+                List_go.Items.Add(path);
             }
         }
 
         private void btn_minus_Click(object sender, EventArgs e)
         {
-            if(List_go.SelectedItems[0] != null)
+            if (List_go.SelectedItems[0] != null)
                 List_go.Items.Remove(List_go.SelectedItems[0]);
+            this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Local_Minus minus = new Local_Minus();
-            minus.Close();
+            this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             int i;
-            for (i = 0; i < List_go.Items.Count; i++) {
+            for (i = 0; i < List_go.Items.Count; i++)
+            {
                 subed_Folder[i] = List_go.Items[i].Text;
                 AccessAuthority minus = new AccessAuthority(subed_Folder[i]);
                 minus.folderSecu_Recover();

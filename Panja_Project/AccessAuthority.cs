@@ -18,7 +18,7 @@ namespace Panja_Project
 
         //Constructor 
         public AccessAuthority(string dir)
-        {
+         {
             //dir ,USER mapping
             this.dir = dir;
             USER = System.Security.Principal.WindowsIdentity.GetCurrent().Name;

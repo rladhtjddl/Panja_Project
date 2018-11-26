@@ -54,28 +54,6 @@ namespace Panja_Project
             //listView1.FullRowSelect = true;
 
 
-
-            /*
-            // 파일 개수만큼 리스트에 추가
-
-            for (int i = 0; i < files.Length; i++)
-            {
-                FileInfo fileInfo = new FileInfo(files[i]);
-
-
-
-
-                ListViewItem item = new ListViewItem(fileInfo.Name, 0);
-                item.SubItems.Add(fileInfo.FullName.ToString());
-                item.SubItems.Add(fileInfo.Length.ToString()); // 파일크기
-                item.SubItems.Add(fileInfo.Extension.ToString()); // 파일 종류
-                item.SubItems.Add(fileInfo.LastWriteTime.ToString()); // 파일 마지막 수정날짜
-
-                List_own.Items.Add(item);
-
-            }
-
-            */
         }
 
 
@@ -148,6 +126,7 @@ namespace Panja_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
+          
             JObject json = new JObject();
             JArray jjson = new JArray();
 
@@ -160,20 +139,36 @@ namespace Panja_Project
             //added 폴더 
             int lastnum = selectlist.Items.Count;
             for (i = 0; i < lastnum; i++) {
+                System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+                System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+                proinfo.FileName = @"cmd";
+                proinfo.CreateNoWindow = true; //띄우기 안띄우기
+                proinfo.UseShellExecute = false;
+                proinfo.RedirectStandardOutput = true;
+                proinfo.RedirectStandardInput = true;
+                proinfo.RedirectStandardError = true;
+
+                pro.StartInfo = proinfo;
+                pro.Start();
+
                 //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
-                    added_Folder[i] = selectlist.Items[i].Text;
+                added_Folder[i] = selectlist.Items[i].Text;
                 
                 //윤식 : 이부분 input ACL 
 
                 Regedit rgd = new Regedit();
+                pro.StandardInput.WriteLine("attrib " + '\u0022' + added_Folder[i] + '\u0022' + " +r +s +h" + Environment.NewLine);
+
                 AccessAuthority aauth = new AccessAuthority(added_Folder[i]);
-                aauth.folderSecu_Test3();
+                
                 Shortcut shortcut = Shortcut.getInstance();
-                shortcut.createShortcut(added_Folder[i],  Path.GetFileName(added_Folder[i]));
-                    //Console.WriteLine(added_Folder[i]);
+                shortcut.createShortcut(Path.GetDirectoryName(added_Folder[i]),  Path.GetFileName(added_Folder[i]));
+                //Console.WriteLine(added_Folder[i]);
+              
                 string dirPath = added_Folder[i];
 
-
+                aauth.folderSecu_Test3();
                 string[]  files = Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories);
                 foreach (string s in files)
                 {
@@ -181,9 +176,12 @@ namespace Panja_Project
                     file_save[count++] = s;
                     
                 }
+
+                pro.StandardInput.Close();
+
+                pro.Close();
             }
-
-
+    
             for (i = 0; i < count - 1; i++)
             {
                 file_info file_Inf = new file_info(file_save[i]);
@@ -214,6 +212,40 @@ namespace Panja_Project
             plus.Close();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = false; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
+            int i;
+            //added 폴더 
+            int lastnum = selectlist.Items.Count;
+            for (i = 0; i < lastnum; i++)
+            {
+                //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
+                added_Folder[i] = selectlist.Items[i].Text;
+
+                //윤식 : 이부분 input ACL 
+
+                Regedit rgd = new Regedit();
+                AccessAuthority aauth = new AccessAuthority(added_Folder[i]);
+                aauth.folderSecu_Recover();
+                pro.StandardInput.Write("attrib " + '\u0022' + added_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
+            }
+            pro.StandardInput.Close();
+
+            pro.Close();
+        }
         /// <summary>
         /// 트리를 마우스로 클릭할 때 발생하는 이벤트
         /// </summary>
