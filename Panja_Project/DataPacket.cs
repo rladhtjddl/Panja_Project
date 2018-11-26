@@ -12,9 +12,8 @@ namespace Panja_Project
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     struct DataPacket
     {
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
-        public JArray jjson;
-
+       
+    
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 20)]
         public string Name;
 
