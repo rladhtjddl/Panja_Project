@@ -12,8 +12,8 @@ namespace Panja_Project
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
     struct DataPacket
     {
-       
-    
+
+
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 20)]
         public string Name;
 
@@ -52,5 +52,5 @@ namespace Panja_Project
             gch.Free();
         }
     }
-   
+
 }

@@ -174,6 +174,7 @@ namespace Panja_Project
 
         private void button5_Click(object sender, EventArgs e)
         {
+
             TcpListener server = null;
 
             try
@@ -232,7 +233,15 @@ namespace Panja_Project
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            TcpListener server = null;
+
+            JObject sample_jso = new JObject();
+            sample_jso.Add("name", "윤식");
+            sample_jso.Add("나이", "25");
+            sample_jso.Add("피곤함", "200000000");
+            sample_jso.Add("탈주능력", "탁월");
+
+
 
             try
             {
@@ -271,14 +280,15 @@ namespace Panja_Project
                         break;
 
                     // 2. 구조체 데이타를 바이트 배열로 변환
-                    DataPacket packet = new DataPacket();
-                    packet.Name = Name;
-                    packet.Subject = Subject;
-                    packet.Grade = Grade;
-                    packet.Memo = Memo;
+                    string target_buffer = sample_jso.ToString();
+                    byte[] buffer = System.Text.Encoding.UTF8.GetBytes(target_buffer);
 
-                    byte[] buffer = packet.Serialize();
 
+                    Console.WriteLine("----------- Json to String -------------");
+                    Console.WriteLine("DATA : " + target_buffer);
+                    Console.WriteLine("----------- String to btye -------------");
+                    Console.WriteLine("DATA : " + buffer);
+                   
                     // 3. 서버에 접속
                     TcpClient client = new TcpClient();
                     client.Connect("54.187.238.235", 10050);

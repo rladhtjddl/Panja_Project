@@ -94,6 +94,7 @@ namespace Panja_Project
                     + txtEmail.Text.ToString() + "\n"
                     + txtEmail.Text.ToString() + "\n");
 
+
             }
             else if (!txtPW.Equals(txtPWconfirm.Text))
             {
@@ -112,6 +113,11 @@ namespace Panja_Project
 
             //확인시  중복이 없으면 
             idchecker = true; 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
