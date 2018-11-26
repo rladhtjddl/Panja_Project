@@ -124,12 +124,12 @@ namespace Panja_Project
         {
             if(List_go.SelectedItems[0] != null)
                 List_go.Items.Remove(List_go.SelectedItems[0]);
+            this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Local_Minus minus = new Local_Minus();
-            minus.Close();
+            this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
