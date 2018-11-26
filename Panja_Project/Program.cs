@@ -20,7 +20,8 @@ namespace Panja_Project
 
             int argsCount = args.Length;
 
-           
+            rdg.RegistryChecker(dir);
+
             if (argsCount == 2)
             {
                 string command = args[1];
@@ -39,9 +40,7 @@ namespace Panja_Project
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new upload());
-            //  Application.Run(new Login());
-
+ 
             Application.Run(new Local_Explorer());
             
 
