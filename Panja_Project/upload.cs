@@ -236,10 +236,27 @@ namespace Panja_Project
             TcpListener server = null;
 
             JObject sample_jso = new JObject();
-            sample_jso.Add("name", "윤식");
-            sample_jso.Add("나이", "25");
-            sample_jso.Add("피곤함", "200000000");
-            sample_jso.Add("탈주능력", "탁월");
+            
+
+
+            sign_up user = new sign_up();
+            JObject json = new JObject();
+            JArray jjson = new JArray();
+
+
+            user.id = "Locu";
+            user.pw = "12345";
+            user.email = "rladhtjddl";
+            user.name = "오성";
+            user.birth = "1995/01/05";
+            user.sex = "man";
+            json = JObject.FromObject(user);
+            jjson.Add(json);
+            sample_jso.Add("user", jjson);
+
+            sample_jso.Add("command", "user_plus");
+
+
 
 
 
