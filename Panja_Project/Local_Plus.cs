@@ -162,44 +162,19 @@ namespace Panja_Project
             for (i = 0; i < lastnum; i++) {
                 //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
                     added_Folder[i] = selectlist.Items[i].Text;
-
+                
                 //윤식 : 이부분 input ACL 
 
                 Regedit rgd = new Regedit();
                 AccessAuthority aauth = new AccessAuthority(added_Folder[i]);
-                string parentPath = Path.GetDirectoryName(added_Folder[i]);
-                Shortcut shortcut = Shortcut.getInstance();
-                shortcut.createShortcut(parentPath, Path.GetFileName(added_Folder[i]));
-
-                //구현상의 치명적인 문제발생 클래스 추출은 보류
-                //SecurityController scontroller = new SecurityController();
-                //scontroller.programSecurity(added_Folder[i]);
                 aauth.folderSecu_Test3();
-
-                Console.WriteLine(added_Folder[i]);
+                Shortcut shortcut = Shortcut.getInstance();
+                shortcut.createShortcut(added_Folder[i],  Path.GetFileName(added_Folder[i]));
+                    //Console.WriteLine(added_Folder[i]);
                 string dirPath = added_Folder[i];
 
-                System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
-                System.Diagnostics.Process pro = new System.Diagnostics.Process();
 
-                proinfo.FileName = @"cmd";
-                proinfo.CreateNoWindow = false; //띄우기 안띄우기
-                proinfo.UseShellExecute = false;
-                proinfo.RedirectStandardOutput = true;
-                proinfo.RedirectStandardInput = true;
-                proinfo.RedirectStandardError = true;
-
-                pro.StartInfo = proinfo;
-                pro.Start();
-                pro.StandardInput.Write("attrib " + '\u0022' + added_Folder[i] + '\u0022' + " +r +s +h" + Environment.NewLine);
-                pro.StandardInput.Close();
-                pro.Close();
-
-                //aauth.folderSecu_Test3();
-
-                //string[]  files = Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories);
-
-                string[]  files = Directory.GetFiles(added_Folder[i], "*.*", SearchOption.AllDirectories);
+                string[]  files = Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories);
                 foreach (string s in files)
                 {
                     Console.WriteLine(s);

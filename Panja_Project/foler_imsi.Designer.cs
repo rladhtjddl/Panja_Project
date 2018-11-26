@@ -97,10 +97,11 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "foler_imsi";
-            this.Text = "ㅊ";
+            this.Text = "foler_imsi";
+
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            
         }
 
         #endregion

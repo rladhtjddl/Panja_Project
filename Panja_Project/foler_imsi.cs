@@ -54,9 +54,8 @@ namespace Panja_Project
                 pro.StandardInput.Write("-- Test 01 -- " + Environment.NewLine);
                 AccessAuthority auth = new AccessAuthority(address);
                 auth.folderSecu_Test3();
-                pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s  +h" + Environment.NewLine);
-
-
+               
+                
 
             }
             else if (command.Equals("recover01"))
