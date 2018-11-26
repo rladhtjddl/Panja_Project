@@ -17,7 +17,7 @@ namespace Panja_Project
         {
             Regedit rdg = new Regedit();
             string dir = Environment.CurrentDirectory + "\\Panja_Project.exe";
-           
+
 
             int argsCount = args.Length;
 
@@ -32,17 +32,18 @@ namespace Panja_Project
                 {
 
                 }
-                
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new foler_imsi(command,targetAddress));
+                Application.Run(new foler_imsi(command, targetAddress));
                 Application.Run(new Local_Explorer(command, targetAddress));
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
- 
-            Application.Run(new Local_Explorer());
+
+            Application.Run(new upload());
+
             
 
         }

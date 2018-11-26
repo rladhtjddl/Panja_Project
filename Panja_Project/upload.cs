@@ -178,7 +178,7 @@ namespace Panja_Project
 
             try
             {
-                server = new TcpListener(IPAddress.Parse("1.237.42.146"), 13000);
+                server = new TcpListener(IPAddress.Parse("54.187.238.235"), 13000);
                 server.Start();
 
                 byte[] buffer = new byte[1024];

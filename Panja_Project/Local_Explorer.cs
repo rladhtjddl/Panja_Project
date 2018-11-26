@@ -205,6 +205,7 @@ namespace Panja_Project
                     listView1.Items[DirectCount].SubItems.Add("폴더");
                     listView1.Items[DirectCount].SubItems.Add(dirItem.GetFiles().Length.ToString() + " files");
                     DirectCount++;
+                   
                 }
 
                 //디렉토리에 존재하는 파일목록 보여주기
