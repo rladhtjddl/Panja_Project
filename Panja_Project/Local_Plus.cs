@@ -203,13 +203,12 @@ namespace Panja_Project
                 json.WriteTo(writer);
             }
 
-
+            this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Local_Plus plus = new Local_Plus();
-            plus.Close();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
