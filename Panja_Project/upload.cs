@@ -247,7 +247,7 @@ namespace Panja_Project
                     // 1. 데이타 입력
                     Console.Write("이름 : ");
                     Name = "ousung";
-
+                    
                     Console.Write("과목 : ");
                     Subject = "math";
 
@@ -281,7 +281,7 @@ namespace Panja_Project
 
                     // 3. 서버에 접속
                     TcpClient client = new TcpClient();
-                    client.Connect("34.222.55.126", 10050);
+                    client.Connect("54.187.238.235", 10050);
                     Console.WriteLine("Connected...");
 
                     NetworkStream stream = client.GetStream();
