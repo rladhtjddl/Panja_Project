@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,6 +69,8 @@ namespace Panja_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
+
             if(!txtID.Text.Equals("") && !txtPW.Equals("") && !txtPWconfirm.Equals("")
                 && !txtEmail.Equals("") && !txtCode.Equals("") && !txtName.Equals("")
                 &&(rbtnMan.Checked || rbtnWoman.Checked)&&idchecker)
@@ -88,11 +91,27 @@ namespace Panja_Project
                     sex = "Woman";
                 }
 
-                System.Console.WriteLine(txtCode.Text.ToString() + "\n"
-                    + txtEmail.Text.ToString() + "\n"
-                    + txtEmail.Text.ToString() + "\n"
-                    + txtEmail.Text.ToString() + "\n"
-                    + txtEmail.Text.ToString() + "\n");
+
+                //오성의코드
+                //JOSON으로 파싱
+                sign_up user = new sign_up();
+                JObject json = new JObject();
+                JArray jjson = new JArray();
+
+
+                user.id = txtID.Text.ToString();
+                user.pw = txtPW.Text.ToString();
+                user.email = txtEmail.Text.ToString();
+                user.name = txtName.Text.ToString();
+                user.birth = birth;
+                user.sex = sex;
+
+                json.Add("user",JObject.FromObject(user));
+                json.Add("command", "user_plus");
+
+                Console.WriteLine(json.ToString());
+
+
 
             }
             else if (!txtPW.Equals(txtPWconfirm.Text))

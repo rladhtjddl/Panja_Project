@@ -46,6 +46,19 @@ namespace Panja_Project
     }
 
 
+
+    public struct sign_up
+    {
+        public string id;
+        public string pw;
+        public string email;
+        public string birth;
+        public string sex;
+        public string name;
+        
+    }
+
+
     public struct folder_back
     {
         public string fname;
