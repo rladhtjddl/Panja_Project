@@ -17,15 +17,17 @@ namespace Panja_Project
         {
             Regedit rdg = new Regedit();
             string dir = Environment.CurrentDirectory + "\\Panja_Project.exe";
+           
 
             int argsCount = args.Length;
 
-           
+            rdg.RegistryChecker(dir);
+
             if (argsCount == 2)
             {
                 string command = args[1];
                 string targetAddress = args[0];
-                rdg.RegistryChecker(targetAddress);
+                //rdg.RegistryChecker(targetAddress);
                 if (command.Equals("protect"))
                 {
 

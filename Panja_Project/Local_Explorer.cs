@@ -310,16 +310,22 @@ namespace Panja_Project
                 string processPath;
                 string pathnow = textBox1.Text;
 
-
-
+                
                 if (listView1.SelectedItems[0].Text.IndexOf("\\") > 0)
                     processPath = listView1.SelectedItems[0].Text;
                 else
                     processPath = pathnow + "\\" + listView1.SelectedItems[0].Text;
 
-                //Process.Start("explorer.exe", processPath);
-                Process.Start("../../Properties\\detect_ransom.exe", "\"" + processPath + "\"");
-
+                FileAttributes attr = File.GetAttributes(processPath);
+                if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    SettingListVeiw(processPath);
+                }
+                else
+                {
+                    Process.Start("../../Properties\\detect_ransom.exe", processPath);
+                }
+                
 
             }
         }

@@ -65,7 +65,7 @@ namespace Panja_Project
 
             //레지스트리 경로 커넥팅
             //protect_reg.SetValue("", "C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\Panja_Project.exe %1 protect");
-            //sample4.SetValue("", "C:\\Users\\J3N_JAN6\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\detect_ransom.exe \"%1\"");
+            //scan_reg.SetValue("", "C:\\Users\\J3N_JAN6\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\detect_ransom.exe \"%1\"");
 
         }
 
