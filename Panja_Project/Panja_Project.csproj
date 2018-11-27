@@ -97,6 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessAuthority.cs" />
+    <Compile Include="Cloud_Explorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cloud_Explorer.Designer.cs">
+      <DependentUpon>Cloud_Explorer.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataPacket.cs" />
     <Compile Include="Filecontrol.cs" />
     <Compile Include="foler_imsi.cs">
@@ -152,6 +158,9 @@
     <Compile Include="upload.Designer.cs">
       <DependentUpon>upload.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Cloud_Explorer.resx">
+      <DependentUpon>Cloud_Explorer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="foler_imsi.resx">
       <DependentUpon>foler_imsi.cs</DependentUpon>
     </EmbeddedResource>

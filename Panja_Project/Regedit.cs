@@ -28,24 +28,23 @@ namespace Panja_Project
 
         public void WriteRegistry(string dir)
         {
-            //일반 바탕화면추가
-            //RegistryKey reg1 = Registry.ClassesRoot.CreateSubKey("Folder\\shell\\Protect As Panja\\command").CreateSubKey("command");
-            // 폴더 추가 
-            //RegistryKey protect_reg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA로 폴더 보호").CreateSubKey("command");
+          
             // 파일 스캔r
             RegistryKey scan_reg = Registry.ClassesRoot.CreateSubKey("*\\shell\\PANJA로 안전하게 실행").CreateSubKey("command");
+          
+            
             //폴더관련 
-            RegistryKey sample1 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample1").CreateSubKey("command");
+            //RegistryKey sample1 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample1").CreateSubKey("command");
             RegistryKey sample2 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample2").CreateSubKey("command");
-            RegistryKey sample3 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 회복 smaple1 ").CreateSubKey("command");
+            //RegistryKey sample3 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 회복 smaple1 ").CreateSubKey("command");
             RegistryKey sample4 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 회복 smaple2 ").CreateSubKey("command");
 
 
             String setValue;// = "C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\Panja_Project.exe %1 protect";
 
-            //sampel1
-            setValue = dir + " %1 protect_normal";
-            sample1.SetValue("", setValue);
+            ////sampel1
+            //setValue = dir + " %1 protect_normal";
+            //sample1.SetValue("", setValue);
 
 
             //sample2
@@ -53,9 +52,9 @@ namespace Panja_Project
             sample2.SetValue("", setValue);
 
 
-            //sample3
-            setValue = dir +" %1 recover01";
-            sample3.SetValue("", setValue);
+            ////sample3
+            //setValue = dir +" %1 recover01";
+            //sample3.SetValue("", setValue);
 
             //sample4
             setValue = dir+" %1 recover02";
@@ -66,21 +65,6 @@ namespace Panja_Project
             //레지스트리 경로 커넥팅
             //protect_reg.SetValue("", "C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\Panja_Project.exe %1 protect");
             //scan_reg.SetValue("", "C:\\Users\\J3N_JAN6\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\detect_ransom.exe \"%1\"");
-
-        }
-
-        public string getDirectory()
-        {
-            RegistryKey ch_Key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample1", true);
-
-            if (ch_Key == null)
-            {
-                return "fail";
-            }else
-            {
-                string[] str = ch_Key.GetValue("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample1") as string[];
-                return str[1];
-            }
 
         }
 
