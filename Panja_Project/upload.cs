@@ -235,6 +235,11 @@ namespace Panja_Project
         {
             TcpListener server = null;
 
+            String myCompleteMessage = "";
+            JObject recieved_data;
+            string command;
+
+
             JObject sample_jso = new JObject();
             
 
@@ -319,35 +324,65 @@ namespace Panja_Project
                     Console.WriteLine("===============================\n");
 
 
+                    if (stream.CanRead)
+                    {
+
+                        byte[] myReadBuffer = new byte[1024];
+
+                        int numberOfBytesRead = 0;
+
+                        // Incoming message may be larger than the buffer size.
+                        do
+                        {
+                            numberOfBytesRead = stream.Read(myReadBuffer, 0, myReadBuffer.Length);
+                            myCompleteMessage =
+                                String.Concat(myCompleteMessage, Encoding.UTF8.GetString(myReadBuffer, 0, numberOfBytesRead));
+                        }
+                        while (stream.DataAvailable);
+
+                        Console.WriteLine("Received message : " + myCompleteMessage);
+
+                        recieved_data = new JObject();
+                        recieved_data = (JObject)JsonConvert.DeserializeObject(myCompleteMessage);
+                        command = recieved_data["command"].ToString();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Receiving Fail");
+                    }
+
+
+
+                    if (stream.CanRead)
+                    {
+
+                        byte[] myReadBuffer = new byte[1024];
+
+                        int numberOfBytesRead = 0;
+
+                        // Incoming message may be larger than the buffer size.
+                        do
+                        {
+                            numberOfBytesRead = stream.Read(myReadBuffer, 0, myReadBuffer.Length);
+                            myCompleteMessage =
+                                String.Concat(myCompleteMessage, Encoding.UTF8.GetString(myReadBuffer, 0, numberOfBytesRead));
+                        }
+                        while (stream.DataAvailable);
+
+                        Console.WriteLine("Received message : " + myCompleteMessage);
+
+                        recieved_data = new JObject();
+                        recieved_data = (JObject)JsonConvert.DeserializeObject(myCompleteMessage);
+                        command = recieved_data["command"].ToString();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Receiving Fail");
+                    }
+
+
 
                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     // 5. 스트림&소켓 닫기
                     stream.Close();
                     client.Close();
