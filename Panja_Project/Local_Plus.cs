@@ -203,6 +203,12 @@ namespace Panja_Project
                 json.WriteTo(writer);
             }
 
+            //저장한파일 클라우드의 유저디렉토리에 저장
+            Filecontrol fi = new Filecontrol();
+            fi.Put_json();
+
+
+
             this.Close();
         }
 

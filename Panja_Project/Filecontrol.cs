@@ -45,7 +45,7 @@ namespace Panja_Project
         }
     }
 
-
+    
 
     public struct sign_up
     {
@@ -139,7 +139,66 @@ namespace Panja_Project
 
     class Filecontrol
     {
-       
+        public void Put_json()
+        {
+            //cmd창
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
 
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = true; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
+            pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
+            pro.StandardInput.Write("psftp -pw ubuntu ubuntu@54.187.238.235" + Environment.NewLine); //우분투 접속
+            pro.StandardInput.Write("cd panja/user1" + Environment.NewLine);
+            pro.StandardInput.Write(@"put C:\Temp\file_list.json" + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
+            pro.StandardInput.Close();
+
+            string resultValue = pro.StandardOutput.ReadToEnd();
+            pro.WaitForExit();
+            pro.Close();
+
+            Console.WriteLine(resultValue);
+        }
+
+
+
+        public void Get_json()
+        {
+            //cmd창
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = true; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
+            pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
+            pro.StandardInput.Write("psftp -pw ubuntu ubuntu@54.187.238.235" + Environment.NewLine); //우분투 접속
+            pro.StandardInput.Write("cd panja/user1" + Environment.NewLine);
+            pro.StandardInput.Write(@"get file_list.json" + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
+            pro.StandardInput.Close();
+
+            string resultValue = pro.StandardOutput.ReadToEnd();
+            pro.WaitForExit();
+            pro.Close();
+
+            Console.WriteLine(resultValue);
+        }
     }
 }
