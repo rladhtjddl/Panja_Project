@@ -154,12 +154,12 @@ namespace Panja_Project
 
                 //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
                 added_Folder[i] = selectlist.Items[i].Text;
-                
-                //윤식 : 이부분 input ACL 
 
-                Regedit rgd = new Regedit();
+                //윤식 : 이부분 input ACL 
                 pro.StandardInput.WriteLine("attrib " + '\u0022' + added_Folder[i] + '\u0022' + " +r +s +h" + Environment.NewLine);
 
+                Regedit rgd = new Regedit();
+               
                 AccessAuthority aauth = new AccessAuthority(added_Folder[i]);
                 
                 Shortcut shortcut = Shortcut.getInstance();

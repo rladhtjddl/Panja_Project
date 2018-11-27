@@ -32,19 +32,28 @@ namespace Panja_Project
                 {
 
                 }
+                RightClickController rightClick = new RightClickController();
+
+                rightClick.rightClick(command, targetAddress);
+
+
+                //Application.EnableVisualStyles();
+                //Application.SetCompatibleTextRenderingDefault(false);
+                //Application.Run(new foler_imsi(command, targetAddress));
+                //Application.Run(new Local_Explorer(command, targetAddress));
+            }
+            else
+            {
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new foler_imsi(command, targetAddress));
-                Application.Run(new Local_Explorer(command, targetAddress));
+                Application.Run(new Local_Explorer());
+                //Application.Run(new upload());
+
             }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new SignUp());
 
-            
 
         }
     }

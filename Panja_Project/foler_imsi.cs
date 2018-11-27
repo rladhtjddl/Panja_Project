@@ -53,6 +53,7 @@ namespace Panja_Project
                 Regedit rgd = new Regedit();
                 Shortcut shortcut = Shortcut.getInstance(rgd.getAbsDir());
                 shortcut.createShortcut(Environment.CurrentDirectory,Path.GetFileName(address));
+                MessageBox.Show("attrib " + '\u0022' + address + '\u0022' + " +r +s +h");
                 //Warning
                 pro.StandardInput.Write("attrib " + '\u0022' + address + '\u0022' + " +r +s +h" + Environment.NewLine);
                
@@ -182,5 +183,9 @@ namespace Panja_Project
 
         }
 
+        private void foler_imsi_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

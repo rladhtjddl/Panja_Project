@@ -234,6 +234,9 @@ namespace Panja_Project
         private void button6_Click(object sender, EventArgs e)
         {
             TcpListener server = null;
+            String myCompleteMessage = "";
+            JObject recieved_data;
+            string command;
 
             JObject sample_jso = new JObject();
             sample_jso.Add("name", "윤식");
@@ -253,32 +256,7 @@ namespace Panja_Project
 
                 do
                 {
-                    // 1. 데이타 입력
-                    Console.Write("이름 : ");
-                    Name = "ousung";
-                    
-                    Console.Write("과목 : ");
-                    Subject = "math";
-
-                    Console.Write("점수 : ");
-                    string tmpGrage = "92";
-                    if (tmpGrage != "")
-                    {
-                        int outGrade = 0;
-                        if (Int32.TryParse(tmpGrage, out outGrade))
-                            Grade = Convert.ToInt32(tmpGrage);
-                        else
-                            Grade = 0;
-                    }
-                    else
-                        Grade = 0;
-
-                    Console.Write("메모 : ");
-                    Memo = "메모인가요";
-
-                    if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(Subject))
-                        break;
-
+               
                     // 2. 구조체 데이타를 바이트 배열로 변환
                     string target_buffer = sample_jso.ToString();
                     byte[] buffer = System.Text.Encoding.UTF8.GetBytes(target_buffer);
@@ -300,6 +278,36 @@ namespace Panja_Project
                     stream.Write(buffer, 0, buffer.Length);
                     Console.WriteLine("{0} data sent", buffer.Length);
                     Console.WriteLine("===============================\n");
+
+
+                    if (stream.CanRead)
+                    {
+
+                        byte[] myReadBuffer = new byte[1024];
+                        
+                        int numberOfBytesRead = 0;
+
+                        // Incoming message may be larger than the buffer size.
+                        do
+                        {
+                            numberOfBytesRead = stream.Read(myReadBuffer, 0, myReadBuffer.Length);
+                            myCompleteMessage =
+                                String.Concat(myCompleteMessage, Encoding.UTF8.GetString(myReadBuffer, 0, numberOfBytesRead));
+                        }
+                        while (stream.DataAvailable);
+
+                        Console.WriteLine("Received message : " + myCompleteMessage);
+
+                        recieved_data = new JObject();
+                        recieved_data = (JObject)JsonConvert.DeserializeObject(myCompleteMessage);
+                        command = recieved_data["command"].ToString();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Receiving Fail");
+                    }
+
+                    
 
                     // 5. 스트림&소켓 닫기
                     stream.Close();

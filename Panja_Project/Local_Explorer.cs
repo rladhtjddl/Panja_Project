@@ -205,7 +205,7 @@ namespace Panja_Project
                     listView1.Items[DirectCount].SubItems.Add("폴더");
                     listView1.Items[DirectCount].SubItems.Add(dirItem.GetFiles().Length.ToString() + " files");
                     DirectCount++;
-                   
+
                 }
 
                 //디렉토리에 존재하는 파일목록 보여주기
@@ -310,7 +310,7 @@ namespace Panja_Project
                 string processPath;
                 string pathnow = textBox1.Text;
 
-                
+
                 if (listView1.SelectedItems[0].Text.IndexOf("\\") > 0)
                     processPath = listView1.SelectedItems[0].Text;
                 else
@@ -325,7 +325,7 @@ namespace Panja_Project
                 {
                     Process.Start("../../Properties\\detect_ransom.exe", processPath);
                 }
-                
+
 
             }
         }
