@@ -25,7 +25,10 @@ namespace Panja_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //아이디 비밀번호 체크 
+            MainUI main = new MainUI();
+            this.Hide();//아이디 비밀번호 체크 
+            
+            main.Show();
         }
 
         private void lnkLostID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
