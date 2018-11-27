@@ -183,9 +183,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("궁서", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(75, 27);
+            this.label1.Location = new System.Drawing.Point(66, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 30);
+            this.label1.Size = new System.Drawing.Size(92, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "Select";
             // 
@@ -193,17 +193,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("궁서", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(393, 27);
+            this.label2.Location = new System.Drawing.Point(344, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 30);
+            this.label2.Size = new System.Drawing.Size(121, 24);
             this.label2.TabIndex = 5;
             this.label2.Text = "Selected";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(609, 73);
+            this.button3.Location = new System.Drawing.Point(533, 59);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(82, 40);
+            this.button3.Size = new System.Drawing.Size(72, 32);
             this.button3.TabIndex = 6;
             this.button3.Text = "추가 보호";
             this.button3.UseVisualStyleBackColor = true;
@@ -211,9 +211,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(609, 120);
+            this.button4.Location = new System.Drawing.Point(533, 96);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 40);
+            this.button4.Size = new System.Drawing.Size(72, 32);
             this.button4.TabIndex = 7;
             this.button4.Text = "닫기";
             this.button4.UseVisualStyleBackColor = true;
@@ -222,9 +222,9 @@
             // btn_minus
             // 
             this.btn_minus.Image = global::Panja_Project.Properties.Resources.arrow_left;
-            this.btn_minus.Location = new System.Drawing.Point(273, 253);
+            this.btn_minus.Location = new System.Drawing.Point(239, 203);
             this.btn_minus.Name = "btn_minus";
-            this.btn_minus.Size = new System.Drawing.Size(67, 68);
+            this.btn_minus.Size = new System.Drawing.Size(59, 55);
             this.btn_minus.TabIndex = 2;
             this.btn_minus.UseVisualStyleBackColor = true;
             this.btn_minus.Click += new System.EventHandler(this.btn_minus_Click);
@@ -233,9 +233,9 @@
             // 
             this.btn_plus.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_plus.Image = global::Panja_Project.Properties.Resources.arrow_right;
-            this.btn_plus.Location = new System.Drawing.Point(273, 157);
+            this.btn_plus.Location = new System.Drawing.Point(239, 126);
             this.btn_plus.Name = "btn_plus";
-            this.btn_plus.Size = new System.Drawing.Size(67, 73);
+            this.btn_plus.Size = new System.Drawing.Size(59, 59);
             this.btn_plus.TabIndex = 1;
             this.btn_plus.UseVisualStyleBackColor = false;
             this.btn_plus.Click += new System.EventHandler(this.btn_plus_Click);
@@ -244,9 +244,9 @@
             // 
             this.selectlist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.폴더명});
-            this.selectlist.Location = new System.Drawing.Point(347, 58);
+            this.selectlist.Location = new System.Drawing.Point(304, 47);
             this.selectlist.Name = "selectlist";
-            this.selectlist.Size = new System.Drawing.Size(237, 379);
+            this.selectlist.Size = new System.Drawing.Size(208, 304);
             this.selectlist.TabIndex = 9;
             this.selectlist.UseCompatibleStateImageBehavior = false;
             this.selectlist.View = System.Windows.Forms.View.List;
@@ -258,19 +258,19 @@
             // 
             // addlist
             // 
-            this.addlist.Location = new System.Drawing.Point(19, 58);
+            this.addlist.Location = new System.Drawing.Point(17, 47);
             this.addlist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addlist.Name = "addlist";
-            this.addlist.Size = new System.Drawing.Size(249, 379);
+            this.addlist.Size = new System.Drawing.Size(218, 304);
             this.addlist.TabIndex = 10;
             this.addlist.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.addlist_BeforeCollapse);
             this.addlist.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.addlist_BeforeExpand);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(609, 173);
+            this.button1.Location = new System.Drawing.Point(533, 139);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 40);
+            this.button1.Size = new System.Drawing.Size(72, 32);
             this.button1.TabIndex = 11;
             this.button1.Text = "보호 해제";
             this.button1.UseVisualStyleBackColor = true;
@@ -278,9 +278,9 @@
             // 
             // Local_Plus
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 455);
+            this.ClientSize = new System.Drawing.Size(614, 364);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.addlist);
             this.Controls.Add(this.selectlist);
