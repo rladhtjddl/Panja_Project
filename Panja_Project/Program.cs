@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,30 +16,44 @@ namespace Panja_Project
         static void Main(string[] args)
         {
             Regedit rdg = new Regedit();
+            string dir = Environment.CurrentDirectory + "\\Panja_Project.exe";
 
-            rdg.RegistryChecker();
+
             int argsCount = args.Length;
+
+            rdg.RegistryChecker(dir);
 
             if (argsCount == 2)
             {
                 string command = args[1];
                 string targetAddress = args[0];
-
+                //rdg.RegistryChecker(targetAddress);
                 if (command.Equals("protect"))
                 {
 
                 }
-                
+                RightClickController rightClick = new RightClickController();
+
+                rightClick.rightClick(command, targetAddress);
+
+
+                //Application.EnableVisualStyles();
+                //Application.SetCompatibleTextRenderingDefault(false);
+                //Application.Run(new foler_imsi(command, targetAddress));
+                //Application.Run(new Local_Explorer(command, targetAddress));
+            }
+            else
+            {
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new foler_imsi(command,targetAddress));
-                Application.Run(new Local_Explorer(command, targetAddress));
+                Application.Run(new Local_Explorer());
+                //Application.Run(new upload());
+
             }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new upload());
-            
+
+
 
         }
     }

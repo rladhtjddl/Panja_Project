@@ -52,8 +52,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.btn_minus = new System.Windows.Forms.Button();
             this.btn_plus = new System.Windows.Forms.Button();
-            this.List_own = new System.Windows.Forms.ListView();
             this.List_go = new System.Windows.Forms.ListView();
+            this.List_own = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // label1
@@ -85,8 +85,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(123, 48);
             this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
+            this.button3.Text = "보호 해제";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -95,8 +96,9 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(123, 48);
             this.button4.TabIndex = 7;
-            this.button4.Text = "button4";
+            this.button4.Text = "닫기";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btn_minus
             // 
@@ -107,6 +109,7 @@
             this.btn_minus.Size = new System.Drawing.Size(84, 82);
             this.btn_minus.TabIndex = 2;
             this.btn_minus.UseVisualStyleBackColor = true;
+            this.btn_minus.Click += new System.EventHandler(this.btn_minus_Click);
             // 
             // btn_plus
             // 
@@ -118,16 +121,7 @@
             this.btn_plus.Size = new System.Drawing.Size(84, 88);
             this.btn_plus.TabIndex = 1;
             this.btn_plus.UseVisualStyleBackColor = false;
-            // 
-            // List_own
-            // 
-            this.List_own.Location = new System.Drawing.Point(17, 72);
-            this.List_own.Margin = new System.Windows.Forms.Padding(4);
-            this.List_own.Name = "List_own";
-            this.List_own.Size = new System.Drawing.Size(285, 454);
-            this.List_own.TabIndex = 8;
-            this.List_own.UseCompatibleStateImageBehavior = false;
-            this.List_own.View = System.Windows.Forms.View.Details;
+            this.btn_plus.Click += new System.EventHandler(this.btn_plus_Click);
             // 
             // List_go
             // 
@@ -137,14 +131,22 @@
             this.List_go.Size = new System.Drawing.Size(285, 454);
             this.List_go.TabIndex = 9;
             this.List_go.UseCompatibleStateImageBehavior = false;
+            this.List_go.View = System.Windows.Forms.View.List;
+            // 
+            // List_own
+            // 
+            this.List_own.Location = new System.Drawing.Point(12, 72);
+            this.List_own.Name = "List_own";
+            this.List_own.Size = new System.Drawing.Size(294, 454);
+            this.List_own.TabIndex = 10;
             // 
             // Local_Minus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(877, 546);
-            this.Controls.Add(this.List_go);
             this.Controls.Add(this.List_own);
+            this.Controls.Add(this.List_go);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
@@ -168,7 +170,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListView List_own;
         private System.Windows.Forms.ListView List_go;
+        private System.Windows.Forms.TreeView List_own;
     }
 }
