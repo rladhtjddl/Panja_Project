@@ -16,7 +16,7 @@ namespace Panja_Project
 {
     public partial class MainUI : Form
     {
-        private JToken json_s;
+        
 
         public MainUI()
         {
@@ -36,30 +36,9 @@ namespace Panja_Project
 
         private void Cloud_btn_Click(object sender, EventArgs e)
         {
-            JObject json = new JObject();
-            JArray jjson = new JArray();
-            long count;
-            string json_t;
-            Filecontrol fi = new Filecontrol();
-            fi.Get_json();
-
-            using (StreamReader r = new StreamReader(@"../../Properties/file_list.Json"))
-            {
-                json_s = r.ReadToEnd();
-                json_t = json_s.ToString();
-            }
-
-            json = JObject.Parse(json_t);
-            count = json["link"].LongCount();
-            string[] sum_link = new string[10000]; 
+            Cloud_Explorer cld = new Cloud_Explorer();
+            cld.ShowDialog();
             
-            for(int q=0; q< count; q++)
-            {
-                sum_link[q] = json["link"][q]["flink"].ToString();
-                Console.WriteLine(sum_link[q]);
-            }
-            //동근 sum_link[] -> 0~count 까지가 경로 저장해둔거
-
 
         }
 
