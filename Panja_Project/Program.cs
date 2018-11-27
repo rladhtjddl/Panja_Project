@@ -28,21 +28,19 @@ namespace Panja_Project
                 string command = args[1];
                 string targetAddress = args[0];
                 //rdg.RegistryChecker(targetAddress);
-                if (command.Equals("protect"))
-                {
-
-                }
-
+                RightClickController rclick = new RightClickController();
+                rclick.rightClick(command, targetAddress);
+            }
+            else
+            {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new foler_imsi(command, targetAddress));
-                Application.Run(new Local_Explorer(command, targetAddress));
+
+                Application.Run(new Local_Explorer());
+
             }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
- 
-            Application.Run(new Local_Explorer());
+        
             
 
         }

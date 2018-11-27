@@ -39,13 +39,11 @@ namespace Panja_Project
             }
             else if (command.Equals("protect_test01"))
             {
-
-
+                pro.StandardInput.Write("attrib " + address + " +r +s +h" + Environment.NewLine);
                 Regedit rgd = new Regedit();
                // MessageBox.Show("attrib " + '\u0022' + address + '\u0022' + " +r +s +h");
                 //Warning
-                pro.StandardInput.Write("attrib " + address + " +r +s +h" + Environment.NewLine);
-
+                System.Threading.Thread.Sleep(500);
                 Shortcut shortcut = Shortcut.getInstance(rgd.getAbsDir());
                 shortcut.createShortcut(Environment.CurrentDirectory, Path.GetFileName(address));
                 AccessAuthority auth = new AccessAuthority(address);
