@@ -1,2 +1,4 @@
 ../../Properties
 C:\Temp
+C:\Temp
+C:\Users\KOS\Desktop\임시폴더

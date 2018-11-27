@@ -91,6 +91,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tamir.SharpSsh, Version=1.1.1.13, Culture=neutral, PublicKeyToken=4ed5f4288b4076af, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tamir.SharpSsh.dll.1.1.1.14\lib\Tamir.SharpSsh.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessAuthority.cs" />

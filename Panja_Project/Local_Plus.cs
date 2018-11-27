@@ -15,6 +15,7 @@ namespace Panja_Project
 {
     public partial class Local_Plus : Form
     {
+        public string[] folder_path = new string[1000];
         public String[] added_Folder = new string[10000];
 
         public Local_Plus()
@@ -131,44 +132,26 @@ namespace Panja_Project
             JArray jjson = new JArray();
 
             string file_name, file_byte, file_link;
-            string[] file_save = new string[100];
-            int count = 0; 
-
+            string[] file_save = new string[1000];
+            int count = 0;
+            
 
             int i;
             //added 폴더 
             int lastnum = selectlist.Items.Count;
             for (i = 0; i < lastnum; i++) {
-                System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
-                System.Diagnostics.Process pro = new System.Diagnostics.Process();
-
-                proinfo.FileName = @"cmd";
-                proinfo.CreateNoWindow = true; //띄우기 안띄우기
-                proinfo.UseShellExecute = false;
-                proinfo.RedirectStandardOutput = true;
-                proinfo.RedirectStandardInput = true;
-                proinfo.RedirectStandardError = true;
-
-                pro.StartInfo = proinfo;
-                pro.Start();
+               
 
                 //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
                 added_Folder[i] = selectlist.Items[i].Text;
 
-                //윤식 : 이부분 input ACL 
-                pro.StandardInput.WriteLine("attrib " + '\u0022' + added_Folder[i] + '\u0022' + " +r +s +h" + Environment.NewLine);
-
-                Regedit rgd = new Regedit();
                
-                AccessAuthority aauth = new AccessAuthority(added_Folder[i]);
-                
-                Shortcut shortcut = Shortcut.getInstance();
-                shortcut.createShortcut(Path.GetDirectoryName(added_Folder[i]),  Path.GetFileName(added_Folder[i]));
+
                 //Console.WriteLine(added_Folder[i]);
               
                 string dirPath = added_Folder[i];
-
-                aauth.folderSecu_Test3();
+                folder_path[i] = added_Folder[i];
+                
                 string[]  files = Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories);
                 foreach (string s in files)
                 {
@@ -177,20 +160,20 @@ namespace Panja_Project
                     
                 }
 
-                pro.StandardInput.Close();
-
-                pro.Close();
             }
     
             for (i = 0; i < count - 1; i++)
             {
                 file_info file_Inf = new file_info(file_save[i]);
                 Console.WriteLine(file_Inf.fname);
-                Console.WriteLine(file_Inf.flink);
+                
                 json = JObject.FromObject(file_Inf);
                 jjson.Add(json);
                 
             }
+
+
+           
 
             json.Add("link", jjson);
             //리스트로 저장
@@ -205,8 +188,51 @@ namespace Panja_Project
 
             //저장한파일 클라우드의 유저디렉토리에 저장
             Filecontrol fi = new Filecontrol();
-            fi.Put_json();
+            //fi.Put_json();
+            for(i=0; i<lastnum; i++)
+            {
+                fi.Put_json(folder_path[i]);
+            }
 
+            for(i=0; i<lastnum; i++)
+            {
+                System.IO.File.AppendAllText(@"../../Properties/test.txt", "\n" + folder_path[i], Encoding.Default);
+            }
+            
+
+            //-------------------------------폴더보호
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = true; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
+            for (i = 0; i < lastnum; i++)
+            {
+                Console.WriteLine(folder_path[i]);
+
+                //-----------------------------------------
+                //윤식 : 이부분 input ACL 
+                pro.StandardInput.WriteLine("attrib " + '\u0022' + folder_path[i] + '\u0022' + " +r +s +h" + Environment.NewLine);
+                Regedit rgd = new Regedit();
+
+                AccessAuthority aauth = new AccessAuthority(folder_path[i]);
+
+                Shortcut shortcut = Shortcut.getInstance();
+                shortcut.createShortcut(Path.GetDirectoryName(folder_path[i]), Path.GetFileName(folder_path[i]));
+                aauth.folderSecu_Test3();
+            }
+
+            pro.StandardInput.Close();
+
+            pro.Close();
 
 
             this.Close();
