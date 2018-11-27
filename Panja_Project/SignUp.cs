@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -105,11 +106,64 @@ namespace Panja_Project
                 user.name = txtName.Text.ToString();
                 user.birth = birth;
                 user.sex = sex;
-
-                
+                json = JObject.FromObject(user);
+                jjson.Add(json);
                 json.Add("user", jjson);
                 json.Add("command", "user_plus");
                 Console.WriteLine(json.ToString());
+
+
+                //서버연결
+                try
+                {
+                    Console.WriteLine("ㅇㅇ");
+                   
+
+                   
+                        
+
+                        // 2. 구조체 데이타를 바이트 배열로 변환
+                        string target_buffer = json.ToString();
+                        byte[] buffer = System.Text.Encoding.UTF8.GetBytes(target_buffer);
+
+
+                        Console.WriteLine("----------- Json to String -------------");
+                        Console.WriteLine("DATA : " + target_buffer);
+                        Console.WriteLine("----------- String to btye -------------");
+                        Console.WriteLine("DATA : " + buffer);
+
+                        // 3. 서버에 접속
+                        TcpClient client = new TcpClient();
+                        client.Connect("54.187.238.235", 10050);
+                        Console.WriteLine("Connected...");
+
+                        NetworkStream stream = client.GetStream();
+
+                        // 4. 데이타 전송
+                        stream.Write(buffer, 0, buffer.Length);
+                        Console.WriteLine("{0} data sent", buffer.Length);
+                        Console.WriteLine("===============================\n");
+
+                        // 5. 스트림&소켓 닫기
+                        stream.Close();
+                        client.Close();
+
+                    
+                }
+                catch (SocketException se)
+                {
+                    Console.WriteLine("SocketException : {0} ", se.Message.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception : {0} ", ex.Message.ToString());
+                }
+                Console.ReadLine();
+
+
+
+
+
 
 
 

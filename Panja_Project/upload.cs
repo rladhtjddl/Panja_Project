@@ -318,6 +318,36 @@ namespace Panja_Project
                     Console.WriteLine("{0} data sent", buffer.Length);
                     Console.WriteLine("===============================\n");
 
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     // 5. 스트림&소켓 닫기
                     stream.Close();
                     client.Close();
