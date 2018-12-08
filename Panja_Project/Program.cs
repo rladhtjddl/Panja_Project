@@ -36,7 +36,7 @@ namespace Panja_Project
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                Application.Run(new Local_Explorer());
+                Application.Run(new MainUI());
 
             }
 

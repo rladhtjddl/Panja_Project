@@ -29,6 +29,7 @@ namespace Panja_Project
         //test 01 Modify , Write , ReadPermission OFF
         public void folderSecu_Test1()
         {
+            
             DirectorySecurity dSecurity = Directory.GetAccessControl(dir);
             dSecurity.AddAccessRule(new FileSystemAccessRule(
                 USER,
@@ -80,6 +81,8 @@ namespace Panja_Project
                 AccessControlType.Allow)));
 
             Directory.SetAccessControl(dir, dSecurity);
+
+
           
 
         }

@@ -38,56 +38,59 @@ namespace Panja_Project
 
         private void Cloud_btn_Click(object sender, EventArgs e)
         {
-            JObject json = new JObject();
-            JArray jjson = new JArray();
-            long count;
-            string json_t;
-            Filecontrol fi = new Filecontrol();
-            fi.Get_json();
+            //JObject json = new JObject();
+            //JArray jjson = new JArray();
+            //long count;
+            //string json_t;
+            //Filecontrol fi = new Filecontrol();
+            //fi.Get_json();
 
-            using (StreamReader r = new StreamReader(@"../../Properties/file_list.Json"))
-            {
-                json_s = r.ReadToEnd();
-                json_t = json_s.ToString();
-            }
+            //using (StreamReader r = new StreamReader(@"../../Properties/file_list.Json"))
+            //{
+            //    json_s = r.ReadToEnd();
+            //    json_t = json_s.ToString();
+            //}
 
-            json = JObject.Parse(json_t);
-            count = json["link"].LongCount();
-            string[] sum_link = new string[10000]; 
-            
-            for(int q=0; q< count; q++)
-            {
-                sum_link[q] = json["link"][q]["flink"].ToString();
-                Console.WriteLine(sum_link[q]);
-            }
-            //동근 sum_link[] -> 0~count 까지가 경로 저장해둔거
+            //json = JObject.Parse(json_t);
+            //count = json["link"].LongCount();
+            //string[] sum_link = new string[10000]; 
 
-            //cmd창
-            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
-            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+            //for(int q=0; q< count; q++)
+            //{
+            //    sum_link[q] = json["link"][q]["flink"].ToString();
+            //    Console.WriteLine(sum_link[q]);
+            //}
+            ////동근 sum_link[] -> 0~count 까지가 경로 저장해둔거
 
-            proinfo.FileName = @"cmd";
-            proinfo.CreateNoWindow = true; //띄우기 안띄우기
-            proinfo.UseShellExecute = false;
-            proinfo.RedirectStandardOutput = true;
-            proinfo.RedirectStandardInput = true;
-            proinfo.RedirectStandardError = true;
+            ////cmd창
+            //System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            //System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            //proinfo.FileName = @"cmd";
+            //proinfo.CreateNoWindow = true; //띄우기 안띄우기
+            //proinfo.UseShellExecute = false;
+            //proinfo.RedirectStandardOutput = true;
+            //proinfo.RedirectStandardInput = true;
+            //proinfo.RedirectStandardError = true;
 
 
-            pro.StartInfo = proinfo;
-            pro.Start();
+            //pro.StartInfo = proinfo;
+            //pro.Start();
 
-            pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
-            pro.StandardInput.Write("psftp -pw ubuntu ubuntu@54.187.238.235" + Environment.NewLine); //우분투 접속
-            pro.StandardInput.Write("cd panja/user1" + Environment.NewLine);
-            pro.StandardInput.Write(@"ls" + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
-            pro.StandardInput.Close();
+            //pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
+            //pro.StandardInput.Write("psftp -pw ubuntu ubuntu@54.187.238.235" + Environment.NewLine); //우분투 접속
+            //pro.StandardInput.Write("cd panja/user1" + Environment.NewLine);
+            //pro.StandardInput.Write(@"ls" + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
+            //pro.StandardInput.Close();
 
-            string resultValue = pro.StandardOutput.ReadToEnd();
-            pro.WaitForExit();
-            pro.Close();
+            //string resultValue = pro.StandardOutput.ReadToEnd();
+            //pro.WaitForExit();
+            //pro.Close();
 
-            Console.WriteLine(resultValue);
+            //Console.WriteLine(resultValue);
+
+            Cloud_Explorer cld = new Cloud_Explorer();
+            cld.ShowDialog();
 
 
 
