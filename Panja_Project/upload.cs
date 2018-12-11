@@ -50,7 +50,7 @@ namespace Panja_Project
             pro.Start();
 
             pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
-            pro.StandardInput.Write("psftp -pw ubuntu ubuntu@34.216.228.162" + Environment.NewLine); //우분투 접속
+            pro.StandardInput.Write("psftp -pw ubuntu ubuntu@54.188.59.110" + Environment.NewLine); //우분투 접속
             pro.StandardInput.Write("put C:\\Users\\KOS\\Desktop\\2018수업\\exam\\kkk.txt ~/panja/imsi" + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
             pro.StandardInput.Close();
 

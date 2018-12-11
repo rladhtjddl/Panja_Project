@@ -71,7 +71,20 @@ namespace Panja_Project
             //첫번째 노드 확장
             treeView1.Nodes[0].Expand();
             */
-            string[] allLines = File.ReadAllLines(@"../../Properties\test.txt", Encoding.Default);
+            Regedit rdg = new Regedit();
+            string[] absExcuteDir = rdg.getAbsDir().Split('\\');
+            
+            string absPro="";
+            for(int k = 0; k < absExcuteDir.Length-3; k++)
+            {
+                absPro += absExcuteDir[k];
+                absPro += @"\";
+            }
+            absPro += @"Properties\test.txt";
+            System.Console.Write(absPro);
+            MessageBox.Show("Path : " + absPro);
+
+            string[] allLines = File.ReadAllLines(absPro, Encoding.Default);
 
             int i;
             for (i = 0; i < allLines.Length; i++)

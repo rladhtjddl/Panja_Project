@@ -16,7 +16,7 @@ namespace Panja_Project
         public void RegistryChecker(string dir)
         {
             this.dir = dir;
-            RegistryKey ch_Key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample1", true);
+            RegistryKey ch_Key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 실행", true);
 
             if (ch_Key ==null){
                 WriteRegistry(dir);
@@ -35,9 +35,9 @@ namespace Panja_Project
             
             //폴더관련 
             //RegistryKey sample1 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample1").CreateSubKey("command");
-            RegistryKey sample2 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample2").CreateSubKey("command");
+            RegistryKey sample2 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 실행").CreateSubKey("command");
             //RegistryKey sample3 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 회복 smaple1 ").CreateSubKey("command");
-            RegistryKey sample4 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 회복 smaple2 ").CreateSubKey("command");
+            //RegistryKey sample4 = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 회복").CreateSubKey("command");
 
 
             String setValue;// = "C:\\Users\\ykmga\\Source\\Repos\\rladhtjddl\\Panja_Project\\Panja_Project\\bin\\Debug\\Panja_Project.exe %1 protect";
@@ -57,8 +57,8 @@ namespace Panja_Project
             //sample3.SetValue("", setValue);
 
             //sample4
-            setValue = dir+" %1 recover02";
-            sample4.SetValue("", setValue);
+            //setValue = dir+" %1 recover02";
+            //sample4.SetValue("", setValue);
 
             //해당 프로젝트 실행 절대 경로 삽입
 
@@ -71,7 +71,7 @@ namespace Panja_Project
         public string getAbsDir()
         {
             RegistryKey reg_Key = Registry.LocalMachine;
-            reg_Key = reg_Key.OpenSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행 sample1\\command", true);
+            reg_Key = reg_Key.OpenSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 실행\\command", true);
 
             string val = (string)reg_Key.GetValue("");
             string[] split = val.Split(' ');

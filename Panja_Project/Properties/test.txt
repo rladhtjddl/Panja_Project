@@ -1,6 +1,2 @@
 ../../Properties
 C:\Temp
-
-C:\batTest\±è¿À¼º
-C:\batTest
-C:\batTest\±è¿À¼º

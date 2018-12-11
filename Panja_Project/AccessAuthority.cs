@@ -38,6 +38,8 @@ namespace Panja_Project
                 | FileSystemRights.ReadPermissions,
                 AccessControlType.Deny));
             Directory.SetAccessControl(dir, dSecurity);
+
+
         }
 
         //test 02 All Control OFF
@@ -56,8 +58,15 @@ namespace Panja_Project
         //test 03 Modify OFF
         public void folderSecu_Test3()
         {
-
             DirectorySecurity dSecurity = Directory.GetAccessControl(dir);
+
+            // Remove all------------------------------------------------------------
+            AccessRule accessRule = new FileSystemAccessRule(USER,0,0);
+            dSecurity.RemoveAccessRuleAll((FileSystemAccessRule)accessRule);
+            Directory.SetAccessControl(dir, dSecurity);
+            // -------------------------------------------------------------------------
+
+
             dSecurity.AddAccessRule(new FileSystemAccessRule(
                 USER,
                 FileSystemRights.Write| FileSystemRights.AppendData |FileSystemRights.ExecuteFile |FileSystemRights.Delete,
