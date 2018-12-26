@@ -143,7 +143,7 @@ namespace Panja_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string a;
+
             DirectoryInfo dir = new DirectoryInfo("C:\\Temp");
             Console.WriteLine(dir.Name);
             Console.WriteLine(dir.FullName);

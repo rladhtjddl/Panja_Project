@@ -80,7 +80,10 @@ namespace Panja_Project
                 absPro += absExcuteDir[k];
                 absPro += @"\";
             }
+
             absPro += @"Properties\test.txt";
+            //삭제 
+            absPro = @"C:\Program Files (x86)\Default Company Name\SetupSample\Panja\Properties\test.txt";
             System.Console.Write(absPro);
             MessageBox.Show("Path : " + absPro);
 

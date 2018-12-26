@@ -71,7 +71,7 @@ namespace Panja_Project
         public string getAbsDir()
         {
             RegistryKey reg_Key = Registry.LocalMachine;
-            reg_Key = reg_Key.OpenSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA 실행\\command", true);
+            reg_Key = reg_Key.OpenSubKey("SOFTWARE\\Classes\\Folder\\shell\\PANJA실행\\command", true);
 
             string val = (string)reg_Key.GetValue("");
             string[] split = val.Split(' ');
