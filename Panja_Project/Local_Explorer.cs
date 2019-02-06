@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
 
 
 namespace Panja_Project
@@ -71,8 +65,11 @@ namespace Panja_Project
             //첫번째 노드 확장
             treeView1.Nodes[0].Expand();
             */
-            Regedit rdg = new Regedit();
-            string[] absExcuteDir = rdg.getAbsDir().Split('\\');
+
+            // 프로퍼티 경로를 지정하기 위한 코드 
+            // 레지스트리에서 절대경로를 통해 ㅡ프로퍼티 파일 위치 탐색 
+            Register rgs = new Register();
+            string[] absExcuteDir = rgs.getAbsDir().Split('\\');
             
             string absPro="";
             for(int k = 0; k < absExcuteDir.Length-3; k++)
@@ -80,12 +77,14 @@ namespace Panja_Project
                 absPro += absExcuteDir[k];
                 absPro += @"\";
             }
-
             absPro += @"Properties\test.txt";
+          
             //삭제 
-            absPro = @"C:\Program Files (x86)\Default Company Name\SetupSample\Panja\Properties\test.txt";
-            System.Console.Write(absPro);
+            //absPro = @"C:\Program Files (x86)\Default Company Name\SetupSample\Panja\Properties\test.txt";
+            
+            //확인용
             MessageBox.Show("Path : " + absPro);
+
 
             string[] allLines = File.ReadAllLines(absPro, Encoding.Default);
 
@@ -145,6 +144,7 @@ namespace Panja_Project
                 MessageBox.Show("ERROR : " + ex.Message);
             }
         }
+
         /// <summary>
         /// 트리가 확장되기 전에 발생하는 이벤트
         /// </summary>
@@ -194,9 +194,10 @@ namespace Panja_Project
             {
                 //기존의 파일 목록 제거
                 listView1.Items.Clear();
+
                 //현재 경로를 표시
                 textBox1.Text = sFullPath;
-                freepath = "C:\\" + sFullPath.Substring(4);
+                freepath = "C:\\" + sFullPath.Substring(3);
 
 
                 DirectoryInfo dir = new DirectoryInfo(sFullPath);
@@ -363,8 +364,10 @@ namespace Panja_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            foler_imsi ii = new foler_imsi();
-            ii.ShowDialog();
+            //코드확인 필요 ShowDialog
+
+            //foler_imsi ii = new foler_imsi();
+            //ii.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)

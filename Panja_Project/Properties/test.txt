@@ -1,2 +1,7 @@
 ../../Properties
 C:\Temp
+C:\Tester Folder\Sample Folder1
+C:\Tester Folder\Sample Folder2
+C:\Tester Folder\Sample Folder3
+C:\Tester Folder\Sample Folder4
+C:\Tester Folder\Sample Folder4

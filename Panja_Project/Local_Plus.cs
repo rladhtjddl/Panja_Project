@@ -198,7 +198,7 @@ namespace Panja_Project
             {
                 System.IO.File.AppendAllText(@"../../Properties/test.txt", "\n" + folder_path[i], Encoding.Default);
             }
-            
+
 
             //-------------------------------폴더보호
             System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
@@ -221,13 +221,14 @@ namespace Panja_Project
                 //-----------------------------------------
                 //윤식 : 이부분 input ACL 
                 pro.StandardInput.WriteLine("attrib " + '\u0022' + folder_path[i] + '\u0022' + " +r +s +h" + Environment.NewLine);
-                Regedit rgd = new Regedit();
+                icon rgs = new icon();
 
-                AccessAuthority aauth = new AccessAuthority(folder_path[i]);
+                //AccessAuthority aauth = new AccessAuthority(folder_path[i]);
 
-                Shortcut shortcut = Shortcut.getInstance();
-                shortcut.createShortcut(Path.GetDirectoryName(folder_path[i]), Path.GetFileName(folder_path[i]));
-                aauth.folderSecu_Test3();
+
+                rgs.createShortcut(Path.GetDirectoryName(folder_path[i]), Path.GetFileName(folder_path[i]));
+                //aauth.folderSecu_Test3();
+                rgs.panja_protect(folder_path[i]);
             }
 
             pro.StandardInput.Close();
@@ -236,6 +237,9 @@ namespace Panja_Project
 
 
             this.Close();
+
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -268,9 +272,14 @@ namespace Panja_Project
 
                 //윤식 : 이부분 input ACL 
 
-                Regedit rgd = new Regedit();
-                AccessAuthority aauth = new AccessAuthority(added_Folder[i]);
-                aauth.folderSecu_Recover();
+           
+                //AccessAuthority aauth = new AccessAuthority(added_Folder[i]);
+                //aauth.folderSecu_Recover();
+
+                FolderAccess rgs = new FolderAccess();
+                rgs.panja_recover(added_Folder[i]);
+
+
                 pro.StandardInput.Write("attrib " + '\u0022' + added_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
             }
             pro.StandardInput.Close();

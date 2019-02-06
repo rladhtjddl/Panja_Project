@@ -25,6 +25,7 @@ namespace Panja_Project
 
         private void Local_Minus_Load(object sender, EventArgs e)
         {
+            //폼실행시 기준 경로가 파일이라 ㄱㅊ 
             string[] allLines = File.ReadAllLines(@"../../Properties\test.txt", Encoding.Default);
 
             int i;
@@ -135,13 +136,38 @@ namespace Panja_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
+
+            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+
+            proinfo.FileName = @"cmd";
+            proinfo.CreateNoWindow = false; //띄우기 안띄우기
+            proinfo.UseShellExecute = false;
+            proinfo.RedirectStandardOutput = true;
+            proinfo.RedirectStandardInput = true;
+            proinfo.RedirectStandardError = true;
+
+            pro.StartInfo = proinfo;
+            pro.Start();
+
             int i;
-            for (i = 0; i < List_go.Items.Count; i++)
+            //added 폴더 
+            int lastnum = List_go.Items.Count;
+            for (i = 0; i < lastnum; i++)
             {
+                //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
                 subed_Folder[i] = List_go.Items[i].Text;
-                AccessAuthority minus = new AccessAuthority(subed_Folder[i]);
-                minus.folderSecu_Recover();
+
+                //윤식 : 이부분 input ACL 
+
+                FolderAccess rgs = new FolderAccess();
+                rgs.panja_recover(subed_Folder[i]);
+
+                pro.StandardInput.Write("attrib " + '\u0022' + subed_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
             }
+            pro.StandardInput.Close();
+
+            pro.Close();
 
         }
     }

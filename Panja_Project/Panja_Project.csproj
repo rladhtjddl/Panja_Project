@@ -108,12 +108,7 @@
     </Compile>
     <Compile Include="DataPacket.cs" />
     <Compile Include="Filecontrol.cs" />
-    <Compile Include="foler_imsi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="foler_imsi.Designer.cs">
-      <DependentUpon>foler_imsi.cs</DependentUpon>
-    </Compile>
+    <Compile Include="FileExplorer.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,9 +141,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Regedit.cs" />
-    <Compile Include="RightClickController.cs" />
-    <Compile Include="Shortcut.cs" />
+    <Compile Include="Register.cs" />
     <Compile Include="SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,9 +156,6 @@
     </Compile>
     <EmbeddedResource Include="Cloud_Explorer.resx">
       <DependentUpon>Cloud_Explorer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="foler_imsi.resx">
-      <DependentUpon>foler_imsi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
