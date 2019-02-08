@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -11,6 +12,57 @@ namespace Panja_Project
     public partial class Local_Explorer : Form
     {
         public string freepath;
+
+        internal static class NativeMethods
+        {
+            public const uint LVM_FIRST = 0x1000;
+            public const uint LVM_GETIMAGELIST = (LVM_FIRST + 2);
+            public const uint LVM_SETIMAGELIST = (LVM_FIRST + 3);
+
+            public const uint LVSIL_NORMAL = 0;
+            public const uint LVSIL_SMALL = 1;
+            public const uint LVSIL_STATE = 2;
+            public const uint LVSIL_GROUPHEADER = 3;
+
+            [DllImport("user32")]
+            public static extern IntPtr SendMessage(IntPtr hWnd,
+                      uint msg,
+                      uint wParam,
+                      IntPtr lParam);
+
+            [DllImport("comctl32")]
+            public static extern bool ImageList_Destroy(IntPtr hImageList);
+
+            public const uint SHGFI_DISPLAYNAME = 0x200;
+            public const uint SHGFI_ICON = 0x100;
+            public const uint SHGFI_LARGEICON = 0x0;
+            public const uint SHGFI_SMALLICON = 0x1;
+            public const uint SHGFI_SYSICONINDEX = 0x4000;
+
+            [StructLayout(LayoutKind.Sequential)]
+            public struct SHFILEINFO
+            {
+                public IntPtr hIcon;
+                public int iIcon;
+                public uint dwAttributes;
+                [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260 /* MAX_PATH */)]
+                public string szDisplayName;
+                [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
+                public string szTypeName;
+            };
+
+            [DllImport("shell32")]
+            public static extern IntPtr SHGetFileInfo(string pszPath,
+                      uint dwFileAttributes,
+                      ref SHFILEINFO psfi,
+                      uint cbSizeFileInfo,
+                      uint uFlags);
+
+            [DllImport("uxtheme", CharSet = CharSet.Unicode)]
+            public static extern int SetWindowTheme(IntPtr hWnd,
+                      string pszSubAppName,
+                      string pszSubIdList);
+        }
 
 
         public Local_Explorer()
@@ -78,6 +130,7 @@ namespace Panja_Project
                 absPro += @"\";
             }
             absPro += @"Properties\test.txt";
+            string absTemp = @"C:\Users\rooto\Source\Repos\Panja_Project\Panja_Project\Properties";
           
             //삭제 
             //absPro = @"C:\Program Files (x86)\Default Company Name\SetupSample\Panja\Properties\test.txt";
@@ -187,6 +240,8 @@ namespace Panja_Project
         /// 오른쪽 ListView를 그린다.
         /// </summary>
         /// <param name="sFullPath"></param>
+
+
         private void SettingListVeiw(string sFullPath)
         {
 
@@ -194,59 +249,63 @@ namespace Panja_Project
             {
                 //기존의 파일 목록 제거
                 listView1.Items.Clear();
-
+                //기존의 파일 목록 제거
+                listView1.Items.Clear();
                 //현재 경로를 표시
                 textBox1.Text = sFullPath;
-                freepath = "C:\\" + sFullPath.Substring(3);
+                freepath = "C:\\" + sFullPath.Substring(4);
 
 
                 DirectoryInfo dir = new DirectoryInfo(sFullPath);
 
 
-                int DirectCount = 0;
-                //하부 데렉토르 보여주기
-                foreach (DirectoryInfo dirItem in dir.GetDirectories())
+
+                // Obtain a handle to the system image list. 
+                NativeMethods.SHFILEINFO shfi = new NativeMethods.SHFILEINFO();
+                IntPtr hSysImgList = NativeMethods.SHGetFileInfo("",
+                            0,
+                            ref shfi,
+                            (uint)Marshal.SizeOf(shfi),
+                            NativeMethods.SHGFI_SYSICONINDEX
+                            | NativeMethods.SHGFI_LARGEICON);
+                //Debug.Assert(hSysImgList != IntPtr.Zero); // cross our fingers and hope to succeed! 
+
+                // Set the ListView control to use that image list. 
+                IntPtr hOldImgList = NativeMethods.SendMessage(listView1.Handle,
+                            NativeMethods.LVM_SETIMAGELIST,
+                            NativeMethods.LVSIL_NORMAL,
+                            hSysImgList);
+
+                // If the ListView control already had an image list, delete the old one. 
+                if (hOldImgList != IntPtr.Zero)
                 {
-                    //하부 디렉토리가 존재할 경우 ListView에 추가
-                    //ListViewItem 객체를 생성
-                    ListViewItem lsvitem = new ListViewItem();
-
-                    //생성된 ListViewItem 객체에 똑같은 이미지를 할당
-                    lsvitem.ImageIndex = 2;
-                    lsvitem.Text = dirItem.Name;
-
-                    //아이템을 ListView(listView1)에 추가
-                    listView1.Items.Add(lsvitem);
-
-                    listView1.Items[DirectCount].SubItems.Add(dirItem.CreationTime.ToString());
-                    listView1.Items[DirectCount].SubItems.Add("폴더");
-                    listView1.Items[DirectCount].SubItems.Add(dirItem.GetFiles().Length.ToString() + " files");
-                    DirectCount++;
-
+                    NativeMethods.ImageList_Destroy(hOldImgList);
                 }
 
-                //디렉토리에 존재하는 파일목록 보여주기
-                FileInfo[] files = dir.GetFiles();
-                int Count = 0;
-                foreach (FileInfo fileinfo in files)
-                {
-                    ListViewItem lsvitem = new ListViewItem();
-                    lsvitem.ImageIndex = 4;
-                    lsvitem.Text = fileinfo.Name;
-                    listView1.Items.Add(lsvitem);
+                // Set up the ListView control's basic properties. 
+                // Put it in "Details" mode, create a column so that "Details" mode will work, 
+                // and set its theme so it will look like the one used by Explorer. 
+                listView1.View = View.LargeIcon;
+                //listView1.Columns.Add("Name", 100);
+                NativeMethods.SetWindowTheme(listView1.Handle, "Explorer", null);
 
-                    if (fileinfo.LastWriteTime != null)
-                    {
-                        listView1.Items[Count].SubItems.Add(fileinfo.LastWriteTime.ToString());
-                    }
-                    else
-                    {
-                        listView1.Items[Count].SubItems.Add(fileinfo.CreationTime.ToString());
-                    }
-                    listView1.Items[Count].SubItems.Add(fileinfo.Attributes.ToString());
-                    listView1.Items[Count].SubItems.Add(fileinfo.Length.ToString());
-                    Count++;
+                // Get the items from the file system, and add each of them to the ListView, 
+                // complete with their corresponding name and icon indices. 
+                string[] s = Directory.GetFileSystemEntries(sFullPath);
+                foreach (string file in s)
+                {
+                    IntPtr himl = NativeMethods.SHGetFileInfo(file,
+                              0,
+                              ref shfi,
+                              (uint)Marshal.SizeOf(shfi),
+                              NativeMethods.SHGFI_DISPLAYNAME
+                               | NativeMethods.SHGFI_SYSICONINDEX
+                               | NativeMethods.SHGFI_LARGEICON);
+                    //Debug.Assert(himl == hSysImgList); // should be the same imagelist as the one we set 
+                    listView1.Items.Add(shfi.szDisplayName, shfi.iIcon);
                 }
+
+
             }
             catch (Exception ex)
             {

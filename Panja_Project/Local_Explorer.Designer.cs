@@ -172,7 +172,6 @@
             this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -186,9 +185,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.btn_plus);
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
             this.splitContainer1.Panel2.Controls.Add(this.listView1);
-            this.splitContainer1.Size = new System.Drawing.Size(797, 504);
-            this.splitContainer1.SplitterDistance = 262;
-            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.Size = new System.Drawing.Size(1139, 756);
+            this.splitContainer1.SplitterDistance = 374;
             this.splitContainer1.TabIndex = 0;
             // 
             // treeView1
@@ -198,9 +196,10 @@
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(262, 504);
+            this.treeView1.Size = new System.Drawing.Size(374, 756);
             this.treeView1.TabIndex = 1;
             this.treeView1.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeCollapse);
             this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
@@ -224,10 +223,11 @@
             this.btn_minus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_minus.Font = new System.Drawing.Font("굴림", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_minus.Image = ((System.Drawing.Image)(resources.GetObject("btn_minus.Image")));
-            this.btn_minus.Location = new System.Drawing.Point(451, 407);
+            this.btn_minus.Location = new System.Drawing.Point(647, 610);
+            this.btn_minus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_minus.Name = "btn_minus";
             this.btn_minus.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_minus.Size = new System.Drawing.Size(62, 59);
+            this.btn_minus.Size = new System.Drawing.Size(89, 88);
             this.btn_minus.TabIndex = 4;
             this.btn_minus.UseVisualStyleBackColor = false;
             this.btn_minus.Click += new System.EventHandler(this.button3_Click);
@@ -237,13 +237,15 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(311, 407);
+            this.button2.Location = new System.Drawing.Point(447, 610);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(62, 59);
+            this.button2.Size = new System.Drawing.Size(89, 88);
             this.button2.TabIndex = 3;
-            this.button2.Text = "임시폴더";
+            this.button2.Text = "시발임시폴더";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btn_plus
@@ -253,11 +255,11 @@
             this.btn_plus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_plus.Font = new System.Drawing.Font("굴림", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_plus.Image = ((System.Drawing.Image)(resources.GetObject("btn_plus.Image")));
-            this.btn_plus.Location = new System.Drawing.Point(382, 407);
+            this.btn_plus.Location = new System.Drawing.Point(548, 610);
             this.btn_plus.Margin = new System.Windows.Forms.Padding(0);
             this.btn_plus.Name = "btn_plus";
             this.btn_plus.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_plus.Size = new System.Drawing.Size(62, 59);
+            this.btn_plus.Size = new System.Drawing.Size(89, 88);
             this.btn_plus.TabIndex = 2;
             this.btn_plus.UseVisualStyleBackColor = false;
             this.btn_plus.Click += new System.EventHandler(this.button1_Click_1);
@@ -266,10 +268,9 @@
             // 
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(0, 483);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Location = new System.Drawing.Point(0, 728);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(532, 21);
+            this.textBox1.Size = new System.Drawing.Size(761, 28);
             this.textBox1.TabIndex = 1;
             // 
             // listView1
@@ -278,8 +279,9 @@
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.LargeImageList = this.imageList2;
             this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(532, 504);
+            this.listView1.Size = new System.Drawing.Size(761, 756);
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -300,12 +302,11 @@
             // 
             // Local_Explorer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 504);
+            this.ClientSize = new System.Drawing.Size(1139, 756);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Local_Explorer";
             this.Text = "PANJA Local Explorer";
             this.Load += new System.EventHandler(this.Local_Explorer_Load);
