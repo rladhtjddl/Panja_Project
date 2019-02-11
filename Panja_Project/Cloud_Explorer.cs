@@ -11,13 +11,24 @@ using System.IO;
 using System.Collections;
 using Newtonsoft;
 using Newtonsoft.Json.Linq;
+using Tamir.Streams;
+using Tamir.SharpSsh;
+using Renci.SshNet;
+using Renci.SshNet.Common;
 
 namespace Panja_Project
 {
     public partial class Cloud_Explorer : Form
     {
-        //private JToken json_s;
-        //string[] sum_link = new string[10000];
+        
+
+        string host = @"54.185.231.100";
+        string username = "os";
+        string password = "tlqkf";
+        string localFileName = System.IO.Path.GetFileName(@"localfilename");
+        string remoteDirectory = ".";
+        string old_path = "";
+        
 
         public Cloud_Explorer()
         {
@@ -86,22 +97,126 @@ namespace Panja_Project
             pro.Close();
             */
 
-            string[] allLines = File.ReadAllLines(@"../../Properties\test2.txt", Encoding.Default);
+            //string[] allLines = File.ReadAllLines(@"../../Properties\test2.txt", Encoding.Default);
+            path_now.Text = remoteDirectory;
+            settingListview();
+        }
 
-            int i;
+        public void settingListview() {
 
-            for (i = 0; i < allLines.Length; i += 2)
+            string[] Jenjang_file = new string[50];
+            string[] Jenjang_folder = new string[50];
+            string[] Jenjang_file_fullname = new string[50];
+            string[] Jenjang_folder_fullname = new string[50];
+            int file_index = 0;
+            int folder_index = 0;
+
+            try
             {
+                //기존의 파일 목록 제거
+                cloud_list.Items.Clear();
 
-                ListViewItem cldItem = new ListViewItem();
-                cldItem.ImageIndex = 0;
-                cldItem.Text = allLines[i];
-                cloud_list.Items.Add(cldItem);
+                var sftp = new SftpClient(host, username, password);
+
+                sftp.Connect();
+
+                var files = sftp.ListDirectory(remoteDirectory);
+
+                Console.WriteLine("파일 폴더로 이동");
+
+                sftp.ChangeDirectory(remoteDirectory);
+                
+
+                foreach (var file in files)
+                {
+                    //Console.WriteLine(file.FullName);
+                    //Console.WriteLine(file.Name);
+                    if (file.IsDirectory)
+                    {
+                        if (file.Name != ".")
+                        {
+                            Jenjang_folder[folder_index++] = file.Name;
+                            Jenjang_folder_fullname[folder_index] = file.FullName;
+                        }
+                    }
+                    else
+                    {
+                        Jenjang_file[file_index++] = file.Name;
+                        Jenjang_file_fullname[file_index] = file.FullName;
+                    }
+
+
+                }
+
+
+                for (int j = 0; j < folder_index; j++)
+                {
+                    ListViewItem cldfolder = new ListViewItem();
+                    cldfolder.ImageIndex = 0;
+                    cldfolder.Text = Jenjang_folder[j];
+                    cloud_list.Items.Add(cldfolder);
+                }
+
+
+                for (int i = 0; i < file_index; i++)
+                {
+                    ListViewItem cldItem = new ListViewItem();
+                    cldItem.ImageIndex = 1;
+                    cldItem.Text = Jenjang_file[i];
+                    cloud_list.Items.Add(cldItem);
+                }
+
+                sftp.Disconnect();
+
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR : " + ex.Message);
+            }
 
         }
 
-        
+
+
+        private void cloud_list_DoubleClick(object sender, EventArgs e)
+        {
+            
+            if (cloud_list.SelectedItems.Count == 1)
+            {
+                string pathnow;
+                old_path = remoteDirectory;
+
+                
+                if (cloud_list.SelectedItems[0].ImageIndex == 0)
+                {
+
+                    pathnow = cloud_list.SelectedItems[0].Text;
+                    Console.WriteLine(pathnow + "로 이동");
+                    remoteDirectory = path_now.Text + "/" + pathnow;
+
+                    if (cloud_list.SelectedItems[0].Text == "..")
+                    {
+                        path_now.Text = old_path;
+                    }
+                    else
+                    {
+                        path_now.Text = remoteDirectory;
+                    }
+
+
+                    cloud_list.Items.Clear();
+                    settingListview();
+
+
+                }
+                else if (cloud_list.SelectedItems[0].ImageIndex == 0)
+                {
+
+
+                }
+
+                
+            }
+        }
     }
 }

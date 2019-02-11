@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cloud_Explorer));
             this.cloud_list = new System.Windows.Forms.ListView();
-            this.path_now = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.path_now = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cloud_list
@@ -45,6 +45,14 @@
             this.cloud_list.SmallImageList = this.imageList1;
             this.cloud_list.TabIndex = 0;
             this.cloud_list.UseCompatibleStateImageBehavior = false;
+            this.cloud_list.DoubleClick += new System.EventHandler(this.cloud_list_DoubleClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "1");
+            this.imageList1.Images.SetKeyName(1, "2");
             // 
             // path_now
             // 
@@ -54,13 +62,6 @@
             this.path_now.ReadOnly = true;
             this.path_now.Size = new System.Drawing.Size(1139, 28);
             this.path_now.TabIndex = 1;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "1");
-            this.imageList1.Images.SetKeyName(1, "2");
             // 
             // Cloud_Explorer
             // 

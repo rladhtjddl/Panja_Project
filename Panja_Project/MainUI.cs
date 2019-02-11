@@ -91,68 +91,65 @@ namespace Panja_Project
 
             //Console.WriteLine(resultValue);
 
-            //Cloud_Explorer cld = new Cloud_Explorer();
-            //cld.ShowDialog();
-
+            Cloud_Explorer cld = new Cloud_Explorer();
+            cld.ShowDialog();
+            /*
             //ftp서버 연결
-            //string[] Jenjang_string = new string[50];
-            //int Jenjang_index = 0;
+            string[] Jenjang_string = new string[50];
+            int Jenjang_index = 0;
 
-            //string host = @"54.185.231.100";
-            //string username = "os";
-            //string password = "tlqkf";
-            //string localFileName = System.IO.Path.GetFileName(@"localfilename");
-            //string remoteDirectory = ".";
+            string host = @"54.185.231.100";
+            string username = "os";
+            string password = "tlqkf";
+            string localFileName = System.IO.Path.GetFileName(@"localfilename");
+            string remoteDirectory = ".";
 
-            //var sftp = new SftpClient(host, username, password);
+            var sftp = new SftpClient(host, username, password);
 
-            //sftp.Connect();
+            sftp.Connect();
+            
+            var files = sftp.ListDirectory(remoteDirectory);
+            foreach (var file in files)
+            {
+                Console.WriteLine(file.FullName);
+            }
 
-            //var files = sftp.ListDirectory(remoteDirectory);
-            //foreach (var file in files)
-            //{
-            //    Console.WriteLine(file.FullName);
-            //}
+            Console.WriteLine("파일 폴더로 이동");
+            sftp.ChangeDirectory("./file");
 
-            //Console.WriteLine("파일 폴더로 이동");
-            //sftp.ChangeDirectory("./file");
+            files = sftp.ListDirectory(remoteDirectory);
+            foreach (var file in files)
+            {
+                Console.WriteLine(file.FullName);
+                Jenjang_string[Jenjang_index++]= file.FullName;
+                
+                
+            }
 
-            //files = sftp.ListDirectory(remoteDirectory);
-            //foreach (var file in files)
-            //{
-            //    Console.WriteLine(file.FullName);
-            //    Jenjang_string[Jenjang_index++]= file.FullName;
+            Console.WriteLine("폴더1로 이동");
+            sftp.ChangeDirectory("./folder1");
 
+            files = sftp.ListDirectory(remoteDirectory);
+            foreach (var file in files)
+            {
+                Console.WriteLine(file.FullName);
+                Jenjang_string[Jenjang_index++] = file.FullName;
+            }
 
-            //}
+            sftp.Disconnect();
 
-            //Console.WriteLine("폴더1로 이동");
-            //sftp.ChangeDirectory("./folder1");
+            for(int i=0; i<Jenjang_index; i++)
+            {
+                Console.WriteLine("동근스트링["+i+"]" + Jenjang_string[i]);
+            }
 
-            //files = sftp.ListDirectory(remoteDirectory);
-            //foreach (var file in files)
-            //{
-            //    Console.WriteLine(file.FullName);
-            //    Jenjang_string[Jenjang_index++] = file.FullName;
-            //}
-
-            //sftp.Disconnect();
-
-            //for(int i=0; i<Jenjang_index; i++)
-            //{
-            //    Console.WriteLine("동근스트링["+i+"]" + Jenjang_string[i]);
-            //}
-
-            Osftp osftp = new Osftp();
-            osftp.connect();
-            osftp.getdir();
-
+            */
         }
 
-        
 
 
-    private void settings_Click(object sender, EventArgs e)
+
+        private void settings_Click(object sender, EventArgs e)
         {
 
         }
