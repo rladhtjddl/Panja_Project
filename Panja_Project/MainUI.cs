@@ -91,9 +91,9 @@ namespace Panja_Project
 
             //Console.WriteLine(resultValue);
 
-            //Cloud_Explorer cld = new Cloud_Explorer();
-            //cld.ShowDialog();
-
+            Cloud_Explorer cld = new Cloud_Explorer();
+            cld.ShowDialog();
+            /*
             //ftp서버 연결
             string[] Jenjang_string = new string[50];
             int Jenjang_index = 0;
@@ -107,7 +107,7 @@ namespace Panja_Project
             var sftp = new SftpClient(host, username, password);
 
             sftp.Connect();
-
+            
             var files = sftp.ListDirectory(remoteDirectory);
             foreach (var file in files)
             {
@@ -143,13 +143,13 @@ namespace Panja_Project
                 Console.WriteLine("동근스트링["+i+"]" + Jenjang_string[i]);
             }
 
-
+            */
         }
 
-        
 
 
-    private void settings_Click(object sender, EventArgs e)
+
+        private void settings_Click(object sender, EventArgs e)
         {
 
         }
