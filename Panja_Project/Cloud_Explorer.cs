@@ -21,14 +21,11 @@ namespace Panja_Project
     public partial class Cloud_Explorer : Form
     {
         
-
         string host = @"54.185.231.100";
         string username = "os";
         string password = "tlqkf";
         string localFileName = System.IO.Path.GetFileName(@"localfilename");
         string remoteDirectory = ".";
-        string old_path = "";
-        
 
         public Cloud_Explorer()
         {
@@ -122,10 +119,12 @@ namespace Panja_Project
 
                 var files = sftp.ListDirectory(remoteDirectory);
 
-                Console.WriteLine("파일 폴더로 이동");
+                //Console.WriteLine("파일 폴더로 이동");
 
                 sftp.ChangeDirectory(remoteDirectory);
-                
+
+                string current = sftp.WorkingDirectory;
+                path_now.Text = current;
 
                 foreach (var file in files)
                 {
@@ -183,31 +182,16 @@ namespace Panja_Project
             
             if (cloud_list.SelectedItems.Count == 1)
             {
-                string pathnow;
-                old_path = remoteDirectory;
-
-                
+                string current_path;
+                 
                 if (cloud_list.SelectedItems[0].ImageIndex == 0)
                 {
-
-                    pathnow = cloud_list.SelectedItems[0].Text;
-                    Console.WriteLine(pathnow + "로 이동");
-                    remoteDirectory = path_now.Text + "/" + pathnow;
-
-                    if (cloud_list.SelectedItems[0].Text == "..")
-                    {
-                        path_now.Text = old_path;
-                    }
-                    else
-                    {
-                        path_now.Text = remoteDirectory;
-                    }
-
-
+                    current_path = cloud_list.SelectedItems[0].Text;
+                    Console.WriteLine(current_path + "로 이동");
+                    remoteDirectory = path_now.Text + "/" + current_path;
+                    
                     cloud_list.Items.Clear();
                     settingListview();
-
-
                 }
                 else if (cloud_list.SelectedItems[0].ImageIndex == 0)
                 {
