@@ -122,10 +122,9 @@ namespace Panja_Project
 
                 var files = sftp.ListDirectory(remoteDirectory);
 
-                Console.WriteLine("파일 폴더로 이동");
-
+                //Console.WriteLine("파일 폴더로 이동");
                 sftp.ChangeDirectory(remoteDirectory);
-                
+                path_now.Text = sftp.WorkingDirectory;
 
                 foreach (var file in files)
                 {
@@ -184,8 +183,6 @@ namespace Panja_Project
             if (cloud_list.SelectedItems.Count == 1)
             {
                 string pathnow;
-                old_path = remoteDirectory;
-
                 
                 if (cloud_list.SelectedItems[0].ImageIndex == 0)
                 {
@@ -193,17 +190,7 @@ namespace Panja_Project
                     pathnow = cloud_list.SelectedItems[0].Text;
                     Console.WriteLine(pathnow + "로 이동");
                     remoteDirectory = path_now.Text + "/" + pathnow;
-
-                    if (cloud_list.SelectedItems[0].Text == "..")
-                    {
-                        path_now.Text = old_path;
-                    }
-                    else
-                    {
-                        path_now.Text = remoteDirectory;
-                    }
-
-
+                    
                     cloud_list.Items.Clear();
                     settingListview();
 
@@ -221,9 +208,11 @@ namespace Panja_Project
 
         private void cloud_list_MouseClick(object sender, MouseEventArgs e)
         {
+            if(cloud_list.SelectedItems.Count != 0)
+            { 
             if (e.Button.Equals(MouseButtons.Right))
             {
-                string selectedNickname = cloud_list.GetItemAt(e.X, e.Y).Text;
+                string selectedNickname = cloud_list.SelectedItems[0].Text;
 
 
                 //오른쪽 메뉴를 만듭니다 
@@ -249,7 +238,7 @@ namespace Panja_Project
                 m.MenuItems.Add(m2);
                 m.Show(cloud_list, new Point(e.X, e.Y));
             }
-
+            }
 
 
         }
