@@ -40,12 +40,16 @@
             this.cloud_list.Dock = System.Windows.Forms.DockStyle.Top;
             this.cloud_list.LargeImageList = this.imageList1;
             this.cloud_list.Location = new System.Drawing.Point(0, 0);
+            this.cloud_list.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cloud_list.Name = "cloud_list";
-            this.cloud_list.Size = new System.Drawing.Size(1139, 756);
+            this.cloud_list.Size = new System.Drawing.Size(797, 505);
             this.cloud_list.SmallImageList = this.imageList1;
             this.cloud_list.TabIndex = 0;
             this.cloud_list.UseCompatibleStateImageBehavior = false;
+            this.cloud_list.Click += new System.EventHandler(this.cloud_list_Click);
             this.cloud_list.DoubleClick += new System.EventHandler(this.cloud_list_DoubleClick);
+            this.cloud_list.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cloud_list_MouseClick);
+            this.cloud_list.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cloud_list_MouseClick);
             // 
             // imageList1
             // 
@@ -57,20 +61,22 @@
             // path_now
             // 
             this.path_now.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.path_now.Location = new System.Drawing.Point(0, 728);
+            this.path_now.Location = new System.Drawing.Point(0, 483);
+            this.path_now.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.path_now.Name = "path_now";
             this.path_now.ReadOnly = true;
-            this.path_now.Size = new System.Drawing.Size(1139, 28);
+            this.path_now.Size = new System.Drawing.Size(797, 21);
             this.path_now.TabIndex = 1;
             // 
             // Cloud_Explorer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1139, 756);
+            this.ClientSize = new System.Drawing.Size(797, 504);
             this.Controls.Add(this.path_now);
             this.Controls.Add(this.cloud_list);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Cloud_Explorer";
             this.Text = "Cloud_Explorer";
             this.Load += new System.EventHandler(this.Cloud_Explorer_Load);

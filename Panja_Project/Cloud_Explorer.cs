@@ -218,5 +218,45 @@ namespace Panja_Project
                 
             }
         }
+
+        private void cloud_list_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button.Equals(MouseButtons.Right))
+            {
+                string selectedNickname = cloud_list.GetItemAt(e.X, e.Y).Text;
+
+
+                //오른쪽 메뉴를 만듭니다 
+                ContextMenu m = new ContextMenu();
+                //메뉴에 들어갈 아이템을 만듭니다
+                MenuItem m1 = new MenuItem();
+                MenuItem m2 = new MenuItem();
+
+                m1.Text = "업로드하기";
+                m2.Text = "다운로드하기";
+
+
+                //업로드하기 클릭시 이벤트
+                m1.Click += (senders, es) => {
+                    Console.WriteLine(selectedNickname);
+
+                };
+
+                
+
+
+                m.MenuItems.Add(m1);
+                m.MenuItems.Add(m2);
+                m.Show(cloud_list, new Point(e.X, e.Y));
+            }
+
+
+
+        }
+
+        private void cloud_list_Click(object sender, EventArgs e)
+        {
+          
+        }
     }
 }
