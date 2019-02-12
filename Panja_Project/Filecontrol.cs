@@ -10,6 +10,8 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Amazon;
+using Renci.SshNet;
+using Renci.SshNet.Common;
 
 namespace Panja_Project
 {
