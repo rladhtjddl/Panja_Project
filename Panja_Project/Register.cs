@@ -170,6 +170,27 @@ namespace Panja_Project
 
         }
 
+        //판자식 보호 상속삭제(타겟 문서의 폴더 경로 ) : 상속 삭제 
+        public void panja_inherit_delete(string target_folder_dir)
+        {
+            
+            DirectorySecurity dSecurity = Directory.GetAccessControl(target_folder_dir);
+            dSecurity.SetAccessRuleProtection(true, false);
+            //dSecurity.ResetAccessRule((new FileSystemAccessRule(
+            //    cur_user,
+            //    FileSystemRights.FullControl,
+            //    AccessControlType.Allow)));
+
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+            //dSecurity.SetAccessRule(new FileSystemAccessRule(
+            //    "administrator",
+            //    FileSystemRights.FullControl,
+            //    AccessControlType.Allow));
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+        }
+
         //판자식 보호 우클릭 (명령어 , 타겟 프로그램의 폴더 경로) 
         public void rightClick(string command, string target_folder_dir)
         {

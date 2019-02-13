@@ -220,7 +220,7 @@ namespace Panja_Project
 
                 //-----------------------------------------
                 //윤식 : 이부분 input ACL 
-                pro.StandardInput.WriteLine("attrib " + '\u0022' + folder_path[i] + '\u0022' + " +r +s +h" + Environment.NewLine);
+                //pro.StandardInput.WriteLine("attrib " + '\u0022' + folder_path[i] + '\u0022' + " +r +s +h" + Environment.NewLine);
                 icon rgs = new icon();
 
                 //AccessAuthority aauth = new AccessAuthority(folder_path[i]);
@@ -228,7 +228,9 @@ namespace Panja_Project
 
                 rgs.createShortcut(Path.GetDirectoryName(folder_path[i]), Path.GetFileName(folder_path[i]));
                 //aauth.folderSecu_Test3();
-                rgs.panja_protect(folder_path[i]);
+                //rgs.panja_protect(folder_path[i]);
+                MessageBox.Show("Inherit Delete Excution");
+                rgs.panja_inherit_delete(folder_path[i]);
             }
 
             pro.StandardInput.Close();
