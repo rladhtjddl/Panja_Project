@@ -129,8 +129,11 @@ namespace Panja_Project
                 absPro += absExcuteDir[k];
                 absPro += @"\";
             }
-            absPro += @"Properties\test.txt";
-            string absTemp = @"C:\Users\rooto\Source\Repos\Panja_Project\Panja_Project\Properties";
+            //absPro += @"Properties\test.txt";
+            absPro = @"C:\Temp\test.txt";
+
+
+            //string absTemp = @"C:\Users\rooto\Source\Repos\Panja_Project\Panja_Project\Properties";
           
             //삭제 
             //absPro = @"C:\Program Files (x86)\Default Company Name\SetupSample\Panja\Properties\test.txt";

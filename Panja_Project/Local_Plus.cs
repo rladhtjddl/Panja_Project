@@ -127,80 +127,83 @@ namespace Panja_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
-          
-            JObject json = new JObject();
-            JArray jjson = new JArray();
-
-            string file_name, file_byte, file_link;
-            string[] file_save = new string[1000];
-            int count = 0;
-            
-
             int i;
-            //added 폴더 
             int lastnum = selectlist.Items.Count;
-            for (i = 0; i < lastnum; i++) {
-               
+            /*
+              JObject json = new JObject();
+              JArray jjson = new JArray();
 
-                //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
-                added_Folder[i] = selectlist.Items[i].Text;
-
-               
-
-                //Console.WriteLine(added_Folder[i]);
-              
-                string dirPath = added_Folder[i];
-                folder_path[i] = added_Folder[i];
-                
-                string[]  files = Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories);
-                foreach (string s in files)
-                {
-                    Console.WriteLine(s);
-                    file_save[count++] = s;
-                    
-                }
-
-            }
-    
-            for (i = 0; i < count - 1; i++)
-            {
-                file_info file_Inf = new file_info(file_save[i]);
-                Console.WriteLine(file_Inf.fname);
-                
-                json = JObject.FromObject(file_Inf);
-                jjson.Add(json);
-                
-            }
+              string file_name, file_byte, file_link;
+              string[] file_save = new string[1000];
+              int count = 0;
 
 
-           
+              int i;
+              //added 폴더 
+              int lastnum = selectlist.Items.Count;
+              for (i = 0; i < lastnum; i++) {
 
-            json.Add("link", jjson);
-            //리스트로 저장
-            //IList<file_list> save_json = json.ToObject<IList<file_list>>();
 
-            // write JSON directly to a file
-            using (StreamWriter file = File.CreateText(@"C:\Temp\file_list.json"))
-            using (JsonTextWriter writer = new JsonTextWriter(file))
-            {
-                json.WriteTo(writer);
-            }
+                  //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
+                  added_Folder[i] = selectlist.Items[i].Text;
 
-            //저장한파일 클라우드의 유저디렉토리에 저장
-            Filecontrol fi = new Filecontrol();
-            //fi.Put_json();
-            for(i=0; i<lastnum; i++)
-            {
-                fi.Put_json(folder_path[i]);
-            }
 
-            for(i=0; i<lastnum; i++)
-            {
-                System.IO.File.AppendAllText(@"../../Properties/test.txt", "\n" + folder_path[i], Encoding.Default);
-            }
 
+                  //Console.WriteLine(added_Folder[i]);
+
+                  string dirPath = added_Folder[i];
+                  folder_path[i] = added_Folder[i];
+
+                  string[]  files = Directory.GetFiles(dirPath, "*.*", SearchOption.AllDirectories);
+                  foreach (string s in files)
+                  {
+                      Console.WriteLine(s);
+                      file_save[count++] = s;
+
+                  }
+
+              }
+
+              for (i = 0; i < count - 1; i++)
+              {
+                  file_info file_Inf = new file_info(file_save[i]);
+                  Console.WriteLine(file_Inf.fname);
+
+                  json = JObject.FromObject(file_Inf);
+                  jjson.Add(json);
+
+              }
+
+
+
+
+              json.Add("link", jjson);
+              //리스트로 저장
+              //IList<file_list> save_json = json.ToObject<IList<file_list>>();
+
+              // write JSON directly to a file
+              using (StreamWriter file = File.CreateText(@"C:\Temp\file_list.json"))
+              using (JsonTextWriter writer = new JsonTextWriter(file))
+              {
+                  json.WriteTo(writer);
+              }
+
+              //저장한파일 클라우드의 유저디렉토리에 저장
+              Filecontrol fi = new Filecontrol();
+              //fi.Put_json();
+              for(i=0; i<lastnum; i++)
+              {
+                  fi.Put_json(folder_path[i]);
+              }
+
+              for(i=0; i<lastnum; i++)
+              {
+                  System.IO.File.AppendAllText(@"C:\Temp\test.txt", "\n" + folder_path[i], Encoding.Default);
+              }
+              */
 
             //-------------------------------폴더보호
+            /*
             System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
             System.Diagnostics.Process pro = new System.Diagnostics.Process();
 
@@ -213,7 +216,7 @@ namespace Panja_Project
 
             pro.StartInfo = proinfo;
             pro.Start();
-
+            */
             for (i = 0; i < lastnum; i++)
             {
                 Console.WriteLine(folder_path[i]);
@@ -230,12 +233,13 @@ namespace Panja_Project
                 //aauth.folderSecu_Test3();
                 //rgs.panja_protect(folder_path[i]);
                 MessageBox.Show("Inherit Delete Excution");
-                rgs.panja_inherit_delete(folder_path[i]);
+                //rgs.panja_inherit_delete(folder_path[i]);
+                rgs.panja_inherit_delete(@"C:\Temp\ttt");
             }
 
-            pro.StandardInput.Close();
+            //pro.StandardInput.Close();
 
-            pro.Close();
+            //pro.Close();
 
 
             this.Close();

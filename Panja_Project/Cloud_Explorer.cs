@@ -22,21 +22,25 @@ namespace Panja_Project
     {
         
 
-        string host = @"54.185.231.100";
-        string username = "os";
-        string password = "tlqkf";
+        public string host = @"54.185.231.100";
+        public string username = "os";
+        public string password = "tlqkf";
         string localFileName = System.IO.Path.GetFileName(@"localfilename");
         string remoteDirectory = ".";
-        string old_path = "";
+        public SftpClient sftp;
+
         
 
         public Cloud_Explorer()
         {
             InitializeComponent();
+            
         }
 
         private void Cloud_Explorer_Load(object sender, EventArgs e)
         {
+            sftp = new SftpClient(host, username, password);
+            sftp.Connect();
             /*
             JObject json = new JObject();
             JArray jjson = new JArray();
@@ -116,9 +120,9 @@ namespace Panja_Project
                 //기존의 파일 목록 제거
                 cloud_list.Items.Clear();
 
-                var sftp = new SftpClient(host, username, password);
+                
 
-                sftp.Connect();
+                
 
                 var files = sftp.ListDirectory(remoteDirectory);
 
@@ -136,6 +140,7 @@ namespace Panja_Project
                         {
                             Jenjang_folder[folder_index++] = file.Name;
                             Jenjang_folder_fullname[folder_index] = file.FullName;
+                            
                         }
                     }
                     else
@@ -165,7 +170,7 @@ namespace Panja_Project
                     cloud_list.Items.Add(cldItem);
                 }
 
-                sftp.Disconnect();
+                //sftp.Disconnect();
 
             }
             catch (Exception ex)
@@ -208,6 +213,7 @@ namespace Panja_Project
 
         private void cloud_list_MouseClick(object sender, MouseEventArgs e)
         {
+            
             if(cloud_list.SelectedItems.Count != 0)
             { 
             if (e.Button.Equals(MouseButtons.Right))
@@ -218,23 +224,32 @@ namespace Panja_Project
                 //오른쪽 메뉴를 만듭니다 
                 ContextMenu m = new ContextMenu();
                 //메뉴에 들어갈 아이템을 만듭니다
-                MenuItem m1 = new MenuItem();
                 MenuItem m2 = new MenuItem();
 
-                m1.Text = "업로드하기";
+                    string fullname_select;
+                    
                 m2.Text = "다운로드하기";
 
 
                 //업로드하기 클릭시 이벤트
-                m1.Click += (senders, es) => {
+                m2.Click += (senders, es) => {
                     Console.WriteLine(selectedNickname);
+                    fullname_select = path_now.Text +"/" +selectedNickname;
 
+                    FolderBrowserDialog dialog = new FolderBrowserDialog();
+                    dialog.ShowDialog();
+                    string select_path = dialog.SelectedPath;
+                    
+                    using (Stream fileStream = File.Create(select_path + "\\" + selectedNickname))
+                    {
+                        sftp.DownloadFile(fullname_select, fileStream);
+                    }
+                    MessageBox.Show("Download Complete");
                 };
 
                 
 
-
-                m.MenuItems.Add(m1);
+                    
                 m.MenuItems.Add(m2);
                 m.Show(cloud_list, new Point(e.X, e.Y));
             }
