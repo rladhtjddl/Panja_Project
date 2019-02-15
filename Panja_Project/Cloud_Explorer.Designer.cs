@@ -33,6 +33,7 @@
             this.cloud_list = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.path_now = new System.Windows.Forms.TextBox();
+            this.btn_upload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cloud_list
@@ -40,9 +41,8 @@
             this.cloud_list.Dock = System.Windows.Forms.DockStyle.Top;
             this.cloud_list.LargeImageList = this.imageList1;
             this.cloud_list.Location = new System.Drawing.Point(0, 0);
-            this.cloud_list.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cloud_list.Name = "cloud_list";
-            this.cloud_list.Size = new System.Drawing.Size(797, 505);
+            this.cloud_list.Size = new System.Drawing.Size(1139, 756);
             this.cloud_list.SmallImageList = this.imageList1;
             this.cloud_list.TabIndex = 0;
             this.cloud_list.UseCompatibleStateImageBehavior = false;
@@ -61,22 +61,37 @@
             // path_now
             // 
             this.path_now.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.path_now.Location = new System.Drawing.Point(0, 483);
-            this.path_now.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.path_now.Location = new System.Drawing.Point(0, 728);
             this.path_now.Name = "path_now";
             this.path_now.ReadOnly = true;
-            this.path_now.Size = new System.Drawing.Size(797, 21);
+            this.path_now.Size = new System.Drawing.Size(1139, 28);
             this.path_now.TabIndex = 1;
+            // 
+            // btn_upload
+            // 
+            this.btn_upload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_upload.BackColor = System.Drawing.Color.White;
+            this.btn_upload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_upload.Font = new System.Drawing.Font("굴림", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_upload.Image = ((System.Drawing.Image)(resources.GetObject("btn_upload.Image")));
+            this.btn_upload.Location = new System.Drawing.Point(1003, 596);
+            this.btn_upload.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_upload.Name = "btn_upload";
+            this.btn_upload.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_upload.Size = new System.Drawing.Size(89, 88);
+            this.btn_upload.TabIndex = 3;
+            this.btn_upload.UseVisualStyleBackColor = false;
+            this.btn_upload.Click += new System.EventHandler(this.btn_upload_Click);
             // 
             // Cloud_Explorer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(797, 504);
+            this.ClientSize = new System.Drawing.Size(1139, 756);
+            this.Controls.Add(this.btn_upload);
             this.Controls.Add(this.path_now);
             this.Controls.Add(this.cloud_list);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Cloud_Explorer";
             this.Text = "Cloud_Explorer";
             this.Load += new System.EventHandler(this.Cloud_Explorer_Load);
@@ -90,5 +105,6 @@
         private System.Windows.Forms.ListView cloud_list;
         private System.Windows.Forms.TextBox path_now;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button btn_upload;
     }
 }

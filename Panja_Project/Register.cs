@@ -26,11 +26,9 @@ namespace Panja_Project
         private string total_dir;
 
 
-
         //getter &  settter
         public void set_totaldir (string totaldir)
         {
-
             this.total_dir = totaldir;
         }
 
@@ -175,9 +173,11 @@ namespace Panja_Project
         //판자식 보호 상속삭제(타겟 문서의 폴더 경로 ) : 상속 삭제 
         public void panja_inherit_delete(string target_folder_dir)
         {
-
             DirectoryInfo dInfo = new DirectoryInfo(target_folder_dir);
+            
             DirectorySecurity dSecurity = dInfo.GetAccessControl();
+
+            //DirectorySecurity dSecurity = Directory.GetAccessControl(target_folder_dir);
             
             dSecurity.SetAccessRuleProtection(true, false);
             //dSecurity.ResetAccessRule((new FileSystemAccessRule(
@@ -187,11 +187,11 @@ namespace Panja_Project
 
             Directory.SetAccessControl(target_folder_dir, dSecurity);
 
-            //dSecurity.SetAccessRule(new FileSystemAccessRule(
-            //    "administrator",
-            //    FileSystemRights.FullControl,
-            //    AccessControlType.Allow));
-           // Directory.SetAccessControl(target_folder_dir, dSecurity);
+            dSecurity.SetAccessRule(new FileSystemAccessRule(
+                "administrator",
+                FileSystemRights.FullControl,
+                AccessControlType.Deny));
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
 
         }
 
