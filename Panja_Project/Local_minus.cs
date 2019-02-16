@@ -26,7 +26,7 @@ namespace Panja_Project
         private void Local_Minus_Load(object sender, EventArgs e)
         {
             //폼실행시 기준 경로가 파일이라 ㄱㅊ 
-            string[] allLines = File.ReadAllLines(@"../../Properties\test.txt", Encoding.Default);
+            string[] allLines = File.ReadAllLines(@"C:\Temp\test.txt", Encoding.Default);
 
             int i;
             for (i = 0; i < allLines.Length; i++)
