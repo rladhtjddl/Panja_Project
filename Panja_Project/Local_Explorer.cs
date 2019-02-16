@@ -77,7 +77,7 @@ namespace Panja_Project
 
 
         public Local_Explorer()
-        {
+{
             InitializeComponent();
             listView1.View = View.LargeIcon;
         //    SettingListVeiw(@"C:\");
@@ -160,6 +160,11 @@ namespace Panja_Project
             int i;
             for (i = 0; i < allLines.Length; i++)
             {
+                if (!allLines[i].Equals(""))
+                {
+                    FolderAccess access = new FolderAccess();
+                    access.panja_inherit_recover(allLines[i]);
+                }
                 TreeNode rootNode = new TreeNode(allLines[i]);
                 //rootNode.Text = allLines[i];
                 rootNode.ImageIndex = 2;
@@ -441,8 +446,9 @@ namespace Panja_Project
                     SettingListVeiw(processPath);
                 }
                 else
-                {   
-                    Process.Start("../../Properties\\detect_ransom.exe", processPath);
+                {
+                    //Process.Start("../../Properties\\detect_ransom.exe", processPath);
+                    Process.Start(processPath);
                 }
 
 
