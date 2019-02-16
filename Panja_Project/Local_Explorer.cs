@@ -441,8 +441,7 @@ namespace Panja_Project
                     SettingListVeiw(processPath);
                 }
                 else
-                {
-
+                {   
                     Process.Start("../../Properties\\detect_ransom.exe", processPath);
                 }
 
