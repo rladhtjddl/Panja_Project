@@ -303,7 +303,7 @@ namespace Panja_Project
                 //aauth.folderSecu_Recover();
 
                 FolderAccess rgs = new FolderAccess();
-                rgs.panja_recover(added_Folder[i]);
+                rgs.panja_inherit_recover(added_Folder[i]);
 
 
                 pro.StandardInput.Write("attrib " + '\u0022' + added_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);

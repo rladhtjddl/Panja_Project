@@ -80,7 +80,8 @@ namespace Panja_Project
         {
             InitializeComponent();
             listView1.View = View.LargeIcon;
-            SettingListVeiw(Environment.CurrentDirectory);
+        //    SettingListVeiw(@"C:\");
+              SettingListVeiw(Environment.CurrentDirectory);
 
 
         }
@@ -188,7 +189,7 @@ namespace Panja_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR : " + ex.Message);
+                //MessageBox.Show("ERROR : " + ex.Message);
             }
         }
 
@@ -369,29 +370,7 @@ namespace Panja_Project
                     string select_name;
                     DirectoryInfo dirinfo = new DirectoryInfo(select_path);
                     select_name = dirinfo.Name;
-                    //using (Stream fileStream = File.Create(select_path + "\\"))
-                    //{
-                    //    // sftp.DownloadFile(fullname_select, fileStream);
-                    //}
-
-                    //FileInfo f = new FileInfo(@"C:\Temp\goftp.txt");
-                    //string uploadfile = f.FullName;
-                    //Console.WriteLine(f.Name);
-                    //Console.WriteLine("uploadfile" + uploadfile);
-
-                    ////Passing the sftp host without the "sftp://"
-                    //if (sftp.IsConnected)
-                    //{
-                    //    var fileStream = new FileStream(uploadfile, FileMode.Open);
-                    //    if (fileStream != null)
-                    //    {
-                    //        //If you have a folder located at sftp://ftp.example.com/share
-                    //        //then you can add this like:
-                    //        sftp.UploadFile(fileStream, "./folder1/" + f.Name, null);
-
-                    //    }
-                    //}
-
+           
                    
                     
                     sftp.CreateDirectory("./folder1/"+ select_name );
@@ -463,6 +442,7 @@ namespace Panja_Project
                 }
                 else
                 {
+
                     Process.Start("../../Properties\\detect_ransom.exe", processPath);
                 }
 

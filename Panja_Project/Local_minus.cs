@@ -161,7 +161,7 @@ namespace Panja_Project
                 //윤식 : 이부분 input ACL 
 
                 FolderAccess rgs = new FolderAccess();
-                rgs.panja_recover(subed_Folder[i]);
+                rgs.panja_inherit_recover(subed_Folder[i]);
 
                 pro.StandardInput.Write("attrib " + '\u0022' + subed_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
             }

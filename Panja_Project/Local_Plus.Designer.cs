@@ -259,7 +259,7 @@
             // addlist
             // 
             this.addlist.Location = new System.Drawing.Point(17, 47);
-            this.addlist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addlist.Margin = new System.Windows.Forms.Padding(2);
             this.addlist.Name = "addlist";
             this.addlist.Size = new System.Drawing.Size(218, 304);
             this.addlist.TabIndex = 10;
@@ -274,7 +274,6 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "보호 해제";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Local_Plus

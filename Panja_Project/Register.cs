@@ -180,20 +180,38 @@ namespace Panja_Project
             //DirectorySecurity dSecurity = Directory.GetAccessControl(target_folder_dir);
             
             dSecurity.SetAccessRuleProtection(true, false);
-            //dSecurity.ResetAccessRule((new FileSystemAccessRule(
-            //    cur_user,
-            //    FileSystemRights.FullControl,
-            //    AccessControlType.Allow)));
-
             Directory.SetAccessControl(target_folder_dir, dSecurity);
 
             dSecurity.SetAccessRule(new FileSystemAccessRule(
-                "administrator",
-                FileSystemRights.FullControl,
-                AccessControlType.Deny));
+                "administrators",
+                FileSystemRights.ReadAndExecute,
+                AccessControlType.Allow));
             Directory.SetAccessControl(target_folder_dir, dSecurity);
 
         }
+
+
+        //판자식 보호 상속삭제해제(타겟 문서의 폴더 경로 ) : 상속 삭제 
+        public void panja_inherit_recover(string target_folder_dir)
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(target_folder_dir);
+
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+            
+
+            dSecurity.SetAccessRuleProtection(false, true);
+          
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+            dSecurity.SetAccessRule(new FileSystemAccessRule(
+                "administrators",
+                FileSystemRights.FullControl,
+                AccessControlType.Allow));
+
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+        }
+
 
         //판자식 보호 우클릭 (명령어 , 타겟 프로그램의 폴더 경로) 
         public void rightClick(string command, string target_folder_dir)
@@ -225,9 +243,9 @@ namespace Panja_Project
                 icon shortcut = new icon();            
                 
                 shortcut.createShortcut(Environment.CurrentDirectory, Path.GetFileName(target_folder_dir));
-                AccessAuthority auth = new AccessAuthority(target_folder_dir);
-                auth.folderSecu_Test3();
-
+                //AccessAuthority auth = new AccessAuthority(target_folder_dir);
+                //auth.folderSecu_Test3();
+                shortcut.panja_inherit_delete(target_folder_dir);
                 //MessageBox.Show("Target : " + address + "\n" + "shortcut a : " + Environment.CurrentDirectory + "\n shortcut b :" + Path.GetFileName(address));
 
             }
