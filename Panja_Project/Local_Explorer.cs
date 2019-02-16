@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Renci.SshNet;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -12,6 +14,15 @@ namespace Panja_Project
     public partial class Local_Explorer : Form
     {
         public string freepath;
+
+        public string host = @"54.185.231.100";
+        public string username = "os";
+        public string password = "tlqkf";
+        public string pub_link;
+        string localFileName = System.IO.Path.GetFileName(@"localfilename");
+        string remoteDirectory = ".";
+        public SftpClient sftp;
+
 
         internal static class NativeMethods
         {
@@ -87,6 +98,7 @@ namespace Panja_Project
 
         private void Local_Explorer_Load(object sender, EventArgs e)
         {
+
             /*
             //현재 로컬 컴퓨터에 존재하는 드라이브 정보 검색하여 트리노드에 추가
             DriveInfo[] allDrives = DriveInfo.GetDrives();
@@ -256,6 +268,7 @@ namespace Panja_Project
                 listView1.Items.Clear();
                 //현재 경로를 표시
                 textBox1.Text = sFullPath;
+                pub_link = textBox1.Text;
                 freepath = "C:\\" + sFullPath.Substring(4);
 
 
@@ -326,6 +339,7 @@ namespace Panja_Project
         {
             if (e.Button.Equals(MouseButtons.Right))
             {
+                
 
                 //오른쪽 메뉴를 만듭니다 
                 ContextMenu m = new ContextMenu();
@@ -339,34 +353,49 @@ namespace Panja_Project
 
                 //업로드하기 클릭시 이벤트
                 m1.Click += (senders, es) => {
+
+                    //ftp연결
+                    sftp = new SftpClient(host, username, password);
+                    sftp.Connect();
+
                     Console.WriteLine("업로드클릭");
 
+                    Console.WriteLine(pub_link);
+                    
 
-                    //cmd창
-                    System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
-                    System.Diagnostics.Process pro = new System.Diagnostics.Process();
+                    FolderBrowserDialog dialog = new FolderBrowserDialog();
+                    dialog.ShowDialog();
+                    string select_path = dialog.SelectedPath;
+                    string select_name;
+                    DirectoryInfo dirinfo = new DirectoryInfo(select_path);
+                    select_name = dirinfo.Name;
+                    //using (Stream fileStream = File.Create(select_path + "\\"))
+                    //{
+                    //    // sftp.DownloadFile(fullname_select, fileStream);
+                    //}
 
-                    proinfo.FileName = @"cmd";
-                    proinfo.CreateNoWindow = false; //띄우기 안띄우기
-                    proinfo.UseShellExecute = false;
-                    proinfo.RedirectStandardOutput = true;
-                    proinfo.RedirectStandardInput = true;
-                    proinfo.RedirectStandardError = true;
+                    //FileInfo f = new FileInfo(@"C:\Temp\goftp.txt");
+                    //string uploadfile = f.FullName;
+                    //Console.WriteLine(f.Name);
+                    //Console.WriteLine("uploadfile" + uploadfile);
 
-                    pro.StartInfo = proinfo;
-                    pro.Start();
+                    ////Passing the sftp host without the "sftp://"
+                    //if (sftp.IsConnected)
+                    //{
+                    //    var fileStream = new FileStream(uploadfile, FileMode.Open);
+                    //    if (fileStream != null)
+                    //    {
+                    //        //If you have a folder located at sftp://ftp.example.com/share
+                    //        //then you can add this like:
+                    //        sftp.UploadFile(fileStream, "./folder1/" + f.Name, null);
 
-                    pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
-                    pro.StandardInput.Write("psftp ubuntu@34.216.228.162 -pw ubuntu" + Environment.NewLine); //우분투 접속
-                    pro.StandardInput.Write("cd panja/imsi" + Environment.NewLine);
-                    pro.StandardInput.Write("put -r " + freepath + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
-                    pro.StandardInput.Close();
+                    //    }
+                    //}
 
-                    string resultValue = pro.StandardOutput.ReadToEnd();
-                    pro.WaitForExit();
-                    pro.Close();
-
-                    Console.WriteLine(resultValue);
+                   
+                    
+                    sftp.CreateDirectory("./folder1/"+ select_name );
+                    UploadDirectory(sftp, select_path , "./folder1/"+ select_name);
 
                 };
 
@@ -380,6 +409,38 @@ namespace Panja_Project
 
             }
         }
+
+        void UploadDirectory(SftpClient client, string localPath, string remotePath)
+        {
+            Console.WriteLine("Uploading directory {0} to {1}", localPath, remotePath);
+
+            IEnumerable<FileSystemInfo> infos =
+                new DirectoryInfo(localPath).EnumerateFileSystemInfos();
+            foreach (FileSystemInfo info in infos)
+            {
+                if (info.Attributes.HasFlag(FileAttributes.Directory))
+                {
+                    string subPath = remotePath + "/" + info.Name;
+                    if (!client.Exists(subPath))
+                    {
+                        client.CreateDirectory(subPath);
+                    }
+                    UploadDirectory(client, info.FullName, remotePath + "/" + info.Name);
+                }
+                else
+                {
+                    using (Stream fileStream = new FileStream(info.FullName, FileMode.Open))
+                    {
+                        Console.WriteLine(
+                            "Uploading {0} ({1:N0} bytes)",
+                            info.FullName, ((FileInfo)info).Length);
+
+                        client.UploadFile(fileStream, remotePath + "/" + info.Name);
+                    }
+                }
+            }
+        }
+
 
         private void listView1_DoubleClick(object sender, EventArgs e)  //해당 아이템 더블클릭하면 실행함
         {

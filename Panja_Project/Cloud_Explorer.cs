@@ -265,10 +265,48 @@ namespace Panja_Project
 
         private void btn_upload_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog upload = new FolderBrowserDialog();
-            upload.ShowDialog();
-            string select_folder = upload.SelectedPath;
-            UploadDirectory(sftp, select_folder, ".");
+            //ftp연결
+            sftp = new SftpClient(host, username, password);
+            sftp.Connect();
+
+            Console.WriteLine("업로드클릭");
+            
+
+
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.ShowDialog();
+            string select_path = dialog.SelectedPath;
+            string select_name;
+            DirectoryInfo dirinfo = new DirectoryInfo(select_path);
+            select_name = dirinfo.Name;
+            //using (Stream fileStream = File.Create(select_path + "\\"))
+            //{
+            //    // sftp.DownloadFile(fullname_select, fileStream);
+            //}
+
+            //FileInfo f = new FileInfo(@"C:\Temp\goftp.txt");
+            //string uploadfile = f.FullName;
+            //Console.WriteLine(f.Name);
+            //Console.WriteLine("uploadfile" + uploadfile);
+
+            ////Passing the sftp host without the "sftp://"
+            //if (sftp.IsConnected)
+            //{
+            //    var fileStream = new FileStream(uploadfile, FileMode.Open);
+            //    if (fileStream != null)
+            //    {
+            //        //If you have a folder located at sftp://ftp.example.com/share
+            //        //then you can add this like:
+            //        sftp.UploadFile(fileStream, "./folder1/" + f.Name, null);
+
+            //    }
+            //}
+
+
+
+            sftp.CreateDirectory("./folder1/" + select_name);
+            UploadDirectory(sftp, select_path, "./folder1/" + select_name);
+
             MessageBox.Show("Upload Complete");
 
         }
