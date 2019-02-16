@@ -15,10 +15,15 @@ using Tamir.Streams;
 using Tamir.SharpSsh;
 using Renci.SshNet;
 using Renci.SshNet.Common;
+using Renci.SshNet.Sftp;
 
 namespace Panja_Project
 {
-    public partial class Cloud_Explorer : Form
+   
+
+
+
+public partial class Cloud_Explorer : Form
     {
         
 
@@ -41,67 +46,7 @@ namespace Panja_Project
         {
             sftp = new SftpClient(host, username, password);
             sftp.Connect();
-            /*
-            JObject json = new JObject();
-            JArray jjson = new JArray();
-            long count;
-            string json_t;
-            Filecontrol fi = new Filecontrol();
-            fi.Get_json();
-
-            using (StreamReader r = new StreamReader(@"../../Properties/file_list.Json"))
-            {
-                json_s = r.ReadToEnd();
-                json_t = json_s.ToString();
-            }
-
-            json = JObject.Parse(json_t);
-            count = json["link"].LongCount();
             
-
-            for (int q = 0; q < count; q++)
-            {
-                sum_link[q] = json["link"][q]["flink"].ToString();
-                Console.WriteLine(sum_link[q]);
-            }
-            //동근 sum_link[] -> 0~count 까지가 경로 저장해둔거
-  
-            
-            //String addr = "/home/ubuntu/panja/imsi";
-
-            //cmd창
-            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
-            System.Diagnostics.Process pro = new System.Diagnostics.Process();
-
-            proinfo.FileName = @"cmd";
-            proinfo.CreateNoWindow = true; //띄우기 안띄우기
-            proinfo.UseShellExecute = false;
-            proinfo.RedirectStandardOutput = true;
-            proinfo.RedirectStandardInput = true;
-            proinfo.RedirectStandardError = true;
-
-
-            pro.StartInfo = proinfo;
-            pro.Start();
-
-            pro.StandardInput.Write("cd ../../Properties" + Environment.NewLine);
-            pro.StandardInput.Write("psftp -pw ubuntu ubuntu@54.187.238.235" + Environment.NewLine); //우분투 접속
-            pro.StandardInput.Write("cd /home/ubuntu/panja/user1" + Environment.NewLine);
-            pro.StandardInput.Write("ls" + Environment.NewLine); //파일 전송 (경로 나중에 바꿀것)
-            
-
-            //SettingListView(addr);
-
-            pro.StandardInput.Close();
-
-            string resultValue = pro.StandardOutput.ReadToEnd();
-            
-            Console.WriteLine(resultValue);
-            pro.WaitForExit();
-            pro.Close();
-            */
-
-            //string[] allLines = File.ReadAllLines(@"../../Properties\test2.txt", Encoding.Default);
             path_now.Text = remoteDirectory;
             settingListview();
         }
@@ -223,19 +168,56 @@ namespace Panja_Project
 
                 //오른쪽 메뉴를 만듭니다 
                 ContextMenu m = new ContextMenu();
-                //메뉴에 들어갈 아이템을 만듭니다
-                MenuItem m2 = new MenuItem();
+                    //메뉴에 들어갈 아이템을 만듭니다
+                    MenuItem m1 = new MenuItem();
+                    MenuItem m2 = new MenuItem();
 
                     string fullname_select;
-                    
-                m2.Text = "다운로드하기";
+                    m1.Text = "다운로드(폴더)";
+                    m2.Text = "다운로드(파일)";
+                    fullname_select = path_now.Text + "/" + selectedNickname;
+
+                    //다운로드(폴더) 클릭시 이벤트
+                    m1.Click += (senders, es) => {
+                        Console.WriteLine("클릭됌!");
+                        FolderBrowserDialog dialog = new FolderBrowserDialog();
+                        dialog.ShowDialog();
+                        string select_path = dialog.SelectedPath;
+
+                        //폴더만들기
+                        string sDirPath;
+                        sDirPath = select_path + @"\"+ selectedNickname;
+                        DirectoryInfo di = new DirectoryInfo(sDirPath);
+                        if (di.Exists == false)
+                        {
+                            di.Create();
+                        }
 
 
-                //업로드하기 클릭시 이벤트
-                m2.Click += (senders, es) => {
+
+
+                        Console.WriteLine("어디로가니 : " + sDirPath);
+                        DownloadDirectory(sftp, fullname_select, sDirPath);
+                        MessageBox.Show("Download Complete");
+
+
+
+
+
+
+
+
+
+
+
+
+                    };
+
+
+
+                    //다운로드(파일) 클릭시 이벤트
+                    m2.Click += (senders, es) => {
                     Console.WriteLine(selectedNickname);
-                    fullname_select = path_now.Text +"/" +selectedNickname;
-
                     FolderBrowserDialog dialog = new FolderBrowserDialog();
                     dialog.ShowDialog();
                     string select_path = dialog.SelectedPath;
@@ -247,9 +229,9 @@ namespace Panja_Project
                     MessageBox.Show("Download Complete");
                 };
 
-                
 
-                    
+
+                m.MenuItems.Add(m1);
                 m.MenuItems.Add(m2);
                 m.Show(cloud_list, new Point(e.X, e.Y));
             }
@@ -341,5 +323,40 @@ namespace Panja_Project
                 }
             }
         }
+
+        
+
+
+        private static void DownloadDirectory(SftpClient client, string source, string destination)
+        {
+            var files = client.ListDirectory(source);
+            foreach (var file in files)
+            {
+                if (!file.IsDirectory && !file.IsSymbolicLink)
+                {
+                    DownloadFile(client, file, destination);
+                }
+                else if (file.IsSymbolicLink)
+                {
+                    Console.WriteLine("Ignoring symbolic link {0}", file.FullName);
+                }
+                else if (file.Name != "." && file.Name != "..")
+                {
+                    var dir = Directory.CreateDirectory(Path.Combine(destination, file.Name));
+                    DownloadDirectory(client, file.FullName, dir.FullName);
+                }
+            }
+        }
+
+        private static void DownloadFile(SftpClient client, SftpFile file, string directory)
+        {
+            Console.WriteLine("Downloading {0}", file.FullName);
+            using (Stream fileStream = File.OpenWrite(Path.Combine(directory, file.Name)))
+            {
+                client.DownloadFile(file.FullName, fileStream);
+            }
+        }
+
+
     }
 }
