@@ -16,6 +16,11 @@ namespace Panja_Project
 {
     public partial class Local_Minus : Form
     {
+        
+        public int length;
+        public string[] new_list = new string[100];
+
+
         public String[] subed_Folder = new string[10000];
 
         public Local_Minus()
@@ -23,11 +28,55 @@ namespace Panja_Project
             InitializeComponent();
         }
 
+        public void get_list(string[] list, int count)
+        {
+            length = count;
+            new_list = list;
+        }
+
+
         private void Local_Minus_Load(object sender, EventArgs e)
         {
             //폼실행시 기준 경로가 파일이라 ㄱㅊ 
-            string[] allLines = File.ReadAllLines(@"C:\Temp\test.txt", Encoding.Default);
+            //string[] allLines = File.ReadAllLines(@"C:\Temp\test.txt", Encoding.Default);
+            string[] allLines = new_list;
 
+            hex_handler hex = new hex_handler();
+
+            int hex_length = hex.hex_length();
+            int start_point = 0x500;
+
+            //string[] allLines = new string[j];
+
+            allLines[0] = hex.hex_read(0x500);
+
+            for (int y = 0; y < hex_length; y++)
+            {
+                allLines[y] = hex.hex_read(start_point);
+                start_point += 0x100;
+            }
+
+            MessageBox.Show("얻은 길이 " + hex.hex_length());
+
+            int i;
+            for (i = 0; i < hex_length; i++)
+            {
+                if (!allLines[i].Equals(""))
+                {
+                    FolderAccess access = new FolderAccess();
+                    //access.panja_inherit_recover(allLines[i]);
+                }
+                TreeNode rootNode = new TreeNode(allLines[i]);
+                //rootNode.Text = allLines[i];
+                rootNode.ImageIndex = 2;
+                rootNode.SelectedImageIndex = 2;
+                List_own.Nodes.Add(rootNode);
+            }
+
+
+
+            List_own.FullRowSelect = true;
+            /*
             int i;
             for (i = 0; i < allLines.Length; i++)
             {
@@ -38,9 +87,7 @@ namespace Panja_Project
                 List_own.Nodes.Add(rootNode);
                 //Fill(rootNode, allLines[i]);
             }
-
-
-            List_own.FullRowSelect = true;
+            */
         }
         /* 하위를 해제할수는 없자나
         private void Fill(TreeNode dirNode, String url)
@@ -132,42 +179,76 @@ namespace Panja_Project
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
 
-            System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
-            System.Diagnostics.Process pro = new System.Diagnostics.Process();
-
-            proinfo.FileName = @"cmd";
-            proinfo.CreateNoWindow = false; //띄우기 안띄우기
-            proinfo.UseShellExecute = false;
-            proinfo.RedirectStandardOutput = true;
-            proinfo.RedirectStandardInput = true;
-            proinfo.RedirectStandardError = true;
-
-            pro.StartInfo = proinfo;
-            pro.Start();
-
-            int i;
-            //added 폴더 
-            int lastnum = List_go.Items.Count;
-            for (i = 0; i < lastnum; i++)
+            if (List_go.Items.Count != 0)
             {
-                //added_Folder : 해당 보호폴더 첫 헤더 폴더 (타겟폴더)
-                subed_Folder[i] = List_go.Items[i].Text;
 
-                //윤식 : 이부분 input ACL 
+                System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
+                System.Diagnostics.Process pro = new System.Diagnostics.Process();
 
-                FolderAccess rgs = new FolderAccess();
-                rgs.panja_inherit_recover(subed_Folder[i]);
+                proinfo.FileName = @"cmd";
+                proinfo.CreateNoWindow = false; //띄우기 안띄우기
+                proinfo.UseShellExecute = false;
+                proinfo.RedirectStandardOutput = true;
+                proinfo.RedirectStandardInput = true;
+                proinfo.RedirectStandardError = true;
 
-                pro.StandardInput.Write("attrib " + '\u0022' + subed_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
+                pro.StartInfo = proinfo;
+                pro.Start();
+
+                hex_handler hex = new hex_handler();
+
+                int i;
+
+                length = hex.hex_length();
+
+                //added 폴더 
+                int lastnum = List_go.Items.Count;
+
+
+                for (i = 0; i < length; i++)
+                {
+                    for (int z = 0; z < lastnum; z++)
+                    {
+                        if (new_list[i] == List_go.Items[z].Text)
+                        {
+                            new_list[i] = null;
+                            hex.hex_length_set(hex.hex_length() - 1);
+                        }
+                    }
+
+                    //윤식 : 이부분 input ACL 
+                    //FolderAccess rgs = new FolderAccess();
+
+                    //if(new_list[i] != null)
+                    //    rgs.panja_inherit_recover(new_list[i]);
+                    //pro.StandardInput.Write("attrib " + '\u0022' + subed_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
+                }
+
+                //length = hex.hex_length();
+
+                int start_point = 0x500 - 0x001;
+
+                for (int j = 0; j < length; j++)
+                {
+                    if (new_list[j] == null)
+                        continue;
+                    hex.hex_write1(new_list[j], start_point);
+                    start_point += 0x100;
+                    //System.IO.File.AppendAllText(@"C:\Temp\test.txt", Environment.NewLine + folder_path[i] , Encoding.Default);
+                }
+
+
+                pro.StandardInput.Close();
+                pro.Close();
+                this.Close();
             }
-            pro.StandardInput.Close();
-
-            pro.Close();
+            
 
         }
     }

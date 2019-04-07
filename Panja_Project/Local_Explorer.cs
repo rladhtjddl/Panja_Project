@@ -11,8 +11,17 @@ using System.Windows.Forms;
 
 namespace Panja_Project
 {
-    public partial class Local_Explorer : Form
+public partial class Local_Explorer : Form
     {
+
+        
+
+        static hex_handler hex = new hex_handler();
+
+        static int length = hex.hex_length();
+        string[] allLines = new string[100];
+        public string new_key;
+
         public string freepath;
 
         public string host = @"54.185.231.100";
@@ -85,9 +94,24 @@ namespace Panja_Project
 
 
         }
+        public Local_Explorer(string key)
+        {
+            InitializeComponent();
+            listView1.View = View.LargeIcon;
+            //    SettingListVeiw(@"C:\");
+            SettingListVeiw(Environment.CurrentDirectory);
+            new_key = key;
+
+        }
 
         public Local_Explorer(string command, string targetAddress)
         {
+
+            InitializeComponent();
+            listView1.View = View.LargeIcon;
+            //    SettingListVeiw(@"C:\");
+
+
             string getURI = targetAddress; //전달받은 폴더경로 지금은 하드코딩해둠
 
             if (getURI != null)
@@ -95,10 +119,15 @@ namespace Panja_Project
                 SettingListVeiw(getURI);
                 textBox1.Text = getURI;
             }
+            else {
+                MessageBox.Show("hi");
+            }
         }
 
         private void Local_Explorer_Load(object sender, EventArgs e)
         {
+            //MessageBox.Show(new_key);
+
 
             /*
             //현재 로컬 컴퓨터에 존재하는 드라이브 정보 검색하여 트리노드에 추가
@@ -145,15 +174,19 @@ namespace Panja_Project
             //absPro += @"Properties\test.txt";
             absPro = @"C:\Temp\test.txt";
 
+            treeview_fill();
+        }
 
+        void treeview_fill() {
+            hex_handler hex = new hex_handler();
             //string absTemp = @"C:\Users\rooto\Source\Repos\Panja_Project\Panja_Project\Properties";
-          
+
             //삭제 
             //absPro = @"C:\Program Files (x86)\Default Company Name\SetupSample\Panja\Properties\test.txt";
-            
-            //확인용
-            MessageBox.Show("Path : " + absPro);
 
+            //확인용
+            //MessageBox.Show("얻은 문자열 " + hex.hex_read(0x500));
+            /*
 
             string[] allLines = File.ReadAllLines(absPro, Encoding.Default);
 
@@ -172,10 +205,43 @@ namespace Panja_Project
                 treeView1.Nodes.Add(rootNode);
                 Fill(rootNode, allLines[i]);
             }
+            */
+            int j = hex.hex_length();
+            int start_point = 0x500;
+
+            //string[] allLines = new string[j];
+
+            allLines[0] = hex.hex_read(0x500);
+
+            for (int y = 0; y < j; y++)
+            {
+                allLines[y] = hex.hex_read(start_point);
+                start_point += 0x100;
+            }
+
+            //MessageBox.Show("얻은 길이 " + hex.hex_length());
+
+            int i;
+            for (i = 0; i < j; i++)
+            {
+                if (!allLines[i].Equals(""))
+                {
+                    FolderAccess access = new FolderAccess();
+                    //access.panja_inherit_recover(allLines[i]);
+                }
+                TreeNode rootNode = new TreeNode(allLines[i]);
+                //rootNode.Text = allLines[i];
+                rootNode.ImageIndex = 2;
+                rootNode.SelectedImageIndex = 2;
+                treeView1.Nodes.Add(rootNode);
+                Fill(rootNode, allLines[i]);
+            }
+
 
 
             listView1.FullRowSelect = true;
         }
+
 
         private void Fill(TreeNode dirNode, String url)
         {
@@ -316,6 +382,8 @@ namespace Panja_Project
                 string[] s = Directory.GetFileSystemEntries(sFullPath);
                 foreach (string file in s)
                 {
+                    
+
                     IntPtr himl = NativeMethods.SHGetFileInfo(file,
                               0,
                               ref shfi,
@@ -324,7 +392,7 @@ namespace Panja_Project
                                | NativeMethods.SHGFI_SYSICONINDEX
                                | NativeMethods.SHGFI_LARGEICON);
                     //Debug.Assert(himl == hSysImgList); // should be the same imagelist as the one we set 
-                    listView1.Items.Add(shfi.szDisplayName, shfi.iIcon);
+                    listView1.Items.Add(Path.GetFileName(file), shfi.iIcon);
                 }
 
 
@@ -456,13 +524,10 @@ namespace Panja_Project
         }
 
 
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-            Local_Plus plus = new Local_Plus();
-            plus.ShowDialog();
-
+      
+        void form_closed(object sender, FormClosedEventArgs e) {
+            treeView1.Nodes.Clear();
+            treeview_fill();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -477,18 +542,27 @@ namespace Panja_Project
             //foler_imsi ii = new foler_imsi();
             //ii.ShowDialog();
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Local_Minus minus = new Local_Minus();
-            minus.ShowDialog();
-        }
-
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
         }
+        
 
+        private void plus_Click(object sender, EventArgs e)
+        {
+            Local_Plus plus = new Local_Plus(new_key);
+            plus.get_list(allLines, length);
+            plus.FormClosed += new FormClosedEventHandler(form_closed);
+            plus.ShowDialog(this);
+        }
 
+        private void minus_Click(object sender, EventArgs e)
+        {
+
+            Local_Minus minus = new Local_Minus();
+
+            minus.FormClosed += new FormClosedEventHandler(form_closed);
+            minus.ShowDialog();
+        }
     }
 }

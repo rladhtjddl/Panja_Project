@@ -21,6 +21,8 @@ namespace Panja_Project
     public partial class MainUI : Form
     {
         private JToken json_s;
+        public string key = "hello world";
+
 
         public MainUI()
         {
@@ -34,7 +36,7 @@ namespace Panja_Project
 
         private void local_btn_Click(object sender, EventArgs e)
         {
-            Local_Explorer exp = new Local_Explorer();
+            Local_Explorer exp = new Local_Explorer(key);
             exp.ShowDialog();
         }
 
