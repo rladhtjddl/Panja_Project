@@ -29,6 +29,14 @@ namespace Panja_Project
             InitializeComponent();
         }
 
+        public MainUI(string id)
+        {
+            InitializeComponent();
+            key = id;
+
+            display_id.Text = "ID : " + key;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 

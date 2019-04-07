@@ -74,7 +74,7 @@
             this.btn_upload.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_upload.Font = new System.Drawing.Font("굴림", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_upload.Image = ((System.Drawing.Image)(resources.GetObject("btn_upload.Image")));
-            this.btn_upload.Location = new System.Drawing.Point(1003, 596);
+            this.btn_upload.Location = new System.Drawing.Point(976, 525);
             this.btn_upload.Margin = new System.Windows.Forms.Padding(0);
             this.btn_upload.Name = "btn_upload";
             this.btn_upload.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -92,8 +92,9 @@
             this.Controls.Add(this.btn_upload);
             this.Controls.Add(this.path_now);
             this.Controls.Add(this.cloud_list);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Cloud_Explorer";
-            this.Text = "Cloud_Explorer";
+            this.Text = "Panja Cloud Explorer";
             this.Load += new System.EventHandler(this.Cloud_Explorer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

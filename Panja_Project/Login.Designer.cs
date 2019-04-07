@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,9 +42,10 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(307, 79);
+            this.btnLogin.Location = new System.Drawing.Point(384, 95);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(94, 36);
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -51,9 +53,10 @@
             // 
             // btnSignUp
             // 
-            this.btnSignUp.Location = new System.Drawing.Point(307, 159);
+            this.btnSignUp.Location = new System.Drawing.Point(384, 187);
+            this.btnSignUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(75, 23);
+            this.btnSignUp.Size = new System.Drawing.Size(94, 37);
             this.btnSignUp.TabIndex = 1;
             this.btnSignUp.Text = "Sign Up";
             this.btnSignUp.UseVisualStyleBackColor = true;
@@ -62,42 +65,47 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 84);
+            this.label1.Location = new System.Drawing.Point(48, 104);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 15);
+            this.label1.Size = new System.Drawing.Size(22, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 156);
+            this.label2.Location = new System.Drawing.Point(48, 196);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 15);
+            this.label2.Size = new System.Drawing.Size(34, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "PW";
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(91, 81);
+            this.txtID.Location = new System.Drawing.Point(114, 97);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(172, 25);
+            this.txtID.Size = new System.Drawing.Size(214, 28);
             this.txtID.TabIndex = 4;
             // 
             // txtPW
             // 
-            this.txtPW.Location = new System.Drawing.Point(91, 157);
+            this.txtPW.Location = new System.Drawing.Point(114, 188);
+            this.txtPW.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPW.Name = "txtPW";
-            this.txtPW.Size = new System.Drawing.Size(172, 25);
+            this.txtPW.Size = new System.Drawing.Size(214, 28);
             this.txtPW.TabIndex = 5;
             this.txtPW.UseSystemPasswordChar = true;
             // 
             // lnkLostID
             // 
             this.lnkLostID.AutoSize = true;
-            this.lnkLostID.Location = new System.Drawing.Point(206, 217);
+            this.lnkLostID.Location = new System.Drawing.Point(258, 260);
+            this.lnkLostID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkLostID.Name = "lnkLostID";
-            this.lnkLostID.Size = new System.Drawing.Size(20, 15);
+            this.lnkLostID.Size = new System.Drawing.Size(22, 18);
             this.lnkLostID.TabIndex = 6;
             this.lnkLostID.TabStop = true;
             this.lnkLostID.Text = "ID";
@@ -106,9 +114,10 @@
             // lnkLostPW
             // 
             this.lnkLostPW.AutoSize = true;
-            this.lnkLostPW.Location = new System.Drawing.Point(232, 217);
+            this.lnkLostPW.Location = new System.Drawing.Point(290, 260);
+            this.lnkLostPW.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkLostPW.Name = "lnkLostPW";
-            this.lnkLostPW.Size = new System.Drawing.Size(31, 15);
+            this.lnkLostPW.Size = new System.Drawing.Size(34, 18);
             this.lnkLostPW.TabIndex = 7;
             this.lnkLostPW.TabStop = true;
             this.lnkLostPW.Text = "PW";
@@ -117,17 +126,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(79, 217);
+            this.label3.Location = new System.Drawing.Point(99, 260);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 15);
+            this.label3.Size = new System.Drawing.Size(151, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "Forgot Account ?";
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 289);
+            this.ClientSize = new System.Drawing.Size(535, 347);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lnkLostPW);
             this.Controls.Add(this.lnkLostID);
@@ -137,8 +147,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.btnLogin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
-            this.Text = "Form1";
+            this.Text = "Panja Security Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

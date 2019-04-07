@@ -32,7 +32,7 @@
             this.local_btn = new System.Windows.Forms.Button();
             this.Cloud_btn = new System.Windows.Forms.Button();
             this.settings = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.display_id = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // local_btn
@@ -74,15 +74,15 @@
             this.settings.UseVisualStyleBackColor = false;
             this.settings.Click += new System.EventHandler(this.settings_Click);
             // 
-            // label1
+            // display_id
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(12, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(672, 32);
-            this.label1.TabIndex = 4;
-            this.label1.Text = " ID : J3N_JAN6 ( 프리미엄 이용기간 : 18.10.01 ~ 19.02.01 )";
+            this.display_id.AutoSize = true;
+            this.display_id.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.display_id.Location = new System.Drawing.Point(12, 11);
+            this.display_id.Name = "display_id";
+            this.display_id.Size = new System.Drawing.Size(672, 32);
+            this.display_id.TabIndex = 4;
+            this.display_id.Text = " ID : J3N_JAN6 ( 프리미엄 이용기간 : 18.10.01 ~ 19.02.01 )";
             // 
             // MainUI
             // 
@@ -90,7 +90,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 462);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.display_id);
             this.Controls.Add(this.settings);
             this.Controls.Add(this.Cloud_btn);
             this.Controls.Add(this.local_btn);
@@ -110,7 +110,7 @@
         private System.Windows.Forms.Button local_btn;
         private System.Windows.Forms.Button Cloud_btn;
         private System.Windows.Forms.Button settings;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label display_id;
     }
 }
 
