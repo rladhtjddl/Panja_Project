@@ -119,6 +119,33 @@ namespace Panja_Project
         }
 
 
+        ////디렉토리 내부파일 모두 쓰기 권한 막기
+        //protected void fileclear (string dir)
+        //{
+        //    string[] target_files = Directory.GetFiles(dir);
+        //    //파일마다 초기권한 삭제 진행
+        //    foreach (string filename in target_files)
+        //    {
+
+        //        FileSecurity fSecurity = System.IO.File.GetAccessControl(filename);
+
+        //        //모든 파일 권한 삭제 
+        //        AuthorizationRuleCollection rules2 = fSecurity.GetAccessRules(true, false, typeof(System.Security.Principal.NTAccount));
+        //        foreach (FileSystemAccessRule rule in rules2)
+        //            fSecurity.RemoveAccessRule(rule);
+
+        //        fSecurity.SetAccessRule(new FileSystemAccessRule(
+        //            cur_user,
+        //            FileSystemRights.Write,
+        //            AccessControlType.Deny));
+        //        System.IO.File.SetAccessControl(filename, fSecurity);
+
+        //    }
+        //}
+
+         
+  =
+
 
         //판자식 보호(타겟 문서의 폴더 경로 ) : 폴더경로를 가져와 보호  
         public void panja_protect(string target_folder_dir)
@@ -177,13 +204,13 @@ namespace Panja_Project
             
             DirectorySecurity dSecurity = dInfo.GetAccessControl();
 
-
-
+            
+ 
             ////상속해제
 
             dSecurity.SetAccessRuleProtection(true, false);
-            ////세팅
-            Directory.SetAccessControl(target_folder_dir, dSecurity);
+            //////세팅
+            //Directory.SetAccessControl(target_folder_dir, dSecurity);
 
 
             //디폴트 권한 클리어
@@ -191,21 +218,59 @@ namespace Panja_Project
             foreach (FileSystemAccessRule rule in rules)
                 dSecurity.RemoveAccessRule(rule);
 
-            //세팅
-            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+            ////세팅
+            //Directory.SetAccessControl(target_folder_dir, dSecurity);
 
 
             //ACL 설정
-            dSecurity.SetAccessRule(new FileSystemAccessRule(
+            dSecurity.AddAccessRule(new FileSystemAccessRule(
             cur_user,
             FileSystemRights.ReadAndExecute,
+            inheritanceFlags:InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
+            propagationFlags:PropagationFlags.None,
             AccessControlType.Allow));
+
+
+
+            ////이폴더 및 하위폴더만 
+            //inheritanceFlags: InheritanceFlags.ContainerInherit,
+            //    propagationFlags: PropagationFlags.NoPropagateInherit
+
+
+            // //ACL 설정
+            // dSecurity.SetAccessRule(new FileSystemAccessRule(
+            // cur_user,
+            // FileSystemRights.ReadAndExecute,
+            // //하위폴더 및 파일만  
+            // inheritanceFlags: InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit ,
+            // propagationFlags: PropagationFlags.NoPropagateInherit | PropagationFlags.InheritOnly | PropagationFlags.None,
+            // AccessControlType.Allow));
+
+
+
+
+           dSecurity.SetAccessRule(new FileSystemAccessRule(
+           cur_user,
+           FileSystemRights.Delete | FileSystemRights.Write,
+           //하위
+           inheritanceFlags: InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit,
+            propagationFlags: PropagationFlags.None,
+           AccessControlType.Deny));
 
             //세팅
             Directory.SetAccessControl(target_folder_dir, dSecurity);
 
 
 
+            //내부 디폴트 권한 수정 
+
+            //파일 권한조정 
+            //fileclear(target_folder_dir);
+
+         
+
+            
         }
 
 
@@ -215,46 +280,49 @@ namespace Panja_Project
             DirectoryInfo dInfo = new DirectoryInfo(target_folder_dir);
 
             DirectorySecurity dSecurity = dInfo.GetAccessControl();
-            
 
+
+
+            //디폴트 권한 클리어
+            AuthorizationRuleCollection rules = dSecurity.GetAccessRules(true, false, typeof(System.Security.Principal.NTAccount));
+            foreach (FileSystemAccessRule rule in rules)
+                dSecurity.RemoveAccessRule(rule);
+
+
+
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+            //상속 다시 추가 
             dSecurity.SetAccessRuleProtection(false, true);
           
             Directory.SetAccessControl(target_folder_dir, dSecurity);
-
-            dSecurity.SetAccessRule(new FileSystemAccessRule(
-                "administrators",
-                FileSystemRights.FullControl,
-                AccessControlType.Allow));
 
             Directory.SetAccessControl(target_folder_dir, dSecurity);
 
         }
         
-        //판자식 파일 접근 (타겟 문서의 폴더 경로 ) : 상속 삭제 
+        //판자식 파일 접근 (타겟 문서의 폴더 경로 ) : 상속 삭제 씨발필요없어 
         public void panja_file_access(string target_folder_dir)
         {
-            DirectoryInfo dInfo = new DirectoryInfo(target_folder_dir);
 
-            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+            //File test  
+            string target_file_dir = target_folder_dir + @"\" + "TEXT SAMPLE .txt";
+            FileInfo fInfo = new FileInfo(target_file_dir);
 
-            FileInfo fInfo = new FileInfo(target_folder_dir);
+            FileSecurity fSecurity = fInfo.GetAccessControl();
 
-            dSecurity.SetAccessRuleProtection(false, true);
-          
-            Directory.SetAccessControl(target_folder_dir, dSecurity);
 
-            dSecurity.SetAccessRule(new FileSystemAccessRule(
-                "administrators",
-                FileSystemRights.FullControl,
+            fSecurity.SetAccessRule(new FileSystemAccessRule(
+                cur_user,
+                FileSystemRights.Modify,
                 AccessControlType.Allow));
 
-            Directory.SetAccessControl(target_folder_dir, dSecurity);
+            System.IO.File.SetAccessControl(target_file_dir, fSecurity);
 
         }
 
 
-
-
+        
 
         //판자식 보호 우클릭 (명령어 , 타겟 프로그램의 폴더 경로) 
         public void rightClick(string command, string target_folder_dir)
@@ -354,9 +422,12 @@ namespace Panja_Project
             Myshortcut.IconLocation = icon_dir + @"\Properties\panja2_256px.ico";
             
 
-            // 바로가기를 저장한다. 에러떠서 일단 주석처리해놓을게(동근)
+            // 바로가기를 저장한다.
             Myshortcut.Save();
         }
+
+
+
 
     }
 

@@ -31,8 +31,8 @@ namespace Panja_Project
             {
 
                 //Switch Checker & data confirm
-                MessageBox.Show("this is 2");
-                MessageBox.Show("[0] :" + args[0]+"[1] : "+args[1] );
+              //  MessageBox.Show("this is 2");
+              //  MessageBox.Show("[0] :" + args[0]+"[1] : "+args[1] );
 
                 //해당 명령을 우클릭에서 처리 
                 string command = args[1];
