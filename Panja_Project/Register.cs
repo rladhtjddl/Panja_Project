@@ -177,16 +177,34 @@ namespace Panja_Project
             
             DirectorySecurity dSecurity = dInfo.GetAccessControl();
 
-            //DirectorySecurity dSecurity = Directory.GetAccessControl(target_folder_dir);
-            
+
+
+            ////상속해제
+
             dSecurity.SetAccessRuleProtection(true, false);
+            ////세팅
             Directory.SetAccessControl(target_folder_dir, dSecurity);
 
-            dSecurity.SetAccessRule(new FileSystemAccessRule(
-                "administrators",
-                FileSystemRights.ReadAndExecute,
-                AccessControlType.Allow));
+
+            //디폴트 권한 클리어
+            AuthorizationRuleCollection rules = dSecurity.GetAccessRules(true, false, typeof(System.Security.Principal.NTAccount));
+            foreach (FileSystemAccessRule rule in rules)
+                dSecurity.RemoveAccessRule(rule);
+
+            //세팅
             Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+
+            //ACL 설정
+            dSecurity.SetAccessRule(new FileSystemAccessRule(
+            cur_user,
+            FileSystemRights.ReadAndExecute,
+            AccessControlType.Allow));
+
+            //세팅
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+
 
         }
 
@@ -211,6 +229,31 @@ namespace Panja_Project
             Directory.SetAccessControl(target_folder_dir, dSecurity);
 
         }
+        
+        //판자식 파일 접근 (타겟 문서의 폴더 경로 ) : 상속 삭제 
+        public void panja_file_access(string target_folder_dir)
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(target_folder_dir);
+
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+
+            FileInfo fInfo = new FileInfo(target_folder_dir);
+
+            dSecurity.SetAccessRuleProtection(false, true);
+          
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+            dSecurity.SetAccessRule(new FileSystemAccessRule(
+                "administrators",
+                FileSystemRights.FullControl,
+                AccessControlType.Allow));
+
+            Directory.SetAccessControl(target_folder_dir, dSecurity);
+
+        }
+
+
+
 
 
         //판자식 보호 우클릭 (명령어 , 타겟 프로그램의 폴더 경로) 
