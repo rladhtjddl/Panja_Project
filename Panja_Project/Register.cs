@@ -297,6 +297,8 @@ namespace Panja_Project
             // 바로가기에 프로그램의 경로를 지정한다.
             Myshortcut.TargetPath = Application.ExecutablePath;
 
+            Myshortcut.Arguments = "1 1 " + target_folder_dir + @"\" + name;
+
             // 바로가기의 description을 지정한다.
             Myshortcut.Description = "Launch My Application";
 

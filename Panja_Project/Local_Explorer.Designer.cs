@@ -196,7 +196,7 @@
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(372, 756);
@@ -224,13 +224,13 @@
             this.btn_minus.Font = new System.Drawing.Font("굴림", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_minus.Image = ((System.Drawing.Image)(resources.GetObject("btn_minus.Image")));
             this.btn_minus.Location = new System.Drawing.Point(651, 610);
-            this.btn_minus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_minus.Margin = new System.Windows.Forms.Padding(4);
             this.btn_minus.Name = "btn_minus";
             this.btn_minus.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_minus.Size = new System.Drawing.Size(89, 88);
             this.btn_minus.TabIndex = 4;
             this.btn_minus.UseVisualStyleBackColor = false;
-            this.btn_minus.Click += new System.EventHandler(this.button3_Click);
+            this.btn_minus.Click += new System.EventHandler(this.minus_Click);
             // 
             // button2
             // 
@@ -238,7 +238,7 @@
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button2.Location = new System.Drawing.Point(451, 610);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(89, 88);
@@ -262,7 +262,7 @@
             this.btn_plus.Size = new System.Drawing.Size(89, 88);
             this.btn_plus.TabIndex = 2;
             this.btn_plus.UseVisualStyleBackColor = false;
-            this.btn_plus.Click += new System.EventHandler(this.button1_Click_1);
+            this.btn_plus.Click += new System.EventHandler(this.plus_Click);
             // 
             // textBox1
             // 
@@ -279,7 +279,7 @@
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.LargeImageList = this.imageList2;
             this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(763, 756);
             this.listView1.SmallImageList = this.imageList1;

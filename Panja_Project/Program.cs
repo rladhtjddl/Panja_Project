@@ -18,6 +18,7 @@ namespace Panja_Project
             //폴더 권한 제어 객체 생성
             FolderAccess rgs = new FolderAccess();
             string total_dir = Environment.CurrentDirectory + "\\Panja_Project.exe";
+            //string total_dir = @"C:\Users\rooto\Source\Repos\Panja_Project\Panja_Project\bin\Debug\Panja_Project.exe";
 
             //args(파라미터 갯수 체크 )
             int argsCount = args.Length;
@@ -46,7 +47,7 @@ namespace Panja_Project
 
 
                 MessageBox.Show("this is 3");
-                MessageBox.Show("[0] :" + args[0] + " [1] :" + args[1]+" [2] :"+args[2]);
+                MessageBox.Show("[0] : " + args[0] + " [1] : " + args[1]+" [2] : "+args[2]);
 
 
                 //파라미터 체크용 
@@ -57,7 +58,7 @@ namespace Panja_Project
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                Application.Run(new Local_Explorer());
+                Application.Run(new Local_Explorer(sample2,args[2]));
 
 
 

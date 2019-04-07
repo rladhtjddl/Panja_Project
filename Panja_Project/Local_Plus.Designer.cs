@@ -169,23 +169,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Local_Plus));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_protect = new System.Windows.Forms.Button();
+            this.button_close = new System.Windows.Forms.Button();
             this.btn_minus = new System.Windows.Forms.Button();
             this.btn_plus = new System.Windows.Forms.Button();
             this.selectlist = new System.Windows.Forms.ListView();
             this.폴더명 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.addlist = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
+            this.upload_chk = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("궁서", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(66, 21);
+            this.label1.Location = new System.Drawing.Point(94, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 24);
+            this.label1.Size = new System.Drawing.Size(147, 36);
             this.label1.TabIndex = 4;
             this.label1.Text = "Select";
             // 
@@ -193,38 +195,42 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("궁서", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(344, 21);
+            this.label2.Location = new System.Drawing.Point(491, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 24);
+            this.label2.Size = new System.Drawing.Size(194, 36);
             this.label2.TabIndex = 5;
             this.label2.Text = "Selected";
             // 
-            // button3
+            // btn_protect
             // 
-            this.button3.Location = new System.Drawing.Point(533, 59);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(72, 32);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "추가 보호";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_protect.Location = new System.Drawing.Point(761, 88);
+            this.btn_protect.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_protect.Name = "btn_protect";
+            this.btn_protect.Size = new System.Drawing.Size(103, 48);
+            this.btn_protect.TabIndex = 6;
+            this.btn_protect.Text = "추가 보호";
+            this.btn_protect.UseVisualStyleBackColor = true;
+            this.btn_protect.Click += new System.EventHandler(this.proctect_click);
             // 
-            // button4
+            // button_close
             // 
-            this.button4.Location = new System.Drawing.Point(533, 96);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(72, 32);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "닫기";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button_close.Location = new System.Drawing.Point(761, 144);
+            this.button_close.Margin = new System.Windows.Forms.Padding(4);
+            this.button_close.Name = "button_close";
+            this.button_close.Size = new System.Drawing.Size(103, 48);
+            this.button_close.TabIndex = 7;
+            this.button_close.Text = "닫기";
+            this.button_close.UseVisualStyleBackColor = true;
+            this.button_close.Click += new System.EventHandler(this.button_close_Click);
             // 
             // btn_minus
             // 
             this.btn_minus.Image = global::Panja_Project.Properties.Resources.arrow_left;
-            this.btn_minus.Location = new System.Drawing.Point(239, 203);
+            this.btn_minus.Location = new System.Drawing.Point(341, 304);
+            this.btn_minus.Margin = new System.Windows.Forms.Padding(4);
             this.btn_minus.Name = "btn_minus";
-            this.btn_minus.Size = new System.Drawing.Size(59, 55);
+            this.btn_minus.Size = new System.Drawing.Size(84, 82);
             this.btn_minus.TabIndex = 2;
             this.btn_minus.UseVisualStyleBackColor = true;
             this.btn_minus.Click += new System.EventHandler(this.btn_minus_Click);
@@ -233,9 +239,10 @@
             // 
             this.btn_plus.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_plus.Image = global::Panja_Project.Properties.Resources.arrow_right;
-            this.btn_plus.Location = new System.Drawing.Point(239, 126);
+            this.btn_plus.Location = new System.Drawing.Point(341, 189);
+            this.btn_plus.Margin = new System.Windows.Forms.Padding(4);
             this.btn_plus.Name = "btn_plus";
-            this.btn_plus.Size = new System.Drawing.Size(59, 59);
+            this.btn_plus.Size = new System.Drawing.Size(84, 88);
             this.btn_plus.TabIndex = 1;
             this.btn_plus.UseVisualStyleBackColor = false;
             this.btn_plus.Click += new System.EventHandler(this.btn_plus_Click);
@@ -244,9 +251,10 @@
             // 
             this.selectlist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.폴더명});
-            this.selectlist.Location = new System.Drawing.Point(304, 47);
+            this.selectlist.Location = new System.Drawing.Point(434, 70);
+            this.selectlist.Margin = new System.Windows.Forms.Padding(4);
             this.selectlist.Name = "selectlist";
-            this.selectlist.Size = new System.Drawing.Size(208, 304);
+            this.selectlist.Size = new System.Drawing.Size(295, 454);
             this.selectlist.TabIndex = 9;
             this.selectlist.UseCompatibleStateImageBehavior = false;
             this.selectlist.View = System.Windows.Forms.View.List;
@@ -258,39 +266,52 @@
             // 
             // addlist
             // 
-            this.addlist.Location = new System.Drawing.Point(17, 47);
-            this.addlist.Margin = new System.Windows.Forms.Padding(2);
+            this.addlist.Location = new System.Drawing.Point(24, 70);
             this.addlist.Name = "addlist";
-            this.addlist.Size = new System.Drawing.Size(218, 304);
+            this.addlist.Size = new System.Drawing.Size(310, 454);
             this.addlist.TabIndex = 10;
             this.addlist.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.addlist_BeforeCollapse);
             this.addlist.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.addlist_BeforeExpand);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(533, 139);
+            this.button1.Location = new System.Drawing.Point(761, 240);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 32);
+            this.button1.Size = new System.Drawing.Size(103, 48);
             this.button1.TabIndex = 11;
             this.button1.Text = "보호 해제";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // upload_chk
+            // 
+            this.upload_chk.AutoSize = true;
+            this.upload_chk.Location = new System.Drawing.Point(739, 502);
+            this.upload_chk.Name = "upload_chk";
+            this.upload_chk.Size = new System.Drawing.Size(130, 22);
+            this.upload_chk.TabIndex = 12;
+            this.upload_chk.Text = "자동 업로드";
+            this.upload_chk.UseVisualStyleBackColor = true;
             // 
             // Local_Plus
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 364);
+            this.ClientSize = new System.Drawing.Size(877, 546);
+            this.Controls.Add(this.upload_chk);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.addlist);
             this.Controls.Add(this.selectlist);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button_close);
+            this.Controls.Add(this.btn_protect);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_minus);
             this.Controls.Add(this.btn_plus);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Local_Plus";
             this.Text = "폴더 보호 추가";
             this.Load += new System.EventHandler(this.Local_Plus_Load);
@@ -304,11 +325,12 @@
         private System.Windows.Forms.Button btn_minus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_protect;
+        private System.Windows.Forms.Button button_close;
         private System.Windows.Forms.ListView selectlist;
         private System.Windows.Forms.TreeView addlist;
         private System.Windows.Forms.ColumnHeader 폴더명;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox upload_chk;
     }
 }
