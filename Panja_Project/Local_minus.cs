@@ -223,11 +223,11 @@ namespace Panja_Project
                     }
 
                     //윤식 : 이부분 input ACL 
-                    //FolderAccess rgs = new FolderAccess();
+                    FolderAccess rgs = new FolderAccess();
 
-                    //if(new_list[i] != null)
-                    //    rgs.panja_inherit_recover(new_list[i]);
-                    //pro.StandardInput.Write("attrib " + '\u0022' + subed_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
+                    if(new_list[i] != null)
+                        rgs.panja_inherit_recover(new_list[i]);
+                    pro.StandardInput.Write("attrib " + '\u0022' + subed_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
                 }
 
                 //length = hex.hex_length();

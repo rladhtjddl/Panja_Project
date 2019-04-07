@@ -144,7 +144,7 @@ namespace Panja_Project
         //}
 
          
-  =
+  
 
 
         //판자식 보호(타겟 문서의 폴더 경로 ) : 폴더경로를 가져와 보호  
@@ -362,7 +362,6 @@ namespace Panja_Project
             }
             else if (command.Equals("recover"))
             {
-                AccessAuthority auth = new AccessAuthority(target_folder_dir);
                 panja_recover(target_folder_dir);
             }
 

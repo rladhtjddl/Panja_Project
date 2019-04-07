@@ -109,7 +109,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessAuthority.cs" />
+    <Compile Include="TestClass.cs" />
     <Compile Include="Cloud_Explorer.cs">
       <SubType>Form</SubType>
     </Compile>
