@@ -112,6 +112,7 @@ namespace Panja_Project
 
         private void btn_plus_Click(object sender, EventArgs e)
         {
+            
             if(addlist.SelectedNode.FullPath != null) { 
             String path = "C:\\" + addlist.SelectedNode.FullPath.Substring(4);
             selectlist.Items.Add(path);
