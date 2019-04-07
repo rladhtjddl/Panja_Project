@@ -359,6 +359,17 @@ namespace Panja_Project
                 shortcut.panja_inherit_delete(target_folder_dir);
                 //MessageBox.Show("Target : " + address + "\n" + "shortcut a : " + Environment.CurrentDirectory + "\n shortcut b :" + Path.GetFileName(address));
 
+                hex_handler new_hex = new hex_handler();
+
+                int length = new_hex.hex_length();
+                int start_point = 0x499;
+                for (int h = 0; h < length; h++) {
+                    start_point += 0x100;
+                }
+                new_hex.hex_write(target_folder_dir,start_point);
+                new_hex.hex_length_set(length + 1);
+
+
             }
             else if (command.Equals("recover"))
             {

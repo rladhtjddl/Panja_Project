@@ -68,22 +68,32 @@ namespace Panja_Project
             if (Encoding.ASCII.GetString(outbytes) == "ok")
             {
                 MessageBox.Show("회원정보 확인");
+
+                // (5) 스트림과 TcpClient 객체 닫기
+                stream.Close();
+                tc.Close();
+
+                Console.WriteLine(Encoding.ASCII.GetString(outbytes));
+                
+                MainUI main = new MainUI(txtID.Text);
+                main.Show();
             }
             else if(Encoding.ASCII.GetString(outbytes) == "no")
             {
                 MessageBox.Show("회원정보 불일치\n 아이디와 비밀번호를 확인하세요");
+                // (5) 스트림과 TcpClient 객체 닫기
+                stream.Close();
+                tc.Close();
+
+                Console.WriteLine(Encoding.ASCII.GetString(outbytes));
+
+
+
+
             }
-            // (5) 스트림과 TcpClient 객체 닫기
-            stream.Close();
-            tc.Close();
-
-            Console.WriteLine(Encoding.ASCII.GetString(outbytes));
 
 
 
-
-            //MainUI main = new MainUI();
-            //main.Show();
         }
 
         private void lnkLostID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
