@@ -97,12 +97,25 @@ namespace Panja_Project
         public string getPropertiesDir()
         {
             string excute_dir = Application.StartupPath;
+            //----test line
             string cut_dir = "\\bin\\Debug";
+
+
             int data_len = excute_dir.Length - cut_dir.Length;
-            string sub_dir = excute_dir.Substring(0, data_len);
+            //string sub_dir = excute_dir.Substring(0, data_len);
 
-            string properties_dir = sub_dir + @"\Properties\";
+            //----
+            
+            char[] sp = @"\".ToCharArray();
+            string[] cutting_dir = excute_dir.Split(sp);
+            string sub_dir ="";
+            for(int i = 0; i<cutting_dir.Length-2; i++)
+            {
+                sub_dir += cutting_dir[i]+@"\";
+            }
+            string properties_dir = sub_dir + @"Properties\";
 
+          //  MessageBox.Show("dir is " + properties_dir.ToString());
             return properties_dir;
         }
     }
