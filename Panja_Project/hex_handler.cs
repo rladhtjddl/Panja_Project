@@ -18,6 +18,16 @@ namespace Panja_Project
 {
     class hex_handler
     {
+        private string DLLDIR;
+
+   
+
+        public hex_handler()
+        {
+            Register rgs = new Register();
+            DLLDIR = rgs.getPropertiesDir() + @"panja.dll";
+        }
+
         public string str2hex(string strData)
         {
             string resultHex = string.Empty;
@@ -44,7 +54,7 @@ namespace Panja_Project
 
         public string hex_read(int pos) {
 
-            FileStream mystream = new FileStream(@"C:\Temp\panja.dll", FileMode.Open, FileAccess.Read);
+            FileStream mystream = new FileStream(DLLDIR, FileMode.Open, FileAccess.Read);
 
 
             //Stream mystream = File.OpenRead(@"C:\Temp\panja.dll");
@@ -85,7 +95,7 @@ namespace Panja_Project
             string write_value = test;
             
 
-            BinaryWriter output = new BinaryWriter(File.OpenWrite(@"C:\Temp\panja.dll"),Encoding.UTF8);
+            BinaryWriter output = new BinaryWriter(File.OpenWrite(DLLDIR),Encoding.UTF8);
             
             output.BaseStream.Position = pos;
             output.Write(write_value);
@@ -99,7 +109,7 @@ namespace Panja_Project
             string write_value = test;
 
 
-            BinaryWriter output = new BinaryWriter(File.OpenWrite(@"C:\Temp\panja.dll"), Encoding.UTF8);
+            BinaryWriter output = new BinaryWriter(File.OpenWrite(DLLDIR), Encoding.UTF8);
 
             output.BaseStream.Position = pos;
             output.Write(write_value);
@@ -112,7 +122,7 @@ namespace Panja_Project
 
         public int hex_length() {
 
-            BinaryReader input = new BinaryReader(File.OpenRead(@"C:\Temp\panja.dll"));
+            BinaryReader input = new BinaryReader(File.OpenRead(DLLDIR));
             input.BaseStream.Position = 0x4F0;
             int value = Convert.ToInt32(input.ReadByte().ToString("X2"), 16);
             input.Close();
@@ -122,7 +132,7 @@ namespace Panja_Project
         public void hex_length_set(int length)
         {
 
-            BinaryWriter output = new BinaryWriter(File.OpenWrite(@"C:\Temp\panja.dll"), Encoding.UTF8);
+            BinaryWriter output = new BinaryWriter(File.OpenWrite(DLLDIR), Encoding.UTF8);
 
             String write_value = length.ToString();
 
@@ -131,5 +141,7 @@ namespace Panja_Project
             output.Close();
         }
 
+
+        
     }
 }

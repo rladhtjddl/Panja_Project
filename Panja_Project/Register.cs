@@ -94,6 +94,17 @@ namespace Panja_Project
             return split[0];
         }
 
+        public string getPropertiesDir()
+        {
+            string excute_dir = Application.StartupPath;
+            string cut_dir = "\\bin\\Debug";
+            int data_len = excute_dir.Length - cut_dir.Length;
+            string sub_dir = excute_dir.Substring(0, data_len);
+
+            string properties_dir = sub_dir + @"\Properties\";
+
+            return properties_dir;
+        }
     }
 
 
@@ -424,12 +435,14 @@ namespace Panja_Project
             Myshortcut.Description = "Launch My Application";
 
 
-            string excute_dir = Application.StartupPath;
-            string cut_dir = "\\bin\\Debug";
-            int data_len = excute_dir.Length - cut_dir.Length;
-            string icon_dir = excute_dir.Substring(0, data_len);
+            //모듈화
+            //string excute_dir = Application.StartupPath;
+            //string cut_dir = "\\bin\\Debug";
+            //int data_len = excute_dir.Length - cut_dir.Length;
+            //string icon_dir = excute_dir.Substring(0, data_len);
+
             // 바로가기 아이콘을 지정한다.
-            Myshortcut.IconLocation = icon_dir + @"\Properties\panja2_256px.ico";
+            Myshortcut.IconLocation = getPropertiesDir() + @"panja2_256px.ico";
             
 
             // 바로가기를 저장한다.

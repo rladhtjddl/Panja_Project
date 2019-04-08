@@ -209,26 +209,33 @@ namespace Panja_Project
 
                 //added 폴더 
                 int lastnum = List_go.Items.Count;
-
-
-                for (i = 0; i < length; i++)
-                {
-                    for (int z = 0; z < lastnum; z++)
+                string target_dir;
+                
+                    for (i = 0; i < length; i++)
                     {
-                        if (new_list[i] == List_go.Items[z].Text)
+                        for (int z = 0; z < lastnum; z++)
                         {
-                            new_list[i] = null;
-                            hex.hex_length_set(hex.hex_length() - 1);
+                            if (new_list[i] == List_go.Items[z].Text)
+                            {
+                                target_dir = new_list[i];
+                                new_list[i] = null;
+                                hex.hex_length_set(hex.hex_length() - 1);
+
+                            //윤식 : 이부분 input ACL 
+                            FolderAccess rgs = new FolderAccess();
+
+                            if (new_list[i] == null)
+                            {
+                                rgs.panja_inherit_recover(target_dir);
+                                pro.StandardInput.Write("attrib " + '\u0022' + target_dir + '\u0022' + " -r -s -h" + Environment.NewLine);
+                            }
+                               
                         }
+                        }
+
                     }
-
-                    //윤식 : 이부분 input ACL 
-                    FolderAccess rgs = new FolderAccess();
-
-                    if(new_list[i] != null)
-                        rgs.panja_inherit_recover(new_list[i]);
-                    pro.StandardInput.Write("attrib " + '\u0022' + subed_Folder[i] + '\u0022' + " -r -s -h" + Environment.NewLine);
-                }
+                
+               
 
                 //length = hex.hex_length();
 

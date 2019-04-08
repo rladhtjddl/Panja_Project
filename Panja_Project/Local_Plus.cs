@@ -383,8 +383,7 @@ namespace Panja_Project
 
                 hex.hex_length_set(totalnum + lastnum);
 
-                /*
-
+                
                 //-------------------------------폴더보호
 
                 System.Diagnostics.ProcessStartInfo proinfo = new System.Diagnostics.ProcessStartInfo();
@@ -416,9 +415,7 @@ namespace Panja_Project
                     MessageBox.Show("Inherit Delete Excution");
                     rgs.panja_inherit_delete(folder_path[i]);
 
-
-                    //장동근 임시
-                    //rgs.panja_inherit_delete(@"C:\Temp\ttt");
+                    
                 }
 
                 pro.StandardInput.Close();
@@ -426,7 +423,7 @@ namespace Panja_Project
                 pro.Close();
 
 
-                */
+               
                 this.Close();
             }
 

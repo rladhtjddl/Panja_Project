@@ -21,13 +21,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_229C68344118425A9988DCA65E4F153A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_240C8A0B44A7400E85DD3FE8ECC8B3CB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2618697406DB4DE797880CB5A1BCFEFA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2AC4E993D37A462E5F8C01FD9E756782"
         "OwnerKey" = "8:_FA81F4F46D90402C8B19E38671981B60"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_426E29D5FDFB4F3E8D55E075084DB1E0"
+        "MsmKey" = "8:_3B868E77BB7449F79A2AD6727B8F3495"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -51,79 +69,43 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_55AA54E837274B65A55877A1F37113C6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5D92D9CDD6FBD642BF6EDE2B5AA87826"
         "OwnerKey" = "8:_FA81F4F46D90402C8B19E38671981B60"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_80E303A2108A409EA5B16EC3DFB882EC"
+        "MsmKey" = "8:_62AA4D40C8444E909645C5667D43E594"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_86E10847451D46579771B951E61B0F3D"
+        "MsmKey" = "8:_7D6AF1F88DD74AEB81A9E29B897C6FE2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_892E44A199D64845A3592DD95CEC3A00"
+        "MsmKey" = "8:_86959F38978B4D009BDB023CEC004605"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8C87AE3292BB49E28FC06934B29883F1"
+        "MsmKey" = "8:_90BC556DECF943F28942217024688AFD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_90C20624E32A43F887988C84E0DA1E09"
+        "MsmKey" = "8:_AEDB4439BD2142FB91DED11D65EE1AC2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_938FE95E33FB4F1280E20222D000F297"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9CFFED33ADDD4C73BD1FFB1FE41BE756"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_ADE595B21DC14D9F9F9AE3F93389E602"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B370B2FFEEC34C609C204098D0F3FBD1"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C42E791CADBA4234B101A161E36B330C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C63CBD4C1447479298C854ABFC87761A"
+        "MsmKey" = "8:_CC21B9CC894342138843BD8D516183D2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -141,13 +123,37 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DD0B519BB27748E5A11098F81186AD18"
+        "MsmKey" = "8:_DC94F7548756441097D36152997B11A4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F33B7C1B9F5A441FA4FE1D2493C5DD00"
+        "MsmKey" = "8:_DF00F38DC2014E00A6722AD2947432F1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E0A2C3C7ED554D81A066C3AFC1BFB819"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E0CDE5A31C54412B8ECD474CE80FFEA7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E5973E8E7FEF4A4FA2D77680A81ACF2C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F3375C89DDE946E894F9BC1791CA1036"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -337,6 +343,66 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_229C68344118425A9988DCA65E4F153A"
+            {
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\app.manifest"
+            "TargetName" = "8:app.manifest"
+            "Tag" = "8:"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_240C8A0B44A7400E85DD3FE8ECC8B3CB"
+            {
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\Resources.resx"
+            "TargetName" = "8:Resources.resx"
+            "Tag" = "8:"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2618697406DB4DE797880CB5A1BCFEFA"
+            {
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\Settings.Designer.cs"
+            "TargetName" = "8:Settings.Designer.cs"
+            "Tag" = "8:"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2AC4E993D37A462E5F8C01FD9E756782"
             {
             "AssemblyRegister" = "3:1"
@@ -368,12 +434,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_426E29D5FDFB4F3E8D55E075084DB1E0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3B868E77BB7449F79A2AD6727B8F3495"
             {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\arrow left.png"
-            "TargetName" = "8:arrow left.png"
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\file_list.json"
+            "TargetName" = "8:file_list.json"
             "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -450,26 +516,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_55AA54E837274B65A55877A1F37113C6"
-            {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\test2.txt"
-            "TargetName" = "8:test2.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5D92D9CDD6FBD642BF6EDE2B5AA87826"
             {
             "AssemblyRegister" = "3:1"
@@ -501,92 +547,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_80E303A2108A409EA5B16EC3DFB882EC"
-            {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\app.manifest"
-            "TargetName" = "8:app.manifest"
-            "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_86E10847451D46579771B951E61B0F3D"
-            {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\detect_ransom.exe"
-            "TargetName" = "8:detect_ransom.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_892E44A199D64845A3592DD95CEC3A00"
-            {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\Settings.Designer.cs"
-            "TargetName" = "8:Settings.Designer.cs"
-            "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8C87AE3292BB49E28FC06934B29883F1"
-            {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\file_list.json"
-            "TargetName" = "8:file_list.json"
-            "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_90C20624E32A43F887988C84E0DA1E09"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62AA4D40C8444E909645C5667D43E594"
             {
             "SourcePath" = "8:..\\Panja_Project\\Properties\\Plus.png"
             "TargetName" = "8:Plus.png"
             "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -601,12 +567,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_938FE95E33FB4F1280E20222D000F297"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D6AF1F88DD74AEB81A9E29B897C6FE2"
             {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\Resources.resx"
-            "TargetName" = "8:Resources.resx"
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\test2.txt"
+            "TargetName" = "8:test2.txt"
             "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -621,12 +587,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9CFFED33ADDD4C73BD1FFB1FE41BE756"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_86959F38978B4D009BDB023CEC004605"
+            {
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\detect_ransom.exe"
+            "TargetName" = "8:detect_ransom.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_90BC556DECF943F28942217024688AFD"
             {
             "SourcePath" = "8:..\\Panja_Project\\Properties\\panja2_256px.ico"
             "TargetName" = "8:panja2_256px.ico"
             "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -641,12 +627,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ADE595B21DC14D9F9F9AE3F93389E602"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AEDB4439BD2142FB91DED11D65EE1AC2"
             {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\arrow right.png"
-            "TargetName" = "8:arrow right.png"
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\panja.dll"
+            "TargetName" = "8:panja.dll"
             "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -661,52 +647,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B370B2FFEEC34C609C204098D0F3FBD1"
-            {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\test.txt"
-            "TargetName" = "8:test.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C42E791CADBA4234B101A161E36B330C"
-            {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\Resources.Designer.cs"
-            "TargetName" = "8:Resources.Designer.cs"
-            "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C63CBD4C1447479298C854ABFC87761A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC21B9CC894342138843BD8D516183D2"
             {
             "SourcePath" = "8:..\\Panja_Project\\Properties\\Settings.settings"
             "TargetName" = "8:Settings.settings"
             "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -752,12 +698,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DD0B519BB27748E5A11098F81186AD18"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DC94F7548756441097D36152997B11A4"
             {
-            "SourcePath" = "8:..\\Panja_Project\\Properties\\AssemblyInfo.cs"
-            "TargetName" = "8:AssemblyInfo.cs"
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\Resources.Designer.cs"
+            "TargetName" = "8:Resources.Designer.cs"
             "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -772,12 +718,92 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F33B7C1B9F5A441FA4FE1D2493C5DD00"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DF00F38DC2014E00A6722AD2947432F1"
+            {
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\test.txt"
+            "TargetName" = "8:test.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E0A2C3C7ED554D81A066C3AFC1BFB819"
             {
             "SourcePath" = "8:..\\Panja_Project\\Properties\\psftp.exe"
             "TargetName" = "8:psftp.exe"
             "Tag" = "8:"
-            "Folder" = "8:_DE994A7402E64BF993BD0A45CA3AFDC5"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E0CDE5A31C54412B8ECD474CE80FFEA7"
+            {
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\arrow left.png"
+            "TargetName" = "8:arrow left.png"
+            "Tag" = "8:"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E5973E8E7FEF4A4FA2D77680A81ACF2C"
+            {
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\AssemblyInfo.cs"
+            "TargetName" = "8:AssemblyInfo.cs"
+            "Tag" = "8:"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F3375C89DDE946E894F9BC1791CA1036"
+            {
+            "SourcePath" = "8:..\\Panja_Project\\Properties\\arrow right.png"
+            "TargetName" = "8:arrow right.png"
+            "Tag" = "8:"
+            "Folder" = "8:_8A495B6285E0457EB6AB05F0E99D9911"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -879,17 +905,17 @@
                                         {
                                         }
                                     }
-                                }
-                            }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_DE994A7402E64BF993BD0A45CA3AFDC5"
-                            {
-                            "Name" = "8:Properties"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_AEDB844F17F04AE0963A20A94DDAA6FE"
-                                "Folders"
-                                {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_8A495B6285E0457EB6AB05F0E99D9911"
+                                    {
+                                    "Name" = "8:Properties"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_9A31E118585944619375275D72EFF188"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
                                 }
                             }
                         }
